@@ -2286,7 +2286,7 @@
 											"top": 567,
 											"width": 164.01708984375,
 											"height": 13,
-											"text": "Players"
+											"text": "Player"
 										},
 										{
 											"_type": "LabelView",
@@ -4102,7 +4102,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Players",
+					"name": "Player",
 					"ownedElements": [
 						{
 							"_type": "UMLAssociation",
