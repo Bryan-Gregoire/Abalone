@@ -3,7 +3,9 @@
 #include "Direction.h"
 
 namespace  abalone{
+
 class Position{
+
 private :
     int x ;
     int y ;
@@ -11,12 +13,12 @@ private :
 
 public :
     Position(int x, int y, int z );
-    inline int getX();
-    inline int getY();
-    inline int getZ();
-    inline bool equals();
+    inline int getX() const;
+    inline int getY() const;
+    inline int getZ() const;
+    inline bool equals() const;
     inline Position(Direction direction );
-
 };
+
 }
 #endif // POSITION_H

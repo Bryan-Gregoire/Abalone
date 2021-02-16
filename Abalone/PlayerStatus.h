@@ -2,9 +2,8 @@
 #define PLAYERSTATUS_H
 
 namespace abalone {
-enum PlayerStatus{
- WIN,FAIL,IN_GAME
-};
+
+enum PlayerStatus{ WIN,FAIL,IN_GAME };
 
 }
 #endif // PLAYERSTATUS_H

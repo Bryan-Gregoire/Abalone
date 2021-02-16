@@ -3,18 +3,21 @@
 #include "Hexagone.h"
 #include "Position.h"
 namespace  abalone{
+
 class Board{
+
 private :
 Hexagone hexagones[9][9];
 
 public :
     Board(Hexagone hexagones);
-    bool isInside(Position position);
     inline Board getInititalBoard();
-    inline int getNbX();
-    inline int getNbY();
-    inline int getNbZ();
+    inline int getNbX() const;
+    inline int getNbY() const;
+    inline int getNbZ() const;
+    bool isInside(Position position) const;
     Position move(Direction direction,Position position);
 };
+
 }
 #endif // BOARD_H

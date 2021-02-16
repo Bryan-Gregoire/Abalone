@@ -6,16 +6,19 @@
 #include <list>
 
 namespace  abalone{
+
 class Game{
+
 private :
 Board board;
 GameStatus gameStatus;
-List<Player> players;
+std::list<Player> players;
+
 public :
-    Game(Board board, GameStatus gameStatus, List<Player> players);
-    inline Baord getBoard();
-    inline GameStatus getGameStatus();
-    inline <Player> getPlayers();
+    Game(Board board, GameStatus gameStatus, std::list<Player> players);
+    inline Board getBoard() const;
+    inline GameStatus getGameStatus() const;
+    inline std::list<Player> getPlayers() const;
     void updateLevelStatus();
     void startGame();
 };

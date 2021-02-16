@@ -3,16 +3,19 @@
 #include"PlayerStatus.h"
 #include"Color.h"
 namespace  abalone{
+
 class Player{
+
 private :
 int nbMarble =14;
-PlayerStatus playerStatus =IN_GAME;
+PlayerStatus playerStatus = IN_GAME;
 Color color;
 
 public :
-    Player(Color color );
+    Player(Color color);
     inline bool isLost();
-    inline Color getColor();
+    inline Color getColor() const;
 };
+
 }
 #endif // PLAYER_H

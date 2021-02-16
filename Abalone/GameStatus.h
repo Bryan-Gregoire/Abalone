@@ -2,9 +2,7 @@
 #define GAMESTATUS_H
 namespace abalone {
 
-enum GameStatus{
- NOT_STARTED,IN_PROGRESS,END
-};
+enum GameStatus{ NOT_STARTED,IN_PROGRESS,END };
 
 }
 #endif // GAMESTATUS_H

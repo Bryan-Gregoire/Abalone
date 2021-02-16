@@ -2,11 +2,8 @@
 #define COLOR_H
 
 namespace abalone {
-enum Color{
 
-  BLACK,WHITE
-};
-
+enum Color{ BLACK,WHITE };
 
 }
 #endif // COLOR_H
