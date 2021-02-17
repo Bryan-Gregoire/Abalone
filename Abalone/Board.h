@@ -14,7 +14,6 @@ public :
     inline Board getInititalBoard();
     inline int getNbRow() const;
     inline int getNbCol() const;
-    inline int getNbZ() const;
     bool isInside(Position position) const;
     Position move(Direction direction,Position position);
 };

@@ -16,8 +16,8 @@ public :
     inline int getX() const;
     inline int getY() const;
     inline int getZ() const;
-    inline bool equals() const;
-    inline Position(Direction direction );
+    inline bool equals(Position position) const;
+    Position nextPos(Direction direction );
 };
 
 }

@@ -21,6 +21,7 @@ public :
     inline std::list<Player> getPlayers() const;
     void updateLevelStatus();
     void startGame();
+    void move(Direction direction);
 };
 }
 #endif // GAME_H
