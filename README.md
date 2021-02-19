@@ -12,11 +12,11 @@ This is a remake of the popular game abalone, it is a multiple-player game, the 
 -   [Instructions for gameplay](#instructions-for-gameplay)
 -   [Screenshots](#screenshots)
 -   [Built with](#built-with)
+-   [Technologies](#technologies)
+-   [Doxyfile](#doxyfile)
+-   [Decision](#decision)
 -   [Status](#status)
--   [Doxyfile](#Doxyfile)
--   [Decision](#Decision)
--   [Author](#Author)
--   [Technologies](#Technologies)
+-   [Author](#author)
 
 ## Instructions for gameplay
 
