@@ -1,27 +1,46 @@
 #ifndef GAME_H
 #define GAME_H
-#include"Board.h"
-#include"GameStatus.h"
-#include "Player.h"
-#include <list>
+#include"board.h"
+#include"gameStatus.h"
+#include "player.h"
+#include "model.h"
+#include "utils/observable.h"
 
 namespace  abalone{
 
-class Game{
+class Game : public Model, public utils::Observable {
 
 private :
 Board board;
 GameStatus gameStatus;
-std::list<Player> players;
+Player currentPlayer;
+Player players[];
 
 public :
-    Game(Board board, GameStatus gameStatus, std::list<Player> players);
-    inline Board getBoard() const;
-    inline GameStatus getGameStatus() const;
-    inline std::list<Player> getPlayers() const;
+    Game(Board board, GameStatus gameStatus, Player players[]);
+    inline Board getBoard() const override;
+    inline GameStatus getGameStatus() const override;
+    inline Player getCurrentPlayer() const override;
+    inline Player * getPlayers() const;
     void updateLevelStatus();
-    void startGame();
-    void move(Direction direction);
+    void move(Direction direction) override;
+    void notify();
+
+    Board getBoard() {
+        return this->board;
+    }
+
+    GameStatus getGameStatus() {
+        return this->gameStatus;
+    }
+
+    Player getCurrentPlayer() {
+        return this->currentPlayer;
+    }
+
+    Player * getPlayers() {
+        return this->players;
+    }
 };
 }
 #endif // GAME_H

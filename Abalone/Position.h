@@ -1,6 +1,6 @@
 #ifndef POSITION_H
 #define POSITION_H
-#include "Direction.h"
+#include "direction.h"
 
 namespace  abalone{
 
@@ -18,7 +18,16 @@ public :
     inline int getZ() const;
     inline bool equals(Position position) const;
     Position nextPos(Direction direction );
-};
+
+    int getX() {
+        return this->x;
+    }
+    int getY() {
+        return this->y;
+    }
+    int getZ() {
+        return this->z;
+    }};
 
 }
 #endif // POSITION_H

@@ -4,16 +4,21 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += \
-        main.cpp
+        main.cpp \
+        observable.cpp
 
 HEADERS += \
-    Board.h \
-    Color.h \
-    Direction.h \
-    Game.h \
-    GameStatus.h \
-    Hexagone.h \
-    Marble.h \
-    Player.h \
-    PlayerStatus.h \
-    Position.h
+    board.h \
+    color.h \
+    direction.h \
+    game.h \
+    gameStatus.h \
+    hexagone.h \
+    marble.h \
+    model.h \
+    observable.h \
+    player.h \
+    playerStatus.h \
+    position.h \
+    utils/observable.h \
+    utils/observer.h
