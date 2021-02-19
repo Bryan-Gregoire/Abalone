@@ -3,6 +3,8 @@
 
 
 
+
+
 # ABALONE
 
 This is a remake of the popular game abalone, it is a multiple-player game, the aime of the game To be the first player to push six of the opponent's marbles out of play, into the board's outer rim. 
@@ -35,7 +37,7 @@ You can find this class diagram and the documentation of this diagram in /Analys
 
 - Structure of our depot : 
 
-![enter image description here](https://zupimages.net/up/21/07/pa54.png)
+![enter image description here](https://zupimages.net/up/21/07/g9nz.png)
 
 ## Built with
 
