@@ -50,7 +50,7 @@ public :
      * Check if the player has lost.
      *
      */
-    inline bool isLost();
+    inline bool isLost() const;
 
     /*!
      * \brief Read Accessor of the color.
@@ -60,6 +60,10 @@ public :
 
     Color getColor() {
         return this->color;
+    }
+
+    bool isLost()  {
+        return this->nbMarble <= 8;
     }
 };
 

@@ -4,7 +4,6 @@
 #include"gameStatus.h"
 #include "player.h"
 #include "model.h"
-#include "utils/observable.h"
 
 /*!
  * Namespace of the Abalone project.
@@ -102,14 +101,26 @@ public :
      * notify the observer.
      *
      */
-    void notify() const override;
+    void notify() const;
 
     /*!
      * Notify the observer of the given property.
      *
      * \param propertyName the given name of the property.
      */
-    void notify(const std::string & propertyName = "No property") const override;
+    void notify(const std::string & propertyName = "No property") const;
+
+    /*!
+     * Add the given observer.
+     *
+     */
+    inline void addObserver(utils::Observer *);
+
+    /*!
+     * Delete the given observer.
+     *
+     */
+    inline void deleteObserver(utils::Observer *);
 
     Board getBoard() {
         return this->board;

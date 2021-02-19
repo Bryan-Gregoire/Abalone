@@ -51,14 +51,26 @@ public:
      * notify the observer.
      *
      */
-    virtual void notify() const;
+     void notify() const;
 
     /*!
      * Notify the observer of the given property.
      *
      * \param propertyName the given name of the property.
      */
-    virtual void notify(const std::string & propertyName = "No property") const;
+     void notify(const std::string & propertyName = "No property") const;
+
+     /*!
+      * Add the given observer.
+      *
+      */
+     inline void addObserver(utils::Observer *);
+
+     /*!
+      * Delete the given observer.
+      *
+      */
+     inline void deleteObserver(utils::Observer *);
 
 };
 
