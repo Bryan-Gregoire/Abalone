@@ -5303,7 +5303,7 @@
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
 					"name": "Position",
-					"documentation": "A position in the game board. Uses the x y z coordinate system.",
+					"documentation": "#Definition\n\nA position in the game board. Uses the x y z coordinate system.",
 					"attributes": [
 						{
 							"_type": "UMLAttribute",
@@ -5735,7 +5735,7 @@
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
 					"name": "Color",
-					"documentation": "Represent the color of a marble.",
+					"documentation": "#Definition\n\nRepresent the color of a marble.",
 					"literals": [
 						{
 							"_type": "UMLEnumerationLiteral",
@@ -5762,7 +5762,7 @@
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
 					"name": "Direction",
-					"documentation": "#Direction represents the direction where the marble can be move on 6 direction. Direction can be\n",
+					"documentation": "#Direction \n\nRepresents the direction where the marble can be move on 6 direction.",
 					"literals": [
 						{
 							"_type": "UMLEnumerationLiteral",
@@ -5852,7 +5852,7 @@
 							}
 						}
 					],
-					"documentation": "A Marble is a marble of the game.\n\n",
+					"documentation": "#Definition\n\nA Marble is a marble of the game.\n\n",
 					"attributes": [
 						{
 							"_type": "UMLAttribute",
@@ -5919,7 +5919,7 @@
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
 					"name": "PlayerStatus",
-					"documentation": "Represent the player status.",
+					"documentation": "#Definition\n\nRepresent the player status.",
 					"literals": [
 						{
 							"_type": "UMLEnumerationLiteral",
@@ -6091,7 +6091,7 @@
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
 					"name": "GameStatus",
-					"documentation": "Represent the game status.\n",
+					"documentation": "#Definition\n\nRepresent the game status.\n",
 					"literals": [
 						{
 							"_type": "UMLEnumerationLiteral",
