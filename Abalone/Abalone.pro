@@ -7,6 +7,9 @@ SOURCES += \
         main.cpp \
         observable.cpp
 
+-std=c++17 -pedantic-errors -Wall -Wuninitialized
+
+
 HEADERS += \
     board.h \
     color.h \

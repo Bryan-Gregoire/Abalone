@@ -13,23 +13,31 @@ This is a remake of the popular game abalone, it is a multiple-player game, the 
 -   [Screenshots](#screenshots)
 -   [Built with](#built-with)
 -   [Status](#status)
+-   [Author](#Author)
+-   [Technologies](#Technologies)
 ## Instructions for gameplay
 
 On their turn, each player may move either a single marble or Column of marbles of their own color one space. A Column consists of two or three marbles of the same color directly adjacent to one another in a straight line. A marble or a column can move in any direction in an in-line move or side-step move
 
 ## Screenshots
-- abalone game : 
+- Illustration of abalone game : 
 
-![enter image description here](https://zupimages.net/up/21/06/crpw.jpg)
+	![enter image description here](https://zupimages.net/up/21/06/crpw.jpg)
 
 - abalone UML :
 
 ![enter image description here](https://zupimages.net/up/21/07/9q6s.png)
 
 You can find this class diagram and the documentation of this diagram in /Analyse
+
+- Structure of our depot
+
+![enter image description here](https://zupimages.net/up/21/07/pa54.png)
 ## Built with
--  C++
-- QtCreator
+-  C++17
+
+## Technologies
+- QT Creator
 
 ## Status
 
