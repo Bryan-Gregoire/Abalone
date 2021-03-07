@@ -15,12 +15,12 @@ class Board{
 
 private :
 
-    /*!
-     * Two-Dimensional array made of hexagons.
-     *
-     * It is immutable.
-     */
-const Hexagone hexagones[9][9];
+/*!
+* Two-Dimensional array made of hexagons.
+*
+* It is immutable.
+*/
+Hexagone hexagones_[9][9];
 
 public :
 
@@ -50,13 +50,13 @@ public :
      * Read accesor of the number of rows of the board.
      *
      */
-    inline int getNbRow() const;
+    inline unsigned int getNbRow() const;
 
     /*!
      * Read accesor of the number of colums of the board.
      *
      */
-    inline int getNbCol() const;
+    inline unsigned int getNbCol() const;
 
     /*!
      * Moves a single marble or column of marbles of the same color in a given direction.

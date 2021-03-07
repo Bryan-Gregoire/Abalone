@@ -1,5 +1,6 @@
 #ifndef HEXAGONE_H
 #define HEXAGONE_H
+#include <optional>
 #include "marble.h"
 
 /*!
@@ -16,16 +17,10 @@ class Hexagone{
 private :
 
     /*!
-     * If it contains a marble.
-     *
-     */
-    bool isFree ;
-
-    /*!
      * One marble of one color.
      *
      */
-    Marble * marble;
+    std::optional<Marble> marble_;
 
 public :
 
@@ -35,7 +30,7 @@ public :
      * Does not contain a marble.
      *
      */
-    Hexagone() = default;
+     inline Hexagone();
 
     /*!
      * \brief Constructor.
@@ -44,45 +39,24 @@ public :
      *
      * \param marble cannot be null and represents only one marble.
      */
-    Hexagone(Marble * marble);
-
-    /*!
-     * \brief Read accessor of isFree.
-     *
-     */
-    inline bool getIsFree() const;
+    inline Hexagone(Marble marble);
 
     /*!
      * \brief Read accessor of the marble.
      *
      */
-    inline Marble * getMarble() const;
+    inline Marble getMarble() const;
 
-    /*!
-     * \brief Write accessor of isFree.
-     *
-     */
-    void setIsFree(bool isFree);
 
     /*!
      * \brief Write accessor of the marble.
      *
      */
-    void setMarble(Marble * marble);
+    void setMarble(Marble marble);
 
-    /*!
-     * Delete the marble.
-     *
-     */
-    void deleteMarble();
 
-public:
-    bool getIsFree() {
-        return this->isFree;
-    }
-
-    Marble * getMarble() {
-        return this->marble;
+    Marble getMarble() {
+        return this->marble_.value();
     }
 };
 

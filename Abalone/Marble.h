@@ -19,7 +19,7 @@ private :
      * Color of the marble.
      *
      */
-    const Color color ;
+    const Color color_ ;
 
 public :
 
@@ -30,7 +30,7 @@ public :
      *
      * \throw std::invalid_argument if color is null.
      */
-    Marble(Color color);
+    inline Marble(Color color);
 
     /*!
      * \brief Read accessor of the color.
@@ -39,7 +39,7 @@ public :
     inline Color getColor() const;
 
     Color getColor() {
-        return this->color;
+        return this->color_;
     }
 };
 

@@ -4,8 +4,13 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += \
+        board.cpp \
+        game.cpp \
+        hexagone.cpp \
         main.cpp \
-        observable.cpp
+        marble.cpp \
+        observable.cpp \
+        player.cpp
 
 -std=c++17 -pedantic-errors -Wall -Wuninitialized
 

@@ -1,7 +1,7 @@
 #ifndef PLAYER_H
 #define PLAYER_H
-#include"playerStatus.h"
-#include"color.h"
+#include "playerStatus.h"
+#include "color.h"
 
 /*!
  * Namespace of the Abalone project.
@@ -20,20 +20,20 @@ private :
      * Number of marble he owns in the game.
      *
      */
-    int nbMarble =14;
+    int nbMarble_ = 14;
 
     /*!
      * The state of the player in the game.
      *
      */
-    PlayerStatus playerStatus = IN_GAME;
+    PlayerStatus playerStatus_ = IN_GAME;
 
     /*!
      * The color of the marbles.
      *
      * One color for all the marbles.
      */
-    const Color color;
+    const Color color_;
 
 public :
 
@@ -44,7 +44,7 @@ public :
      *
      * \throw std::invalid_argument if color is null.
      */
-    Player(Color color);
+    inline Player(Color color);
 
     /*!
      * Check if the player has lost.
@@ -58,12 +58,20 @@ public :
      */
     inline Color getColor() const;
 
+    /*!
+     * @brief Write accessor of the marble.
+     *
+     * @param status the given status.
+     */
+    void setPlayerStatus(PlayerStatus status);
+
+
     Color getColor() {
-        return this->color;
+        return this->color_;
     }
 
     bool isLost()  {
-        return this->nbMarble <= 8;
+        return this->nbMarble_ <= 8;
     }
 };
 
