@@ -45,7 +45,7 @@ public:
      *
      * \param direction the given direction in which to move.
      */
-    virtual void move(Direction direction);
+    virtual void move(Direction & direction);
 
     /*!
      * notify the observer.

@@ -3,7 +3,7 @@
 
 using namespace abalone;
 
-Marble::Marble(Color color) :
+Marble::Marble(Color  color) :
     color_ {color}
 {
     if(color == NULL) {

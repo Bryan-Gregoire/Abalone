@@ -20,7 +20,17 @@ private :
 *
 * It is immutable.
 */
-Hexagone hexagones_[9][9];
+std::optional<Hexagone> hexagones_[9][9] = {
+    { {std::nullopt},{std::nullopt},{Hexagone(Marble(Color::BLACK))},{Hexagone(Marble(Color::BLACK))},{Hexagone(Marble(Color::BLACK))},{Hexagone(Marble(Color::BLACK))},{Hexagone(Marble(Color::BLACK))},{std::nullopt},{std::nullopt} },
+    { {std::nullopt},{Hexagone(Marble(Color::BLACK))},{Hexagone(Marble(Color::BLACK))},{Hexagone(Marble(Color::BLACK))},{Hexagone(Marble(Color::BLACK))},{Hexagone(Marble(Color::BLACK))},{Hexagone(Marble(Color::BLACK))},{std::nullopt},{std::nullopt} },
+    { {std::nullopt},{Hexagone()},{Hexagone()},{Hexagone(Marble(Color::BLACK))},{Hexagone(Marble(Color::BLACK))},{Hexagone(Marble(Color::BLACK))},{Hexagone()},{Hexagone()},{std::nullopt} },
+    { {Hexagone()},{Hexagone()},{Hexagone()},{Hexagone()},{Hexagone()},{Hexagone()},{Hexagone()},{Hexagone()},{std::nullopt} },
+    { {Hexagone()},{Hexagone()},{Hexagone()},{Hexagone()},{Hexagone()},{Hexagone()},{Hexagone()},{Hexagone()},{Hexagone()} },
+    { {Hexagone()},{Hexagone()},{Hexagone()},{Hexagone()},{Hexagone()},{Hexagone()},{Hexagone()},{Hexagone()},{std::nullopt} },
+    { {std::nullopt},{Hexagone()},{Hexagone()},{Hexagone(Marble(Color::WHITE))},{Hexagone(Marble(Color::WHITE))},{Hexagone(Marble(Color::WHITE))},{Hexagone()},{Hexagone()},{std::nullopt} },
+    { {std::nullopt},{Hexagone(Marble(Color::WHITE))},{Hexagone(Marble(Color::WHITE))},{Hexagone(Marble(Color::WHITE))},{Hexagone(Marble(Color::WHITE))},{Hexagone(Marble(Color::WHITE))},{Hexagone(Marble(Color::WHITE))},{std::nullopt},{std::nullopt} },
+    { {std::nullopt},{std::nullopt},{Hexagone(Marble(Color::WHITE))},{Hexagone(Marble(Color::WHITE))},{Hexagone(Marble(Color::WHITE))},{Hexagone(Marble(Color::WHITE))},{Hexagone(Marble(Color::WHITE))},{std::nullopt},{std::nullopt} }
+            };
 
 public :
 
@@ -44,7 +54,9 @@ public :
      *
      * \return the board of hexagones.
      */
-    inline const Hexagone** getHexagones();
+    inline std::optional<Hexagone>**  getHexagones() {
+         //   return hexagones_;
+    }
 
     /*!
      * Read accesor of the number of rows of the board.
@@ -82,7 +94,7 @@ public :
      * You can push the marbles of a different color when you find in a position
      * of superiority digital.
      */
-    void move(Direction direction);
+    void move(Direction & direction);
 
 private:
 
@@ -90,13 +102,13 @@ private:
      * The marbles progress together one space at a time.
      *
      */
-    void moveHorizontally(Direction direction);
+    void moveHorizontally(Direction & direction);
 
     /*!
      * the beads are progressing laterally, without modifying alignment.
      *
      */
-    void moveOblique(Direction direction);
+    void moveOblique(Direction & direction);
 
 };
 

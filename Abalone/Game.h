@@ -95,7 +95,7 @@ public :
      *
      * \param direction the given direction in which to move
      */
-    void move(Direction direction) override;
+    void move(Direction & direction) override;
 
     /*!
      * notify the observer.

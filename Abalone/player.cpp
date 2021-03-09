@@ -4,7 +4,7 @@
 
 using namespace abalone;
 
-Player::Player(Color color) :
+Player::Player(Color & color) :
     color_ { color }
 {
     if(color == NULL) {
@@ -12,7 +12,7 @@ Player::Player(Color color) :
     }
 }
 
-void Player::setPlayerStatus(PlayerStatus status) {
+void Player::setPlayerStatus(PlayerStatus & status) {
         if(status == NULL) {
             throw std::invalid_argument("Paramètre ne peut être vide");
         }

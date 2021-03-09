@@ -15,7 +15,7 @@ Hexagone::Hexagone(Marble marble) :
     }
 }
 
-void Hexagone::setMarble(Marble marble) {
+void Hexagone::setMarble(Marble & marble) {
     if(!marble_.has_value()) {
         marble_.emplace(marble);
     } else {

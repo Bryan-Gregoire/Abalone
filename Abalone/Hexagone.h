@@ -52,7 +52,7 @@ public :
      * \brief Write accessor of the marble.
      *
      */
-    void setMarble(Marble marble);
+    void setMarble(Marble & marble);
 
 
     Marble getMarble() {

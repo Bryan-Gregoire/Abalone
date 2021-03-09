@@ -44,7 +44,7 @@ public :
      *
      * \throw std::invalid_argument if color is null.
      */
-    inline Player(Color color);
+    inline Player(Color & color);
 
     /*!
      * Check if the player has lost.
@@ -63,7 +63,7 @@ public :
      *
      * @param status the given status.
      */
-    void setPlayerStatus(PlayerStatus status);
+    void setPlayerStatus(PlayerStatus & status);
 
 
     Color getColor() {
