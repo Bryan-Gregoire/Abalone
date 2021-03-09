@@ -1,8 +1,8 @@
 #ifndef GAME_H
 #define GAME_H
-#include"board.h"
-#include"gameStatus.h"
-#include "player.h"
+#include"Board.h"
+#include"GameStatus.h"
+#include "Player.h"
 #include "model.h"
 
 /*!

@@ -1,7 +1,8 @@
 #ifndef BOARD_H
 #define BOARD_H
-#include "hexagone.h"
-#include "direction.h"
+#include "Hexagone.h"
+#include "Direction.h"
+#include <array>
 
 /*!
  * Namespace of the Abalone project.
@@ -15,23 +16,12 @@ class Board{
 
 private :
 
-/*!
+    /*!
 * Two-Dimensional array made of hexagons.
 *
 * It is immutable.
 */
-std::optional<Hexagone> hexagones_[9][9] = {
-    { {std::nullopt},{std::nullopt},{Hexagone(Marble(Color::BLACK))},{Hexagone(Marble(Color::BLACK))},{Hexagone(Marble(Color::BLACK))},{Hexagone(Marble(Color::BLACK))},{Hexagone(Marble(Color::BLACK))},{std::nullopt},{std::nullopt} },
-    { {std::nullopt},{Hexagone(Marble(Color::BLACK))},{Hexagone(Marble(Color::BLACK))},{Hexagone(Marble(Color::BLACK))},{Hexagone(Marble(Color::BLACK))},{Hexagone(Marble(Color::BLACK))},{Hexagone(Marble(Color::BLACK))},{std::nullopt},{std::nullopt} },
-    { {std::nullopt},{Hexagone()},{Hexagone()},{Hexagone(Marble(Color::BLACK))},{Hexagone(Marble(Color::BLACK))},{Hexagone(Marble(Color::BLACK))},{Hexagone()},{Hexagone()},{std::nullopt} },
-    { {Hexagone()},{Hexagone()},{Hexagone()},{Hexagone()},{Hexagone()},{Hexagone()},{Hexagone()},{Hexagone()},{std::nullopt} },
-    { {Hexagone()},{Hexagone()},{Hexagone()},{Hexagone()},{Hexagone()},{Hexagone()},{Hexagone()},{Hexagone()},{Hexagone()} },
-    { {Hexagone()},{Hexagone()},{Hexagone()},{Hexagone()},{Hexagone()},{Hexagone()},{Hexagone()},{Hexagone()},{std::nullopt} },
-    { {std::nullopt},{Hexagone()},{Hexagone()},{Hexagone(Marble(Color::WHITE))},{Hexagone(Marble(Color::WHITE))},{Hexagone(Marble(Color::WHITE))},{Hexagone()},{Hexagone()},{std::nullopt} },
-    { {std::nullopt},{Hexagone(Marble(Color::WHITE))},{Hexagone(Marble(Color::WHITE))},{Hexagone(Marble(Color::WHITE))},{Hexagone(Marble(Color::WHITE))},{Hexagone(Marble(Color::WHITE))},{Hexagone(Marble(Color::WHITE))},{std::nullopt},{std::nullopt} },
-    { {std::nullopt},{std::nullopt},{Hexagone(Marble(Color::WHITE))},{Hexagone(Marble(Color::WHITE))},{Hexagone(Marble(Color::WHITE))},{Hexagone(Marble(Color::WHITE))},{Hexagone(Marble(Color::WHITE))},{std::nullopt},{std::nullopt} }
-            };
-
+    std::array<std::array<std::optional<Hexagone>,9>,9> hexagones_;
 public :
 
     /*!
@@ -47,15 +37,15 @@ public :
      *
      * \throw std::invalid_argument if hexagons is null.
      */
-    //Board(Hexagone** hexagons);
+    //Board(Hexagone std::array<std::array<std::optional<Hexagone>,9>,9>  hexagons);
 
     /*!
      * Read accessor of the board.
      *
      * \return the board of hexagones.
      */
-    inline std::optional<Hexagone>**  getHexagones() {
-         //   return hexagones_;
+    inline std::array<std::array<std::optional<Hexagone>,9>,9>  getHexagones() {
+         return hexagones_;
     }
 
     /*!

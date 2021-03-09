@@ -1,7 +1,7 @@
 #ifndef HEXAGONE_H
 #define HEXAGONE_H
 #include <optional>
-#include "marble.h"
+#include "Marble.h"
 
 /*!
  * Namespace of the Abalone project.
@@ -30,7 +30,7 @@ public :
      * Does not contain a marble.
      *
      */
-     inline Hexagone();
+    inline Hexagone();
 
     /*!
      * \brief Constructor.
@@ -45,7 +45,7 @@ public :
      * \brief Read accessor of the marble.
      *
      */
-    inline Marble getMarble() const;
+    inline  std::optional<Marble> &getMarble() const;
 
 
     /*!
@@ -55,10 +55,21 @@ public :
     void setMarble(Marble & marble);
 
 
-    Marble getMarble() {
-        return this->marble_.value();
+    std::optional<Marble> &getMarble() {
+        return marble_;
     }
 };
 
+Hexagone::Hexagone(Marble marble) :
+    marble_ { marble }
+{
+    if(!marble_.has_value()) {
+        throw std::invalid_argument("Paramètre ne peut être vide");
+    }
+}
+
+Hexagone::Hexagone() :
+    marble_ { std::nullopt }
+{}
 }
 #endif // HEXAGONE_H

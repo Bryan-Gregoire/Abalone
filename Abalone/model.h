@@ -1,8 +1,8 @@
 #ifndef MODEL_H
 #define MODEL_H
-#include "board.h"
-#include "gameStatus.h"
-#include "player.h"
+#include "Board.h"
+#include "GameStatus.h"
+#include "Player.h"
 #include "utils/observable.h"
 
 /*!

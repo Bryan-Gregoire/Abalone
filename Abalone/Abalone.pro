@@ -2,7 +2,7 @@ TEMPLATE = app
 CONFIG += console c++17
 CONFIG -= app_bundle
 CONFIG -= qt
-
+DEFINES += _x32 _OSX
 SOURCES += \
         board.cpp \
         game.cpp \

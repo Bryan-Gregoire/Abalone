@@ -1,6 +1,6 @@
 #ifndef POSITION_H
 #define POSITION_H
-#include "direction.h"
+#include "Direction.h"
 
 /*!
  * Namespace of the Abalone project.

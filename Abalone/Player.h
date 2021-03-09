@@ -1,7 +1,7 @@
 #ifndef PLAYER_H
 #define PLAYER_H
-#include "playerStatus.h"
-#include "color.h"
+#include "PlayerStatus.h"
+#include "Color.h"
 
 /*!
  * Namespace of the Abalone project.
