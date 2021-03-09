@@ -1,6 +1,6 @@
 #ifndef MARBLE_H
 #define MARBLE_H
-#include "color.h"
+#include "Color.h"
 #include <string>
 
 

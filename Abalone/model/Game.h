@@ -1,7 +1,7 @@
 #ifndef GAME_H
 #define GAME_H
 #include"Board.h"
-#include"gameStatus.h"
+#include"GameStatus.h"
 #include "Player.h"
 #include "model.h"
 #include <array>

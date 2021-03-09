@@ -1,5 +1,5 @@
 #include <iostream>
-#include "Board.h"
+#include "model/Board.h"
 #include <iostream>
 #include <iomanip>
 
@@ -11,7 +11,7 @@ int main()
     std::cout << "Est-ce-qu'il y a une bille en (4,4) : " << std::endl;
     std::cout <<std::boolalpha<<b.getHexagones().at(4).at(4).has_value()<< std::endl;
     std::cout<<"Le board :: "<<std::endl;;
-    unsigned int space = 3;
+    unsigned int space = 2;
     for (unsigned int i = 0;i < b.SIZE ;i++ ) {
         for (unsigned int j = 0;j < b.SIZE ;j++ ) {
             if(space < 5 ) {
@@ -21,8 +21,8 @@ int main()
                 std::cout<<std::setw(space);
             }
             if(b.getHexagones()[i][j].has_value()) {
-                if(b.getHexagones()[i][j].value().getMarble().has_value()) {
-                    if(b.getHexagones()[i][j].value().getMarble().value().getColor() == Color::BLACK) {
+                if(b.getHexagones()[i][j]->getMarble().has_value()) {
+                    if(b.getHexagones()[i][j]->getMarble()->getColor() == Color::BLACK) {
                         std::cout<< "N";
                     } else {
                         std::cout<<"B";

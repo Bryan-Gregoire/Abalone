@@ -1,7 +1,7 @@
 #ifndef BOARD_H
 #define BOARD_H
 #include "Hexagone.h"
-#include "direction.h"
+#include "Direction.h"
 #include <array>
 
 /*!
