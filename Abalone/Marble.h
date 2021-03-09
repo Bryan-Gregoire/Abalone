@@ -1,6 +1,8 @@
 #ifndef MARBLE_H
 #define MARBLE_H
-#include "Color.h"
+#include "color.h"
+#include <string>
+
 
 /*!
  * Namespace of the Abalone project.
@@ -38,10 +40,17 @@ public :
      */
     inline Color getColor() const;
 
+
     Color getColor() {
         return this->color_;
     }
+
+
 };
+
+Marble::Marble(Color color) :
+    color_ {color}
+{}
 
 }
 

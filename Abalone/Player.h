@@ -1,7 +1,8 @@
 #ifndef PLAYER_H
 #define PLAYER_H
-#include "PlayerStatus.h"
-#include "Color.h"
+#include "playerStatus.h"
+#include "color.h"
+#include <iostream>
 
 /*!
  * Namespace of the Abalone project.
@@ -63,8 +64,7 @@ public :
      *
      * @param status the given status.
      */
-    void setPlayerStatus(PlayerStatus & status);
-
+    void setPlayerStatus(PlayerStatus  status);
 
     Color getColor() {
         return this->color_;
@@ -73,7 +73,20 @@ public :
     bool isLost()  {
         return this->nbMarble_ <= 8;
     }
+
 };
 
+Player::Player(Color & color) :
+    color_ { color }
+{}
+
+void Player::setPlayerStatus(PlayerStatus  status) {
+        if(status == NULL) {
+            throw std::invalid_argument("Paramètre ne peut être vide");
+        }
+        this->playerStatus_ = status;
 }
+
+}
+
 #endif // PLAYER_H

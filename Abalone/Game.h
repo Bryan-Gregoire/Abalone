@@ -1,9 +1,10 @@
 #ifndef GAME_H
 #define GAME_H
 #include"Board.h"
-#include"GameStatus.h"
+#include"gameStatus.h"
 #include "Player.h"
 #include "model.h"
+#include <array>
 
 /*!
  * Namespace of the Abalone project.
@@ -23,25 +24,25 @@ private :
      * The game board.
      *
      */
-    Board board;
+    Board board_;
 
     /*!
      * The state of the game.
      *
      */
-    GameStatus gameStatus;
+    GameStatus gameStatus_;
 
     /*!
      * The player whose turn it is to play.
      *
      */
-    Player currentPlayer;
+    Player currentPlayer_;
 
     /*!
      * Players who are in the game.
      *
      */
-    Player players[];
+    std::array<Player,2> players_;
 
 public :
 
@@ -58,28 +59,28 @@ public :
      *
      * \return The game board.
      */
-    inline Board getBoard() const override;
+    inline Board & getBoard() const override;
 
     /*!
      * \brief Read accessor of the state of the game.
      *
      * \return the game status.
      */
-    inline GameStatus getGameStatus() const override;
+    inline GameStatus & getGameStatus() const override;
 
     /*!
      * \brief Read accessor of the current player.
      *
      * \return the current player.
      */
-    inline Player getCurrentPlayer() const override;
+    inline Player & getCurrentPlayer() const override;
 
     /*!
      * \brief Read accessor of the players of the game.
      *
      * \return Array of players.
      */
-    inline Player * getPlayers() const;
+    inline std::array<Player,2> & getPlayers() const;
 
     /*!
      * Updates the status of the game.
@@ -122,20 +123,20 @@ public :
      */
     inline void deleteObserver(utils::Observer *);
 
-    Board getBoard() {
-        return this->board;
+    Board & getBoard() {
+        return this->board_;
     }
 
-    GameStatus getGameStatus() {
-        return this->gameStatus;
+    GameStatus & getGameStatus() {
+        return this->gameStatus_;
     }
 
-    Player getCurrentPlayer() {
-        return this->currentPlayer;
+    Player & getCurrentPlayer() {
+        return this->currentPlayer_;
     }
 
-    Player * getPlayers() {
-        return this->players;
+    std::array<Player,2> & getPlayers() {
+        return this->players_;
     }
 };
 }

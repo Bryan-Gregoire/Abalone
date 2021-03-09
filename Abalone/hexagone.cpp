@@ -3,9 +3,6 @@
 
 using namespace abalone;
 
-
-
-
 void Hexagone::setMarble(Marble & marble) {
     if(!marble_.has_value()) {
         marble_.emplace(marble);

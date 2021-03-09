@@ -8,9 +8,7 @@ SOURCES += \
         game.cpp \
         hexagone.cpp \
         main.cpp \
-        marble.cpp \
-        observable.cpp \
-        player.cpp
+        observable.cpp
 
 -std=c++17 -pedantic-errors -Wall -Wuninitialized
 

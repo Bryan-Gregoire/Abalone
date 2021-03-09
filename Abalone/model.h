@@ -24,21 +24,21 @@ public:
      *
      * \return The game board.
      */
-    virtual Board getBoard() const;
+    virtual Board &getBoard() const;
 
     /*!
      * \brief Read accessor of the state of the game.
      *
      * \return the game status.
      */
-    virtual GameStatus getGameStatus() const;
+    virtual GameStatus &getGameStatus() const;
 
     /*!
      * \brief Read accessor of the current player.
      *
      * \return the current player.
      */
-    virtual Player getCurrentPlayer() const;
+    virtual Player &getCurrentPlayer() const;
 
     /*!
      * Moves a single marble or column of marbles of the same color in a given direction.

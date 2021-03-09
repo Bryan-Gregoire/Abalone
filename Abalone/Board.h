@@ -1,7 +1,7 @@
 #ifndef BOARD_H
 #define BOARD_H
 #include "Hexagone.h"
-#include "Direction.h"
+#include "direction.h"
 #include <array>
 
 /*!
@@ -14,14 +14,18 @@ namespace  abalone{
  */
 class Board{
 
+public:
+
+    static const unsigned int SIZE = 9;
+
 private :
 
+
     /*!
-* Two-Dimensional array made of hexagons.
-*
-* It is immutable.
-*/
-    std::array<std::array<std::optional<Hexagone>,9>,9> hexagones_;
+    * Two-Dimensional array made of hexagons.
+    *
+    */
+    std::array<std::array<std::optional<Hexagone>,SIZE>,SIZE> hexagones_;
 public :
 
     /*!
@@ -44,21 +48,10 @@ public :
      *
      * \return the board of hexagones.
      */
-    inline std::array<std::array<std::optional<Hexagone>,9>,9>  getHexagones() {
-         return hexagones_;
+    inline std::array<std::array<std::optional<Hexagone>,SIZE>,SIZE>  getHexagones() {
+        return hexagones_;
     }
 
-    /*!
-     * Read accesor of the number of rows of the board.
-     *
-     */
-    inline unsigned int getNbRow() const;
-
-    /*!
-     * Read accesor of the number of colums of the board.
-     *
-     */
-    inline unsigned int getNbCol() const;
 
     /*!
      * Moves a single marble or column of marbles of the same color in a given direction.
