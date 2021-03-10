@@ -17,16 +17,16 @@ SOURCES += \
 
 HEADERS += \
     controller/controller.h \
-    model/Board.h \
-    model/Color.h \
-    model/Direction.h \
-    model/Game.h \
-    model/GameStatus.h \
-    model/Hexagone.h \
-    model/Marble.h \
-    model/Player.h \
-    model/PlayerStatus.h \
-    model/Position.h \
+    model/board.h \
+    model/color.h \
+    model/direction.h \
+    model/game.h \
+    model/gameStatus.h \
+    model/hexagone.h \
+    model/marble.h \
+    model/player.h \
+    model/playerStatus.h \
+    model/position.h \
     model/model.h \
     model/utils/observable.h \
     model/utils/observer.h \

@@ -52,9 +52,13 @@ public :
      * \brief Write accessor of the marble.
      *
      */
-    void setMarble(Marble & marble);
-
-
+    void setMarble(Marble & marble){
+            if(!marble_.has_value()) {
+                marble_.emplace(marble);
+            } else {
+                throw std::invalid_argument("Paramètre ne peut être vide");
+            }
+        }
     std::optional<Marble> &getMarble() {
         return marble_;
     }
@@ -72,12 +76,6 @@ Hexagone::Hexagone() :
     marble_ { std::nullopt }
 {}
 
-void Hexagone::setMarble(Marble & marble) {
-    if(!marble_.has_value()) {
-        marble_.emplace(marble);
-    } else {
-        throw std::invalid_argument("Paramètre ne peut être vide");
-    }
-}
+
 }
 #endif // HEXAGONE_H
