@@ -8,7 +8,6 @@ SOURCES += \
     model/board.cpp \
     model/game.cpp \
     model/observable.cpp \
-    view/interfaceView.cpp \
     view/view.cpp
 
 
@@ -30,5 +29,4 @@ HEADERS += \
     model/model.h \
     model/utils/observable.h \
     model/utils/observer.h \
-    view/interfaceView.h \
     view/view.h

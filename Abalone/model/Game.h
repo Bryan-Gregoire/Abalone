@@ -30,7 +30,7 @@ private :
      * The state of the game.
      *
      */
-    GameStatus gameStatus_;
+    GameStatus gameStatus_ = NOT_STARTED;
 
     /*!
      * The player whose turn it is to play.
@@ -52,7 +52,7 @@ public :
      * \param gameStatus the state of the game.
      * \param Players who are in the game.
      */
-    Game(GameStatus gameStatus, Player players[]);
+    Game();
 
     /*!
      * \brief Read accessor of the game board.

@@ -1,4 +1,0 @@
-#ifndef INTERFACEVIEW_H
-#define INTERFACEVIEW_H
-
-#endif // INTERFACEVIEW_H
