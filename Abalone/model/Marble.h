@@ -38,13 +38,9 @@ public :
      * \brief Read accessor of the color.
      *
      */
-    inline Color getColor() const;
-
-
-    Color getColor() {
+    inline Color getColor() const {
         return this->color_;
     }
-
 
 };
 
