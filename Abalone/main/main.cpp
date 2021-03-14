@@ -9,15 +9,15 @@ int main()
 {
     Board b= Board();
     std::cout << "Est-ce-qu'il y a une bille en (4,4) : " << std::endl;
-    std::cout <<std::boolalpha<<b.getHexagones().at(4).at(4).has_value()<< std::endl;
+    std::cout <<std::boolalpha<<b.getHexagones().at(0).at(0).has_value()<< std::endl;
     std::cout<<"Le board :: "<<std::endl;
-    unsigned int space = 1;
+    unsigned int space =1;
     for (unsigned int i = 0;i < b.SIZE ;i++ ) {
         for (unsigned int j = 0;j < b.SIZE ;j++ ) {
-            if(space%2==0 && space < 2) {
-                std::cout<<std::setw(space);
+            if(space%2==0) {
+                std::cout<<std::setw(space+1);
             } else {
-                --space;
+                space--;
                 std::cout<<std::setw(space+2);
             }
             if(b.getHexagones()[i][j].has_value()) {
