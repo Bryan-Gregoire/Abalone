@@ -13,10 +13,13 @@ private:
     Game model_;
 
 public:
+
     /**
-     * @brief Controller
+     * @brief constructor Controller
      */
     Controller();
+
+    void start();
 };
 
 }

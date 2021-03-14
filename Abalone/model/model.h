@@ -17,7 +17,7 @@ namespace abalone {
 class Model : public utils::Observable {
 
 public:
-    virtual ~Model();
+    ~Model();
 
     /*!
      * \brief Read accessor of the game board.

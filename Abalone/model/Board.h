@@ -52,6 +52,19 @@ public :
         return hexagones_;
     }
 
+    inline bool isInsideBoard(unsigned int i, unsigned int j) const {
+        return hexagones_[i][j].has_value();
+    }
+
+    inline bool containMarble(unsigned int i,unsigned int j) {
+        return hexagones_[i][j]->getMarble().has_value();
+    }
+
+    inline Color getColorMarble(unsigned int i, unsigned int j) {
+        return hexagones_[i][j]->getMarble()->getColor();
+    }
+
+
 
     /*!
      * Moves a single marble or column of marbles of the same color in a given direction.

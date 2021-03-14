@@ -45,47 +45,36 @@ public :
      *
      * \throw std::invalid_argument if color is null.
      */
-    inline Player(Color & color);
+    inline Player(Color & color):
+        color_ { color }
+    {}
 
     /*!
      * Check if the player has lost.
      *
      */
-    inline bool isLost() const;
+    inline bool isLost() const {
+        return this->nbMarble_ <= 8;
+    }
 
     /*!
      * \brief Read Accessor of the color.
      *
      */
-    inline Color getColor() const;
+    inline Color getColor() const{
+        return this->color_;
+    }
 
     /*!
      * @brief Write accessor of the marble.
      *
      * @param status the given status.
      */
-    void setPlayerStatus(PlayerStatus  status);
-
-    Color getColor() {
-        return this->color_;
-    }
-
-    bool isLost()  {
-        return this->nbMarble_ <= 8;
+    inline void setPlayerStatus(PlayerStatus  status) {
+        this->playerStatus_ = status;
     }
 
 };
-
-Player::Player(Color & color) :
-    color_ { color }
-{}
-
-void Player::setPlayerStatus(PlayerStatus  status) {
-        if(status == NULL) {
-            throw std::invalid_argument("Paramètre ne peut être vide");
-        }
-        this->playerStatus_ = status;
-}
 
 }
 
