@@ -4,6 +4,7 @@
 #include "Color.h"
 #include <iostream>
 
+
 /*!
  * Namespace of the Abalone project.
  */
@@ -35,6 +36,8 @@ private :
      * One color for all the marbles.
      */
     const Color color_;
+
+    std::string name;
 
 public :
 
@@ -73,6 +76,15 @@ public :
      */
     inline void setPlayerStatus(PlayerStatus  status) {
         this->playerStatus_ = status;
+    }
+
+    /*!
+     * @brief Write accessor of the name of the player.
+     *
+     * @param status the given name.
+     */
+    inline void setName(std::string & name) {
+        this->name = name;
     }
 
 };

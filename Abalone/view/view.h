@@ -21,7 +21,9 @@ public:
 
     inline void displayPlayer(Player player) const;
 
-     void askPosition()  ;
+    void askPosition();
+
+    std::string askName();
 
     //inline int readInteger(std::string message) ;
 };

@@ -9,17 +9,12 @@ namespace abalone {
 
 void View::displayBoard(Board& hexagones) {
     unsigned int space =1;
-    unsigned int beginLetter=1;
-    unsigned int incre =1;
     std::array<std::string,9>letter={"I","H","G","F","E","D","C","B","A"};
     for (unsigned int i = 0;i < hexagones.SIZE ;i++ ) {
+        if(space % 2 == 0) {
+            std::cout<<" ";
+        }
         for (unsigned int j = 0;j < hexagones.SIZE ;j++ ) {
-            if( beginLetter % incre ==0){
-                std::cout<<letter[incre-1];
-                if(space % 2 == 0) {
-                    std::cout<<" ";
-                }
-            }
             std::cout<<std::setw(2);
             if(hexagones.isInsideBoard(i,j)) {
                 if(hexagones.containMarble(i,j)) {
@@ -30,16 +25,8 @@ void View::displayBoard(Board& hexagones) {
             } else {
                 std::cout<<" ";
             }
-            incre++;
         }
-        if(beginLetter%2==1){
-            std::cout<<" ";
-
-        }
-        std::cout<<beginLetter;
         std::cout<<std::endl;
-        beginLetter++;
-        incre = i+2;
         space++;
     }
 }
@@ -49,11 +36,19 @@ void View::askPosition()  {
     std::string pos {};
     std::cin >> pos;
     while(pos.length()!=2){
-       std::cout << "Enter a good Position : ";
-       std::cin.clear();
-       std::cin>>pos;
+        std::cout << "Enter a good Position : ";
+        std::cin.clear();
+        std::cin>>pos;
     }
     std::cout << "the choosen position is " << pos << std::endl;
+}
+
+std::string View::askName() {
+    std::cout << "Enter your name : ";
+    std::string name {};
+    std::cin >> name;
+    std::cout << "Hello " << name << std::endl;
+    return name;
 }
 
 

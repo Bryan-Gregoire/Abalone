@@ -79,7 +79,7 @@ public :
      *
      * \return Array of players.
      */
-    inline std::array<Player,2>&  getPlayers()  ;
+    inline std::array<Player,2> &  getPlayers();
 
     /*!
      * Updates the status of the game.

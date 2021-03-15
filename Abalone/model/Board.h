@@ -16,7 +16,7 @@ class Board{
 
 public:
 
-    static const unsigned int SIZE = 9;
+    const static unsigned int SIZE = 9;
 
 private :
 
