@@ -38,6 +38,7 @@ private :
 
 public :
 
+    Player();
     /*!
      * \brief Constructor.
      *
@@ -45,7 +46,7 @@ public :
      *
      * \throw std::invalid_argument if color is null.
      */
-    inline Player(Color & color):
+    inline Player(Color  color):
         color_ { color }
     {}
 

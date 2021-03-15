@@ -17,7 +17,7 @@ public:
     /**
      * @brief constructor Controller
      */
-    Controller();
+    Controller() = default;
 
     void start();
 };

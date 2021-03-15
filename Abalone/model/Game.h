@@ -42,7 +42,7 @@ private :
      * Players who are in the game.
      *
      */
-    std::array<Player,2> players_;
+    std::array<Player,2> players_ =  {Player(Color::BLACK),Player(Color::WHITE)};
 
 public :
 
@@ -59,28 +59,27 @@ public :
      *
      * \return The game board.
      */
-    inline Board & getBoard() const override;
-
+    Board & getBoard()  ;
     /*!
      * \brief Read accessor of the state of the game.
      *
      * \return the game status.
      */
-    inline GameStatus & getGameStatus() const override;
+    inline  GameStatus & getGameStatus()  ;
 
     /*!
      * \brief Read accessor of the current player.
      *
      * \return the current player.
      */
-    inline Player & getCurrentPlayer() const override;
+    inline Player&  getCurrentPlayer()  ;
 
     /*!
      * \brief Read accessor of the players of the game.
      *
      * \return Array of players.
      */
-    inline std::array<Player,2> & getPlayers() const;
+    inline std::array<Player,2>&  getPlayers()  ;
 
     /*!
      * Updates the status of the game.
@@ -96,7 +95,7 @@ public :
      *
      * \param direction the given direction in which to move
      */
-    void move(Direction & direction) override;
+    void move(Direction & direction) ;
 
     /*!
      * notify the observer.
@@ -123,21 +122,6 @@ public :
      */
     inline void deleteObserver(utils::Observer *);
 
-    Board & getBoard() {
-        return this->board_;
-    }
-
-    GameStatus & getGameStatus() {
-        return this->gameStatus_;
-    }
-
-    Player & getCurrentPlayer() {
-        return this->currentPlayer_;
-    }
-
-    std::array<Player,2> & getPlayers() {
-        return this->players_;
-    }
 };
 }
 #endif // GAME_H

@@ -3,18 +3,24 @@
 namespace abalone
 {
 
-Game::Game() {
-    Board board_;
+Game::Game():
+    currentPlayer_ {players_.at(0)}
+{}
 
-    Color black = Color::BLACK;
-    Player blackPlayer = Player(black);
+ Board & Game::getBoard()
+{
+    return board_;
+}
+GameStatus& Game::getGameStatus()  {
+    return gameStatus_;
+}
 
-    Color white = Color::WHITE;
-    Player whitePlayer = Player(white);
+Player&  Game::getCurrentPlayer()  {
+    return currentPlayer_;
+}
 
-    std::array<Player,2> players_ = {blackPlayer,whitePlayer};
-    Player currentPlayer_ = players_.at(0);
-
+std::array<Player,2>&  Game::getPlayers() {
+    return players_;
 }
 
 } // end abalone
