@@ -30,7 +30,7 @@ private :
      * The state of the game.
      *
      */
-    GameStatus gameStatus_ = NOT_STARTED;
+    GameStatus gameStatus_;
 
     /*!
      * The player whose turn it is to play.
@@ -42,7 +42,7 @@ private :
      * Players who are in the game.
      *
      */
-    std::array<Player,2> players_ =  {Player(Color::BLACK),Player(Color::WHITE)};
+    std::array<Player,2> players_;
 
 public :
 
@@ -59,27 +59,39 @@ public :
      *
      * \return The game board.
      */
-    Board & getBoard()  ;
+    inline Board& getBoard() {
+        return this->board_;
+    }
     /*!
      * \brief Read accessor of the state of the game.
      *
      * \return the game status.
      */
-    inline  GameStatus & getGameStatus()  ;
+    inline GameStatus getGameStatus()  {
+        return this->gameStatus_;
+    }
 
     /*!
      * \brief Read accessor of the current player.
      *
      * \return the current player.
      */
-    inline Player&  getCurrentPlayer()  ;
+    inline Player const& getCurrentPlayer()  {
+        return this->currentPlayer_;
+    }
 
     /*!
      * \brief Read accessor of the players of the game.
      *
      * \return Array of players.
      */
-    inline std::array<Player,2> &  getPlayers();
+    inline std::array<Player,2>&  getPlayers(){
+        return this->players_;
+    }
+
+    inline void setCurrentPlayerName(std::string name){
+        currentPlayer_.setName(name);
+    }
 
     /*!
      * Updates the status of the game.

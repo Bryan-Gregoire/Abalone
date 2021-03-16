@@ -19,7 +19,7 @@ class Observable
   public:
     virtual ~Observable() = default;    // polymorphism
 
-    //void notify() const;
+    void notify() const;
     void notify(const std::string & propertyName = "No property") const;
     inline void addObserver(Observer *);
     inline void deleteObserver(Observer *);

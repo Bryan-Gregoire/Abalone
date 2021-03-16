@@ -38,7 +38,7 @@ public:
      *
      * \return the current player.
      */
-    Player & getCurrentPlayer() ;
+    Player const& getCurrentPlayer() ;
 
     /*!
      * Moves a single marble or column of marbles of the same color in a given direction.

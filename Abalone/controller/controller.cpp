@@ -4,9 +4,10 @@ namespace abalone {
 
 void Controller::start() {
    view_.displayMessage("Player 1");
-   view_.askName();
+   model_.setCurrentPlayerName(view_.askName());
    view_.displayMessage("Player 2");
-   view_.askName();
+   model_.setCurrentPlayerName(view_.askName());
+   view_.displayCurrentPlayer(model_.getCurrentPlayer());
    view_.askPosition();
    view_.displayBoard(model_.getBoard());
 }

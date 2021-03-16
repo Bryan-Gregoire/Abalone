@@ -22,13 +22,13 @@ private :
      * Number of marble he owns in the game.
      *
      */
-    int nbMarble_ = 14;
+    int nbMarble_;
 
     /*!
      * The state of the player in the game.
      *
      */
-    PlayerStatus playerStatus_ = IN_GAME;
+    PlayerStatus playerStatus_;
 
     /*!
      * The color of the marbles.
@@ -37,11 +37,12 @@ private :
      */
     const Color color_;
 
-    std::string name;
+    std::string name_;
 
 public :
 
     Player();
+
     /*!
      * \brief Constructor.
      *
@@ -50,23 +51,28 @@ public :
      * \throw std::invalid_argument if color is null.
      */
     inline Player(Color  color):
+        nbMarble_{14},
+        playerStatus_{IN_GAME},
         color_ { color }
     {}
 
-    /*!
-     * Check if the player has lost.
-     *
-     */
-    inline bool isLost() const {
-        return this->nbMarble_ <= 8;
+    inline int getNbMarbles() const{
+        return this->nbMarble_;
     }
 
+    inline PlayerStatus getPlayerStatus() const {
+        return this->playerStatus_;
+    }
     /*!
      * \brief Read Accessor of the color.
      *
      */
     inline Color getColor() const{
         return this->color_;
+    }
+
+    inline std::string getName() const{
+        return this->name_;
     }
 
     /*!
@@ -78,15 +84,26 @@ public :
         this->playerStatus_ = status;
     }
 
+    inline void setNbMarble(int nbMarbles){
+        this->nbMarble_=nbMarbles;
+    }
+
     /*!
      * @brief Write accessor of the name of the player.
      *
      * @param status the given name.
      */
-    inline void setName(std::string & name) {
-        this->name = name;
+    inline void setName(std::string name) {
+        this->name_ = name;
     }
 
+    /*!
+     * Check if the player has lost.
+     *
+     */
+    inline bool isLost() const {
+        return this->nbMarble_ <= 8;
+    }
 };
 
 }

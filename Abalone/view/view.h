@@ -19,13 +19,13 @@ public:
         std::cout<<message<<std::endl;
     }
 
-     void displayCurrentPlayer(Player player) ;
+    void displayCurrentPlayer(Player const& player) const;
 
     void askPosition();
 
     std::string askName();
 
-    //inline int readInteger(std::string message) ;
+
 };
 }
 

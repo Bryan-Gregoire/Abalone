@@ -54,25 +54,9 @@ std::string View::askName() {
     std::cout << "Hello " << name << std::endl;
     return name;
 }
-
- void View::displayCurrentPlayer(Player player){
-
+void View::displayCurrentPlayer(Player const& player) const {
+    std::cout<<" Player : " + player.getName() + " it's your turn : "<<std::endl;
 }
-
-
-//int readInteger(std::string message) {
-//    cin>>
-//    std::cout<<message;
-//    std::cout<<"-->";
-//    while (!keyboard.hasNextInt()) {
-//        keyboard.next();
-//        std::cout<<"the number is not a integer";
-//       std::cout<<(message);
-//    }
-
-//    return keyboard.nextInt();
-//}
-
 
 }
 
