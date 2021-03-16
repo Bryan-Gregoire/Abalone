@@ -42,7 +42,7 @@ private :
      * Players who are in the game.
      *
      */
-    std::array<Player,2> players_;
+    std::array<Player,2>players_;
 
 public :
 
@@ -91,6 +91,7 @@ public :
 
     inline void setCurrentPlayerName(std::string name){
         currentPlayer_.setName(name);
+        //currentPlayer_ =(currentPlayer_ == players_.at(0)) ? players_.at(1) : players_.at(0);
     }
 
     /*!

@@ -40,6 +40,8 @@ public:
      */
     Player const& getCurrentPlayer() ;
 
+
+    void setCurrentPlayerName(std::string name);
     /*!
      * Moves a single marble or column of marbles of the same color in a given direction.
      *
