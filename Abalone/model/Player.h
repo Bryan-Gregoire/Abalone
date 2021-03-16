@@ -35,7 +35,7 @@ private :
      *
      * One color for all the marbles.
      */
-    const Color color_;
+    Color color_;
 
     std::string name_;
 
@@ -50,8 +50,8 @@ public :
      *
      * \throw std::invalid_argument if color is null.
      */
-    inline Player(Color  color):
-        nbMarble_{14},
+    inline Player(Color color):
+        nbMarble_{ 14 },
         playerStatus_{IN_GAME},
         color_ { color }
     {}

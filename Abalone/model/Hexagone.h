@@ -45,7 +45,7 @@ public :
      * \brief Read accessor of the marble.
      *
      */
-    inline  std::optional<Marble> &getMarble() const;
+    inline std::optional<Marble> const& getMarble() const;
 
 
     /*!
@@ -53,14 +53,11 @@ public :
      *
      */
     void setMarble(Marble & marble){
-            if(!marble_.has_value()) {
-                marble_.emplace(marble);
-            } else {
-                throw std::invalid_argument("Paramètre ne peut être vide");
-            }
+        if(!marble_.has_value()) {
+            marble_.emplace(marble);
+        } else {
+            throw std::invalid_argument("Paramètre ne peut être vide");
         }
-    std::optional<Marble> &getMarble() {
-        return marble_;
     }
 };
 
@@ -76,6 +73,9 @@ Hexagone::Hexagone() :
     marble_ { std::nullopt }
 {}
 
+inline std::optional<Marble> const& Hexagone::getMarble() const {
+    return marble_;
+}
 
 }
 #endif // HEXAGONE_H

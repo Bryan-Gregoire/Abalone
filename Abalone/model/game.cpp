@@ -3,14 +3,21 @@
 namespace abalone
 {
 
+Game::~Game() {};
+
 Game::Game():
     board_{Board()},
     gameStatus_{NOT_STARTED},
-    players_{{Player(Color::BLACK)}}
-    //currentPlayer_ {players_.at(0)}
-
-
+    idx_CurrentPlayer {0},
+    players_{{Player(Color::BLACK), Player(Color::WHITE)}}
 {}
 
+void Game::move(Direction const& direction) {
+
+}
+
+void Game::notify() const {
+
+}
 
 } // end abalone

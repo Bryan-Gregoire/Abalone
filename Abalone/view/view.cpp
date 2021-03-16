@@ -10,7 +10,7 @@
 
 namespace abalone {
 
-void View::displayBoard(Board& hexagones) {
+void View::displayBoard(Board const& hexagones) {
     unsigned int space =1;
     for (unsigned int i = 0;i < hexagones.SIZE ;i++ ) {
         if(space % 2 == 0) {
@@ -47,7 +47,7 @@ void View::askPosition()  {
     std::cout << "the choosen position is " << pos << std::endl;
 }
 
-std::string View::askName() {
+const std::string View::askName() {
     std::cout << "Enter your name : ";
     std::string name {};
     std::cin >> name;

@@ -56,11 +56,11 @@ public :
         return hexagones_[i][j].has_value();
     }
 
-    inline bool containMarble(unsigned int i,unsigned int j) {
+    inline bool containMarble(unsigned int i,unsigned int j) const {
         return hexagones_[i][j]->getMarble().has_value();
     }
 
-    inline Color getColorMarble(unsigned int i, unsigned int j) {
+    inline Color getColorMarble(unsigned int i, unsigned int j) const {
         return hexagones_[i][j]->getMarble()->getColor();
     }
 

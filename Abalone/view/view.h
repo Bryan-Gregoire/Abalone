@@ -13,9 +13,9 @@ public:
 
     View() = default;
 
-    void displayBoard(Board& hexagones);
+    void displayBoard(Board const& hexagones);
 
-    inline void displayMessage(std::string message) const {
+    inline void displayMessage(const std::string message) const {
         std::cout<<message<<std::endl;
     }
 
@@ -23,7 +23,7 @@ public:
 
     void askPosition();
 
-    std::string askName();
+    const std::string askName();
 
 
 };

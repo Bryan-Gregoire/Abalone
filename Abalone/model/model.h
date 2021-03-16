@@ -17,45 +17,46 @@ namespace abalone {
 class Model : public utils::Observable {
 
 public:
-    //~Model();
+    virtual ~Model() = default;
 
     /*!
      * \brief Read accessor of the game board.
      *
      * \return The game board.
      */
-    Board & getBoard() ;
+    virtual inline Board const& getBoard() = 0;
 
     /*!
      * \brief Read accessor of the state of the game.
      *
      * \return the game status.
      */
-    GameStatus&  getGameStatus() ;
+    virtual inline GameStatus const&  getGameStatus() = 0;
 
     /*!
      * \brief Read accessor of the current player.
      *
      * \return the current player.
      */
-    Player const& getCurrentPlayer() ;
+    virtual inline Player const& getCurrentPlayer() = 0;
 
 
-    void setCurrentPlayerName(std::string name);
+    virtual void setCurrentPlayerName(const std::string name) = 0;
 
-    inline void setGameStatus(GameStatus gameStatus_);
+    virtual inline void setGameStatus(GameStatus const& gameStatus_) = 0;
+
     /*!
      * Moves a single marble or column of marbles of the same color in a given direction.
      *
      * \param direction the given direction in which to move.
      */
-    void move(Direction & direction);
+    virtual void move(Direction const& direction) = 0;
 
     /*!
      * notify the observer.
      *
      */
-    void notify() const;
+    virtual void notify() const = 0;
 
     /*!
      * Notify the observer of the given property.

@@ -32,19 +32,23 @@ private :
      */
     GameStatus gameStatus_;
 
-    /*!
-     * The player whose turn it is to play.
-     *
-     */
-    Player & currentPlayer_;
+//    /*!
+//     * The player whose turn it is to play.
+//     *
+//     */
+//    Player & currentPlayer_;
+
+    unsigned int idx_CurrentPlayer;
 
     /*!
      * Players who are in the game.
      *
      */
-    std::initializer_list<Player&> players_;
+    std::array<Player,2> players_;
 
 public :
+
+    virtual ~Game();
 
     /*!
      * \brief Constructor.
@@ -59,7 +63,7 @@ public :
      *
      * \return The game board.
      */
-    inline Board & getBoard() {
+    inline Board const& getBoard() {
         return this->board_;
     }
     /*!
@@ -67,8 +71,12 @@ public :
      *
      * \return the game status.
      */
-    inline GameStatus getGameStatus()  {
+    inline GameStatus const& getGameStatus()  {
         return this->gameStatus_;
+    }
+
+    inline unsigned int getIndexCurrentPlayer() {
+        return idx_CurrentPlayer;
     }
 
     /*!
@@ -76,8 +84,8 @@ public :
      *
      * \return the current player.
      */
-    inline Player const& getCurrentPlayer()  {
-        return this->currentPlayer_;
+    inline Player & getCurrentPlayer()  {
+        return this->players_[idx_CurrentPlayer];
     }
 
     /*!
@@ -85,17 +93,18 @@ public :
      *
      * \return Array of players.
      */
-    inline std::list<Player&>  getPlayers(){
+    inline std::array<Player,2>  getPlayers(){
         return this->players_;
     }
 
     inline void setCurrentPlayerName(std::string name){
-        currentPlayer_.setName(name);
-        currentPlayer_ =(currentPlayer_ == players_.at(0)) ? players_.at(1) : players_.at(0);
+        players_[idx_CurrentPlayer].setName(name);
+        idx_CurrentPlayer == 0 ? idx_CurrentPlayer++ : idx_CurrentPlayer--;
     }
 
-    inline void setGameStatus(GameStatus gameStatus_){
+    inline void setGameStatus(GameStatus const& gameStatus_) {
         this->gameStatus_=gameStatus_;
+
     }
     /*!
      * Updates the status of the game.
@@ -111,7 +120,7 @@ public :
      *
      * \param direction the given direction in which to move
      */
-    void move(Direction & direction) ;
+    void move(Direction const& direction) ;
 
     /*!
      * notify the observer.
