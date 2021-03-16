@@ -54,9 +54,9 @@ const std::string View::askName() {
     std::cout << "Hello " << name << std::endl;
     return name;
 }
-void View::displayCurrentPlayer(Player const& player) const {
-    std::cout<<"Player : " + player.getName() + " it's your turn , you have : ";
-    std::cout<<player.getNbMarbles()<< " Marbles" << std::endl;
+void View::displayCurrentPlayer(Player const& player, unsigned int idxPlayer) const {
+    std::cout<< "Player " << idxPlayer+1 << " : "<<player.getName() << " it's your turn , you have : ";
+    std::cout<< player.getNbMarbles() << " Marbles, color of marble : " << player.getColor() << std::endl;
 }
 
 }

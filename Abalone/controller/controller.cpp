@@ -8,7 +8,7 @@ void Controller::start() {
     model_.setCurrentPlayerName(view_.askName());
     view_.displayMessage("Player 2");
     model_.setCurrentPlayerName(view_.askName());
-    view_.displayCurrentPlayer(model_.getCurrentPlayer());
+    view_.displayCurrentPlayer(model_.getCurrentPlayer(), model_.getIndexCurrentPlayer());
     view_.displayBoard(model_.getBoard());
     view_.askPosition();
 }
