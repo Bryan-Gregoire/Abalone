@@ -42,6 +42,8 @@ public:
 
 
     void setCurrentPlayerName(std::string name);
+
+    inline void setGameStatus(GameStatus gameStatus_);
     /*!
      * Moves a single marble or column of marbles of the same color in a given direction.
      *

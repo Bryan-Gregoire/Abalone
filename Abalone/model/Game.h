@@ -5,7 +5,7 @@
 #include "Player.h"
 #include "model.h"
 #include <array>
-
+#include <list>
 /*!
  * Namespace of the Abalone project.
  */
@@ -36,13 +36,13 @@ private :
      * The player whose turn it is to play.
      *
      */
-    Player currentPlayer_;
+    Player & currentPlayer_;
 
     /*!
      * Players who are in the game.
      *
      */
-    std::array<Player,2>players_;
+    std::initializer_list<Player&> players_;
 
 public :
 
@@ -59,7 +59,7 @@ public :
      *
      * \return The game board.
      */
-    inline Board& getBoard() {
+    inline Board & getBoard() {
         return this->board_;
     }
     /*!
@@ -85,15 +85,18 @@ public :
      *
      * \return Array of players.
      */
-    inline std::array<Player,2>&  getPlayers(){
+    inline std::list<Player&>  getPlayers(){
         return this->players_;
     }
 
     inline void setCurrentPlayerName(std::string name){
         currentPlayer_.setName(name);
-        //currentPlayer_ =(currentPlayer_ == players_.at(0)) ? players_.at(1) : players_.at(0);
+        currentPlayer_ =(currentPlayer_ == players_.at(0)) ? players_.at(1) : players_.at(0);
     }
 
+    inline void setGameStatus(GameStatus gameStatus_){
+        this->gameStatus_=gameStatus_;
+    }
     /*!
      * Updates the status of the game.
      *

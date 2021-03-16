@@ -55,8 +55,10 @@ std::string View::askName() {
     return name;
 }
 void View::displayCurrentPlayer(Player const& player) const {
-    std::cout<<"Player : " + player.getName() + " it's your turn , you have : " << player.getNbMarbles()<< " Marbles" << std::endl;
+    std::cout<<"Player : " + player.getName() + " it's your turn , you have : ";
+    std::cout<<player.getNbMarbles()<< " Marbles" << std::endl;
 }
+
 }
 
 
