@@ -19,7 +19,7 @@ public:
         std::cout<<message<<std::endl;
     }
 
-    inline void displayPlayer(Player player) const;
+     void displayCurrentPlayer(Player player) ;
 
     void askPosition();
 

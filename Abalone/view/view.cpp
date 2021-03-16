@@ -12,7 +12,6 @@ namespace abalone {
 
 void View::displayBoard(Board& hexagones) {
     unsigned int space =1;
-    std::array<std::string,9>letter={"I","H","G","F","E","D","C","B","A"};
     for (unsigned int i = 0;i < hexagones.SIZE ;i++ ) {
         if(space % 2 == 0) {
             std::cout<<" ";
@@ -39,7 +38,7 @@ void View::askPosition()  {
     std::string pos {};
     std::cin >> pos;
     std::transform(pos.begin(), pos.end(), pos.begin(), ::toupper);
-    while(pos.length() != 2 || pos[0] < 'A' || pos[0] > 'I' || pos[1] < 1 || pos[1] > 9) {
+    while(pos.length() != 2 || pos[0] < 'A' || pos[0] > 'I' || pos[1] < 49 || pos[1] >= 57) {
         std::cout << "Enter a good Position : ";
         std::cin.clear();
         std::cin>>pos;
@@ -54,6 +53,10 @@ std::string View::askName() {
     std::cin >> name;
     std::cout << "Hello " << name << std::endl;
     return name;
+}
+
+ void View::displayCurrentPlayer(Player player){
+
 }
 
 
