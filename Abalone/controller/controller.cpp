@@ -10,6 +10,8 @@ void Controller::start() {
     model_.setCurrentPlayerName(view_.askName());
     view_.displayCurrentPlayer(model_.getCurrentPlayer(), model_.getIndexCurrentPlayer());
     view_.displayBoard(model_.getBoard());
-    view_.askPosition();
+    std::pair p =  view_.askPosition();
+    std::cout<<"Ligne : "<<p.first<< " Colone : "<<p.second<<std::endl;
 }
+
 }

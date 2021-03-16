@@ -21,9 +21,14 @@ public:
 
     void displayCurrentPlayer(Player const& player, unsigned int idxPlayer) const;
 
-    void askPosition();
+    std::pair<unsigned int,unsigned int> askPosition();
+
+    unsigned int getIdxRow(unsigned int first) const;
 
     const std::string askName();
+
+private:
+    unsigned int convertRow(char row) const;
 
 
 };
