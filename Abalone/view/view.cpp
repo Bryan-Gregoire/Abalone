@@ -5,6 +5,9 @@
 #include <conio.h>
 #include <iostream>
 #include <sstream>
+#include <algorithm>
+
+
 namespace abalone {
 
 void View::displayBoard(Board& hexagones) {
@@ -35,10 +38,12 @@ void View::askPosition()  {
     std::cout << "Enter the Position of the marble you want to move : ";
     std::string pos {};
     std::cin >> pos;
-    while(pos.length()!=2){
+    std::transform(pos.begin(), pos.end(), pos.begin(), ::toupper);
+    while(pos.length() != 2 || pos[0] < 'A' || pos[0] > 'I' || pos[1] < 1 || pos[1] > 9) {
         std::cout << "Enter a good Position : ";
         std::cin.clear();
         std::cin>>pos;
+        std::transform(pos.begin(), pos.end(), pos.begin(), ::toupper);
     }
     std::cout << "the choosen position is " << pos << std::endl;
 }
