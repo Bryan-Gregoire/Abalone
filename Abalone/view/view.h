@@ -32,8 +32,6 @@ public:
 
 private:
     unsigned int convertRow(char row) const;
-
-
 };
 }
 

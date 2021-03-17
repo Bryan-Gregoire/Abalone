@@ -21,7 +21,6 @@ void View::displayBoard(Board const& hexagones) {
         }
         else
             std::cout<<"    ";
-
         for (unsigned int j = 0;j < hexagones.SIZE ;j++ ) {
             std::cout<<std::setw(2);
             if(hexagones.isInsideBoard(i,j)) {
@@ -83,7 +82,7 @@ const std::string View::askName() {
 
 void View::displayCurrentPlayer(Player const& player, unsigned int idxPlayer) const {
     std::cout<< "Player " << idxPlayer+1 << " : "<<player.getName() << " it's your turn , you have : ";
-    std::cout<< player.getNbMarbles() << " Marbles, color of marble : " << player.getColor() << std::endl;
+    std::cout<< player.getNbMarbles() << "Marbles " << player.getColor() << std::endl;
 }
 
 unsigned int View::convertRow(char row) const {
