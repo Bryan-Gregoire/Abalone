@@ -12,9 +12,11 @@ namespace abalone {
 
 void View::displayBoard(Board const& hexagones) {
 
-    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),WHITEONBLACK);
+
+
     unsigned int space =1;
     char letter[9] = {'I','H','G','F','E','D','C','B','A'};
+
     for (unsigned int i = 0;i < hexagones.SIZE ;i++ ) {
         if(space % 2 == 0) {
             std::cout<<"     ";
@@ -34,9 +36,19 @@ void View::displayBoard(Board const& hexagones) {
                 }
 
                 if(hexagones.containMarble(i,j)) {
-                    hexagones.getColorMarble(i,j) == Color::BLACK ? std::cout<<"B" : std::cout<<"W";
+                    if(hexagones.getColorMarble(i,j) == Color::BLACK) {
+                         SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),8);
+                         std::cout<<"B";
+                         SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),WHITEONBLACK);
+                    } else{
+                        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),15);
+                        std::cout<<"W";
+                        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),WHITEONBLACK);
+                    }
                 } else {
+                    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),12);
                     std::cout<<"*";
+                    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),WHITEONBLACK);
                 }
             } else {
                 if(hexagones.isInsideBoard(i,j+1) && j < hexagones.SIZE / 2)
@@ -44,7 +56,7 @@ void View::displayBoard(Board const& hexagones) {
 
                     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),WHITE_PEN); //Type of yellow
                     std::cout<<letter[i];
-                    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),15); //15 for white
+                    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),WHITEONBLACK); //15 for white
                 }
                 else
                     std::cout<<" ";
@@ -82,7 +94,7 @@ const std::string View::askName() {
 
 void View::displayCurrentPlayer(Player const& player, unsigned int idxPlayer) const {
     std::cout<< "Player " << idxPlayer+1 << " : "<<player.getName() << " it's your turn , you have : ";
-    std::cout<< player.getNbMarbles() << "Marbles " << player.getColor() << std::endl;
+    std::cout<< player.getNbMarbles() << " Marbles " << player.getColor() << std::endl;
 }
 
 unsigned int View::convertRow(char row) const {
