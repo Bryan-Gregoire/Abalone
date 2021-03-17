@@ -11,25 +11,49 @@
 namespace abalone {
 
 void View::displayBoard(Board const& hexagones) {
+
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),WHITEONBLACK);
     unsigned int space =1;
+    char letter[9] = {'I','H','G','F','E','D','C','B','A'};
     for (unsigned int i = 0;i < hexagones.SIZE ;i++ ) {
         if(space % 2 == 0) {
-            std::cout<<" ";
+            std::cout<<"     ";
         }
+        else
+            std::cout<<"    ";
+
         for (unsigned int j = 0;j < hexagones.SIZE ;j++ ) {
-            std::cout<<std::setw(3);
+            std::cout<<std::setw(2);
             if(hexagones.isInsideBoard(i,j)) {
+                if(j == 0) {
+                    std::cout<<std::setw(1);
+                    std::cout<<"\b";
+                    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),WHITE_PEN);
+                    std::cout<<letter[i];
+                    std::cout<<std::setw(2);
+                    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),15);
+                }
+
                 if(hexagones.containMarble(i,j)) {
                     hexagones.getColorMarble(i,j) == Color::BLACK ? std::cout<<"B" : std::cout<<"W";
                 } else {
                     std::cout<<"*";
                 }
             } else {
-                std::cout<<" ";
+                if(hexagones.isInsideBoard(i,j+1) && j < hexagones.SIZE / 2)
+                   {
+
+                    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),WHITE_PEN); //Type of yellow
+                    std::cout<<letter[i];
+                    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),15); //15 for white
+                }
+                else
+                    std::cout<<" ";
             }
         }
         std::cout<<std::endl;
         space++;
+        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),7); //7 for Light grey (color of terminal text)
     }
 }
 

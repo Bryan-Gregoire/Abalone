@@ -1,10 +1,13 @@
 #ifndef VIEW_H
 #define VIEW_H
 
+#include <windows.h>
 #include <string>
 #include "model/Player.h"
 #include "model/Board.h"
 #include "model/Position.h"
+
+
 namespace abalone {
 
 class View {
