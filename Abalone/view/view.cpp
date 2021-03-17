@@ -11,18 +11,17 @@
 namespace abalone {
 
 void View::displayBoard(Board const& hexagones) {
-
-
-
     unsigned int space =1;
     char letter[9] = {'I','H','G','F','E','D','C','B','A'};
+    int number[9] = {9,8,7,6,5,4,3,2,1};
 
     for (unsigned int i = 0;i < hexagones.SIZE ;i++ ) {
         if(space % 2 == 0) {
             std::cout<<"     ";
         }
-        else
+        else {
             std::cout<<"    ";
+        }
         for (unsigned int j = 0;j < hexagones.SIZE ;j++ ) {
             std::cout<<std::setw(2);
             if(hexagones.isInsideBoard(i,j)) {
@@ -37,35 +36,30 @@ void View::displayBoard(Board const& hexagones) {
 
                 if(hexagones.containMarble(i,j)) {
                     if(hexagones.getColorMarble(i,j) == Color::BLACK) {
-                         SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),8);
-                         std::cout<<"B";
-                         SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),WHITEONBLACK);
+                        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),8); // 8 for DARKGREY
+                        std::cout<<"B";
                     } else{
-                        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),15);
+                        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),15); // 15 for WHITE
                         std::cout<<"W";
-                        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),WHITEONBLACK);
                     }
                 } else {
-                    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),12);
+                    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),12);  // 12 for RED, for hexagones
                     std::cout<<"*";
-                    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),WHITEONBLACK);
                 }
             } else {
-                if(hexagones.isInsideBoard(i,j+1) && j < hexagones.SIZE / 2)
-                   {
-
-                    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),WHITE_PEN); //Type of yellow
+                if(hexagones.isInsideBoard(i,j+1) && j < hexagones.SIZE / 2) {
+                    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),WHITE_PEN); //Type of Yellow
                     std::cout<<letter[i];
-                    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),WHITEONBLACK); //15 for white
                 }
-                else
+                else {
                     std::cout<<" ";
+                }
             }
         }
         std::cout<<std::endl;
         space++;
-        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),7); //7 for Light grey (color of terminal text)
     }
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),7); //7 for Light grey (default color of terminal text)
 }
 
 std::pair<unsigned int,unsigned int> View::askPosition()  {
@@ -80,7 +74,7 @@ std::pair<unsigned int,unsigned int> View::askPosition()  {
         std::transform(pos.begin(), pos.end(), pos.begin(), ::toupper);
     }
     std::cout << "the choosen position is " << pos << std::endl;
-    return std::pair(convertRow(pos[0]),pos[1] - 49);
+    return std::pair(convertRow(pos[0]),pos[1] - 49); // -48 for ASCII and add -1 because array begin at 0.
 
 }
 
@@ -107,7 +101,7 @@ unsigned int View::convertRow(char row) const {
         return 2;
     case 'D':
         return 3;
-     case 'E':
+    case 'E':
         return 4;
     case 'F':
         return 5;
