@@ -79,7 +79,7 @@ std::pair<unsigned int,unsigned int> View::askPosition()  {
     std::string pos {};
     std::cin >> pos;
     std::transform(pos.begin(), pos.end(), pos.begin(), ::toupper);
-    while(pos.length() != 2 || pos[0] < 'A' || pos[0] > 'I' || pos[1] < 49 || pos[1] > 57) {
+    while(pos.length() != 2 || pos[0] < 'A' || pos[0] > 'I' || pos[1] < 49 || pos[1] > 57 || !checkGoodCol(pos[0], pos[1])) {
         std::cout << "Enter a good Position : ";
         std::cin.clear();
         std::cin>>pos;
@@ -146,6 +146,30 @@ unsigned int View::convertColumn(unsigned int row, unsigned int col) const {
         return col +1;
     }
     return col;
+}
+
+bool View::checkGoodCol(unsigned int row, unsigned int col) {
+    row = convertRow(row);
+    col = col - 48;
+    switch(row) {
+    case 0:
+        return col >= 5;
+    case 1:
+        return col >= 4;
+    case 2:
+        return col >= 3;
+    case 3:
+        return col >= 2;
+    case 5:
+        return col < 9;
+    case 6:
+        return col < 8;
+    case 7:
+        return col < 7;
+    case 8:
+        return col < 6;
+    }
+    return true;
 }
 
 }

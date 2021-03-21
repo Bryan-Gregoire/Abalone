@@ -45,6 +45,8 @@ public:
 
     virtual inline void setGameStatus(GameStatus const& gameStatus_) = 0;
 
+    virtual inline void switchCurrentPlayer() = 0;
+
     /*!
      * Moves a single marble or column of marbles of the same color in a given direction.
      *

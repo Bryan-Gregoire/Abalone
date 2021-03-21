@@ -99,12 +99,16 @@ public :
 
     inline void setCurrentPlayerName(std::string name){
         players_[idx_CurrentPlayer].setName(name);
-        idx_CurrentPlayer == 0 ? idx_CurrentPlayer++ : idx_CurrentPlayer--;
+        switchCurrentPlayer();
     }
 
     inline void setGameStatus(GameStatus const& gameStatus_) {
         this->gameStatus_=gameStatus_;
 
+    }
+
+    inline void switchCurrentPlayer() {
+        idx_CurrentPlayer == 0 ? idx_CurrentPlayer++ : idx_CurrentPlayer--;
     }
     /*!
      * Updates the status of the game.

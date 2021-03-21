@@ -34,6 +34,8 @@ private:
     unsigned int convertRow(char row) const;
 
     unsigned int convertColumn(unsigned int row, unsigned int col) const;
+
+    bool checkGoodCol(unsigned row, unsigned int col);
 };
 }
 
