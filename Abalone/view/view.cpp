@@ -14,6 +14,7 @@ void View::displayBoard(Board const& hexagones) {
     unsigned int space =1;
     char letter[9] = {'I','H','G','F','E','D','C','B','A'};
     int number[9] = {9,8,7,6,5,4,3,2,1};
+    unsigned idxNumber = 0;
 
     for (unsigned int i = 0;i < hexagones.SIZE ;i++ ) {
         if(space % 2 == 0) {
@@ -28,12 +29,11 @@ void View::displayBoard(Board const& hexagones) {
                 if(j == 0) {
                     std::cout<<std::setw(1);
                     std::cout<<"\b";
-                    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),WHITE_PEN);
+                    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),14);
                     std::cout<<letter[i];
                     std::cout<<std::setw(2);
                     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),15);
                 }
-
                 if(hexagones.containMarble(i,j)) {
                     if(hexagones.getColorMarble(i,j) == Color::BLACK) {
                         SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),8); // 8 for DARKGREY
@@ -48,15 +48,27 @@ void View::displayBoard(Board const& hexagones) {
                 }
             } else {
                 if(hexagones.isInsideBoard(i,j+1) && j < hexagones.SIZE / 2) {
-                    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),WHITE_PEN); //Type of Yellow
+                    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),14); //Type of Yellow
                     std::cout<<letter[i];
-                }
-                else {
+                } else {
                     std::cout<<" ";
+                }
+                if( i > (hexagones.SIZE / 2 ) && j > hexagones.SIZE / 2 && hexagones.isInsideBoard(i, j-1)) {
+                    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),10); //Type of GREEN
+                    std::cout<<"\b"<<number[idxNumber];
+                    idxNumber++;
                 }
             }
         }
         std::cout<<std::endl;
+        if(i == hexagones.SIZE -1) {
+            std::cout<<"         ";
+            for (unsigned int k = hexagones.SIZE-1;k > idxNumber -1;k-- ) {
+                std::cout<<std::setw(2);
+                std::cout<<number[k];
+            }
+            std::cout<<std::endl;
+        }
         space++;
     }
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),7); //7 for Light grey (default color of terminal text)
