@@ -16,4 +16,8 @@ Board::Board():
      {std::nullopt,std::nullopt,Hexagone(Marble(Color::BLACK)),Hexagone(Marble(Color::BLACK)),Hexagone(),Hexagone(Marble(Color::WHITE)),Hexagone(Marble(Color::WHITE)),std::nullopt,std::nullopt}}
 }{}
 
+void Board::move(std::pair<unsigned int, unsigned int> posToMove) {
+
+}
+
 }

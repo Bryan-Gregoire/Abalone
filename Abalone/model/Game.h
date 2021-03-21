@@ -97,6 +97,11 @@ public :
         return this->players_;
     }
 
+    inline bool checkCurrentPlayerColor(std::pair<unsigned int,unsigned int> pos) {
+        return  board_.containMarble(pos.first,pos.second) && board_.getHexagones()[pos.first][pos.second]->getMarble()->getColor()
+                == players_[idx_CurrentPlayer].getColor();
+    }
+
     inline void setCurrentPlayerName(std::string name){
         players_[idx_CurrentPlayer].setName(name);
         switchCurrentPlayer();

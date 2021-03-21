@@ -74,8 +74,8 @@ void View::displayBoard(Board const& hexagones) {
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),7); //7 for Light grey (default color of terminal text)
 }
 
-std::pair<unsigned int,unsigned int> View::askPosition()  {
-    std::cout << "Enter the Position of the marble you want to move : ";
+std::pair<unsigned int,unsigned int> View::askPosition(std::string message)  {
+    std::cout <<message;
     std::string pos {};
     std::cin >> pos;
     std::transform(pos.begin(), pos.end(), pos.begin(), ::toupper);
@@ -85,7 +85,6 @@ std::pair<unsigned int,unsigned int> View::askPosition()  {
         std::cin>>pos;
         std::transform(pos.begin(), pos.end(), pos.begin(), ::toupper);
     }
-    std::cout << "the choosen position is " << pos << std::endl;
     unsigned int row = convertRow(pos[0]);
     return std::pair(row,convertColumn(row, pos[1]));
 }
@@ -99,7 +98,7 @@ const std::string View::askName() {
 }
 
 void View::displayCurrentPlayer(Player const& player, unsigned int idxPlayer) const {
-    std::cout<< "Player " << idxPlayer+1 << " : "<<player.getName() << " it's your turn , you have : ";
+    std::cout<< "Player " << idxPlayer+1 << " "<<player.getName() << " you have : ";
     std::cout<< player.getNbMarbles() << " Marbles " << player.getColor() << std::endl;
 }
 

@@ -47,6 +47,8 @@ public:
 
     virtual inline void switchCurrentPlayer() = 0;
 
+    virtual inline bool checkCurrentPlayerColor(std::pair<unsigned int,unsigned int> pos) = 0;
+
     /*!
      * Moves a single marble or column of marbles of the same color in a given direction.
      *

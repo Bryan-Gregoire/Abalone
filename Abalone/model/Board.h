@@ -90,7 +90,7 @@ public :
      * You can push the marbles of a different color when you find in a position
      * of superiority digital.
      */
-    void move(Direction & direction);
+    void move(std::pair<unsigned int, unsigned int> posToMove);
 
 private:
 
