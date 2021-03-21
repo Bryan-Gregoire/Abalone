@@ -86,8 +86,8 @@ std::pair<unsigned int,unsigned int> View::askPosition()  {
         std::transform(pos.begin(), pos.end(), pos.begin(), ::toupper);
     }
     std::cout << "the choosen position is " << pos << std::endl;
-    return std::pair(convertRow(pos[0]),pos[1] - 49); // -48 for ASCII and add -1 because array begin at 0.
-
+    unsigned int row = convertRow(pos[0]);
+    return std::pair(row,convertColumn(row, pos[1]));
 }
 
 const std::string View::askName() {
@@ -106,25 +106,46 @@ void View::displayCurrentPlayer(Player const& player, unsigned int idxPlayer) co
 unsigned int View::convertRow(char row) const {
     switch(row) {
     case 'A':
-        return 0;
+        return 8;
     case 'B':
-        return 1;
+        return 7;
     case 'C':
-        return 2;
+        return 6;
     case 'D':
-        return 3;
+        return 5;
     case 'E':
         return 4;
     case 'F':
-        return 5;
+        return 3;
     case 'G':
-        return 6;
+        return 2;
     case 'H':
-        return 7;
+        return 1;
     case 'I':
-        return 8;
+        return 0;
     }
     return -1;
+}
+
+unsigned int View::convertColumn(unsigned int row, unsigned int col) const {
+    col = col - 48; // -48 for ASCII.
+    switch(row) {
+    case 0:
+    case 1:
+        return col - 3;
+    case 2:
+    case 3:
+        return col - 2;
+    case 4:
+    case 5:
+        return col - 1;
+    case 6:
+    case 7:
+        return col;
+    case 8:
+        return col +1;
+    }
+    return col;
 }
 
 }
