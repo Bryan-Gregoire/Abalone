@@ -179,7 +179,8 @@ bool View::checkMovePos(Board const& hexagones, Player const& currentPlayer,  st
     std::cout<<"Current Pos "<<currentPos.first<<" "<<currentPos.second<<" Move pos : "<<movePos.first<<" "<<movePos.second<<std::endl;
     std::cout<<"x : "<<x<<" y : "<<y<<std::endl;
     if((x == 0 && y == 0) || (x != 1 && x != -1 && y == 0)
-            || (x > 3 || x < -3 || y > 3 || y < -3) || (x != 0 && abs(y) > abs(x) )||(abs(x) == 3 && abs(y) != 1)||(abs(x)==abs(y))) {
+            || (x > 3 || x < -3 || y > 3 || y < -3) || (x != 0 && abs(y) > abs(x) )
+            ||(abs(x) == 3 && abs(y) != 1)||(abs(x)==abs(y))) {
         return false;
     }
 
