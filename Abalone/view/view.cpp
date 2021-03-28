@@ -172,18 +172,35 @@ bool View::checkGoodCol(unsigned int row, unsigned int col) {
 }
 
 bool View::checkMovePos(Board const& hexagones, Player const& currentPlayer,  std::pair<unsigned int, unsigned int> const&  currentPos,
-                  std::pair<unsigned int, unsigned int> const&  movePos) const {
+                        std::pair<unsigned int, unsigned int> const&  movePos) const {
     int x = currentPos.first - movePos.first;
     int y = currentPos.second - movePos.second;
+
     std::cout<<"Current Pos "<<currentPos.first<<" "<<currentPos.second<<" Move pos : "<<movePos.first<<" "<<movePos.second<<std::endl;
     std::cout<<"x : "<<x<<" y : "<<y<<std::endl;
-    if((x == 0 && y == 0) || (x != 1 && x != -1 && y == 0) || (x > 3 || x < -3 || y > 3 || y < -3)) {
+    if((x == 0 && y == 0) || (x != 1 && x != -1 && y == 0)
+            || (x > 3 || x < -3 || y > 3 || y < -3) || (x != 0 && abs(y) > abs(x) )||(abs(x) == 3 && abs(y) != 1)||(abs(x)==abs(y))) {
         return false;
+    }
+
+    if(x == 0){
+        if(y > 1){
+            return hexagones.containMarble(currentPos.first,currentPos.second -1);
+        }
+        else if(y < -1){
+            return hexagones.containMarble(currentPos.first,currentPos.second +1) ;
+        }
+    }
+
+    int nextX = x > 1 ? -1 : +1;
+    int nextY = y > 0 ?  -1 : +1;
+
+    if(x > 1 || x < -1){
+        return hexagones.containMarble(currentPos.first + nextX,currentPos.second + nextY);
     }
 
     return true;
 }
-
 
 }
 

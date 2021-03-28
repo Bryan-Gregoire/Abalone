@@ -1,7 +1,6 @@
 #ifndef BOARD_H
 #define BOARD_H
 #include "Hexagone.h"
-#include "Direction.h"
 #include <array>
 
 /*!
@@ -98,13 +97,13 @@ private:
      * The marbles progress together one space at a time.
      *
      */
-    void moveHorizontally(Direction & direction);
+    void moveHorizontally(std::pair<unsigned int, unsigned int> posToMove);
 
     /*!
      * the beads are progressing laterally, without modifying alignment.
      *
      */
-    void moveOblique(Direction & direction);
+    void moveOblique(std::pair<unsigned int, unsigned int> posToMove);
 
 };
 

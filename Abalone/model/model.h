@@ -54,7 +54,7 @@ public:
      *
      * \param direction the given direction in which to move.
      */
-    virtual void move(Direction const& direction) = 0;
+    virtual void move(std::pair<unsigned int, unsigned int> posToMove) = 0;
 
     /*!
      * notify the observer.

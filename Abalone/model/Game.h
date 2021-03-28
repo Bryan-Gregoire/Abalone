@@ -32,12 +32,6 @@ private :
      */
     GameStatus gameStatus_;
 
-//    /*!
-//     * The player whose turn it is to play.
-//     *
-//     */
-//    Player & currentPlayer_;
-
     unsigned int idx_CurrentPlayer;
 
     /*!
@@ -129,7 +123,7 @@ public :
      *
      * \param direction the given direction in which to move
      */
-    void move(Direction const& direction) ;
+    void move(std::pair<unsigned int, unsigned int> posToMove) ;
 
     /*!
      * notify the observer.

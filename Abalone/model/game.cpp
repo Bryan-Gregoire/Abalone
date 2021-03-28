@@ -12,7 +12,7 @@ Game::Game():
     players_{{Player(Color::BLACK), Player(Color::WHITE)}}
 {}
 
-void Game::move(Direction const& direction) {
+void Game::move(std::pair<unsigned int, unsigned int> posToMove) {
 
 }
 

@@ -18,7 +18,6 @@ HEADERS += \
     controller/controller.h \
     model/board.h \
     model/color.h \
-    model/direction.h \
     model/game.h \
     model/gameStatus.h \
     model/hexagone.h \
