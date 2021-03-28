@@ -171,6 +171,20 @@ bool View::checkGoodCol(unsigned int row, unsigned int col) {
     return true;
 }
 
+bool View::checkMovePos(Board const& hexagones, Player const& currentPlayer,  std::pair<unsigned int, unsigned int> const&  currentPos,
+                  std::pair<unsigned int, unsigned int> const&  movePos) const {
+    int x = currentPos.first - movePos.first;
+    int y = currentPos.second - movePos.second;
+    std::cout<<"Current Pos "<<currentPos.first<<" "<<currentPos.second<<" Move pos : "<<movePos.first<<" "<<movePos.second<<std::endl;
+    std::cout<<"x : "<<x<<" y : "<<y<<std::endl;
+    if((x == 0 && y == 0) || (x != 1 && x != -1 && y == 0) || (x > 3 || x < -3 || y > 3 || y < -3)) {
+        return false;
+    }
+
+    return true;
+}
+
+
 }
 
 

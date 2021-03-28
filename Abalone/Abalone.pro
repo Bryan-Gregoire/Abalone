@@ -25,7 +25,6 @@ HEADERS += \
     model/marble.h \
     model/player.h \
     model/playerStatus.h \
-    model/position.h \
     model/model.h \
     model/utils/observable.h \
     model/utils/observer.h \

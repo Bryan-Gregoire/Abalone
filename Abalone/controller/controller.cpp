@@ -15,12 +15,17 @@ void Controller::start() {
     while(model_.getGameStatus() == IN_PROGRESS) {
         view_.displayCurrentPlayer(model_.getCurrentPlayer(), model_.getIndexCurrentPlayer());
         view_.displayBoard(model_.getBoard());
-        std::pair pos =  view_.askPosition("Enter the Position of one of your marble you want to move : ");
-        while(!model_.checkCurrentPlayerColor(pos)) {
+        std::pair currPos =  view_.askPosition("Enter the Position of one of your marble you want to move : ");
+        while(!model_.checkCurrentPlayerColor(currPos)) {
             view_.displayMessage("The position does not match with your marble ");
-            pos = view_.askPosition("Enter the position of one of your marble : ");
+            currPos = view_.askPosition("Enter the position of one of your marble : ");
         }
-        std::pair nextPos = view_.askPosition("Enter the position where you want to move it : ");
+        std::pair movePos = view_.askPosition("Enter the position where you want to move it : ");
+        while(!view_.checkMovePos(model_.getBoard(), model_.getCurrentPlayer(),currPos, movePos)) {
+            view_.displayMessage("Position to move invalid, try again : ");
+            movePos = view_.askPosition("Enter the position where you want to move it : ");
+        }
+
         model_.switchCurrentPlayer();
         std::cout<<std::endl;
     }

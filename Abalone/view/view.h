@@ -5,7 +5,6 @@
 #include <string>
 #include "model/Player.h"
 #include "model/Board.h"
-#include "model/Position.h"
 
 
 namespace abalone {
@@ -29,6 +28,8 @@ public:
     unsigned int getIdxRow(unsigned int first) const;
 
     const std::string askName();
+
+    bool checkMovePos(Board const& hexagones, Player const& currentPlayer, std::pair<unsigned int, unsigned int> const& CurrentPos, std::pair<unsigned int, unsigned int> const& movePos) const;
 
 private:
     unsigned int convertRow(char row) const;
