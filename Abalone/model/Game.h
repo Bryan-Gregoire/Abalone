@@ -5,7 +5,7 @@
 #include "Player.h"
 #include "model.h"
 #include <array>
-#include <list>
+
 /*!
  * Namespace of the Abalone project.
  */
@@ -91,11 +91,6 @@ public :
         return this->players_;
     }
 
-    inline bool checkCurrentPlayerColor(std::pair<unsigned int,unsigned int> pos) {
-        return  board_.containMarble(pos.first,pos.second) && board_.getHexagones()[pos.first][pos.second]->getMarble()->getColor()
-                == players_[idx_CurrentPlayer].getColor();
-    }
-
     inline void setCurrentPlayerName(std::string name){
         players_[idx_CurrentPlayer].setName(name);
         switchCurrentPlayer();
@@ -109,6 +104,9 @@ public :
     inline void switchCurrentPlayer() {
         idx_CurrentPlayer == 0 ? idx_CurrentPlayer++ : idx_CurrentPlayer--;
     }
+
+    inline bool checkContentPositions(std::vector<int> const& pos) const;
+
     /*!
      * Updates the status of the game.
      *
@@ -123,7 +121,7 @@ public :
      *
      * \param direction the given direction in which to move
      */
-    void move(std::pair<unsigned int, unsigned int> posToMove) ;
+    void move(std::vector<int> & positions) ;
 
     /*!
      * notify the observer.
@@ -149,6 +147,9 @@ public :
      *
      */
     inline void deleteObserver(utils::Observer *);
+
+private:
+    inline bool sameColorCurrPlayer(int row, int col) const;
 
 };
 }

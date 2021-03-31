@@ -5,6 +5,7 @@
 #include <string>
 #include "model/Player.h"
 #include "model/Board.h"
+#include <vector>
 
 
 namespace abalone {
@@ -23,18 +24,16 @@ public:
 
     void displayCurrentPlayer(Player const& player, unsigned int idxPlayer) const;
 
-    std::pair<unsigned int,unsigned int> askPosition(std::string message);
-
-    unsigned int getIdxRow(unsigned int first) const;
+    std::vector<int> askPosition(std::string message);
 
     const std::string askName();
 
-    bool checkMovePos(Board const& hexagones, Player const& currentPlayer, std::pair<unsigned int, unsigned int> const& CurrentPos, std::pair<unsigned int, unsigned int> const& movePos) const;
-
 private:
-    unsigned int convertRow(char row) const;
+    bool goodRow(char row) const;
 
-    unsigned int convertColumn(unsigned int row, unsigned int col) const;
+    int convertRow(char row) const;
+
+    int convertColumn(unsigned int row, unsigned int col) const;
 
     bool checkGoodCol(unsigned row, unsigned int col);
 };

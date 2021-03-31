@@ -4,6 +4,7 @@
 #include "GameStatus.h"
 #include "Player.h"
 #include "utils/observable.h"
+#include <vector>
 
 /*!
  * Namespace of the Abalone project.
@@ -47,14 +48,14 @@ public:
 
     virtual inline void switchCurrentPlayer() = 0;
 
-    virtual inline bool checkCurrentPlayerColor(std::pair<unsigned int,unsigned int> pos) = 0;
+    virtual inline bool checkContentPositions(std::vector<int> const& pos) const = 0;
 
     /*!
      * Moves a single marble or column of marbles of the same color in a given direction.
      *
      * \param direction the given direction in which to move.
      */
-    virtual void move(std::pair<unsigned int, unsigned int> posToMove) = 0;
+    virtual void move(std::vector<int> & positions) = 0;
 
     /*!
      * notify the observer.

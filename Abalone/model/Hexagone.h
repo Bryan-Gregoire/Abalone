@@ -45,7 +45,7 @@ public :
      * \brief Read accessor of the marble.
      *
      */
-    inline std::optional<Marble> const& getMarble() const;
+    inline std::optional<Marble> getMarble() const;
 
 
     /*!
@@ -73,7 +73,7 @@ Hexagone::Hexagone() :
     marble_ { std::nullopt }
 {}
 
-inline std::optional<Marble> const& Hexagone::getMarble() const {
+inline std::optional<Marble> Hexagone::getMarble() const {
     return marble_;
 }
 

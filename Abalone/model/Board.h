@@ -2,6 +2,7 @@
 #define BOARD_H
 #include "Hexagone.h"
 #include <array>
+#include <vector>
 
 /*!
  * Namespace of the Abalone project.
@@ -47,7 +48,7 @@ public :
      *
      * \return the board of hexagones.
      */
-    inline std::array<std::array<std::optional<Hexagone>,SIZE>,SIZE>  getHexagones() {
+    inline std::array<std::array<std::optional<Hexagone>,SIZE>,SIZE>  getHexagones() const {
         return hexagones_;
     }
 
@@ -62,7 +63,6 @@ public :
     inline Color getColorMarble(unsigned int i, unsigned int j) const {
         return hexagones_[i][j]->getMarble()->getColor();
     }
-
 
 
     /*!
@@ -89,7 +89,7 @@ public :
      * You can push the marbles of a different color when you find in a position
      * of superiority digital.
      */
-    void move(std::pair<unsigned int, unsigned int> posToMove);
+    void move(std::vector<int> & positions);
 
 private:
 

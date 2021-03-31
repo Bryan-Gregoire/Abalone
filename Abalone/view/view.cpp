@@ -74,19 +74,51 @@ void View::displayBoard(Board const& hexagones) {
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),7); //7 for Light grey (default color of terminal text)
 }
 
-std::pair<unsigned int,unsigned int> View::askPosition(std::string message)  {
+std::vector<int> View::askPosition(std::string message)  {
     std::cout <<message;
     std::string pos {};
     std::cin >> pos;
     std::transform(pos.begin(), pos.end(), pos.begin(), ::toupper);
-    while(pos.length() != 2 || pos[0] < 'A' || pos[0] > 'I' || pos[1] < 49 || pos[1] > 57 || !checkGoodCol(pos[0], pos[1])) {
-        std::cout << "Enter a good Position : ";
-        std::cin.clear();
-        std::cin>>pos;
-        std::transform(pos.begin(), pos.end(), pos.begin(), ::toupper);
+    bool goodPos = false;
+    while(!goodPos) {
+        std::cout<<pos<<std::endl;
+        if(pos.length() == 4) {
+            if(goodRow(pos[0]) && checkGoodCol(pos[0],pos[1]) && goodRow(pos[2])
+                    && checkGoodCol(pos[2], pos[3]) && pos[0] != pos[2] && pos[1] != pos[3]) {
+                goodPos = true;
+            }
+        } else if(pos.length() == 6) {
+            if(goodRow(pos[0]) && checkGoodCol(pos[0],pos[1]) && goodRow(pos[2] && checkGoodCol(pos[2], pos[3]))
+                    && goodRow(pos[4] && checkGoodCol(pos[4], pos[5])))
+            goodPos = true;
+        }
+        if(!goodPos) {
+            std::cout << "Wrong Position(s), try again : ";
+            std::cin.clear();
+            std::cin>>pos;
+            std::transform(pos.begin(), pos.end(), pos.begin(), ::toupper);
+        }
     }
-    unsigned int row = convertRow(pos[0]);
-    return std::pair(row,convertColumn(row, pos[1]));
+    if(pos.length() == 4) {
+        int initialRow = convertRow(pos[0]);
+        int initialCol = convertColumn(initialRow,pos[1]);
+        int moveRow = convertRow(pos[2]);
+        int moveCol = convertColumn(moveRow,pos[3]);
+        std::vector<int> positions {initialRow,initialCol,moveRow,moveCol};
+        return positions;
+    }
+    int firstMarbleRow = convertRow(pos[0]);
+    int firstMarbleCol = convertColumn(firstMarbleRow,pos[1]);
+    int twiceMarbleRow = convertRow(pos[2]);
+    int twiceMarbleCol = convertColumn(twiceMarbleRow,pos[3]);
+    int moveRow = convertRow(pos[4]);
+    int moveCol = convertColumn(moveRow,pos[5]);
+    std::vector<int> positions {firstMarbleRow,firstMarbleCol,twiceMarbleRow,twiceMarbleCol,moveRow,moveCol};
+    return positions;
+}
+
+bool View::goodRow(char row) const {
+    return row >= 'A' && row <= 'I';
 }
 
 const std::string View::askName() {
@@ -102,7 +134,7 @@ void View::displayCurrentPlayer(Player const& player, unsigned int idxPlayer) co
     std::cout<< player.getNbMarbles() << " Marbles " << player.getColor() << std::endl;
 }
 
-unsigned int View::convertRow(char row) const {
+int View::convertRow(char row) const {
     switch(row) {
     case 'A':
         return 8;
@@ -126,7 +158,7 @@ unsigned int View::convertRow(char row) const {
     return -1;
 }
 
-unsigned int View::convertColumn(unsigned int row, unsigned int col) const {
+int View::convertColumn(unsigned int row, unsigned int col) const {
     col = col - 48; // -48 for ASCII.
     switch(row) {
     case 0:
@@ -171,38 +203,4 @@ bool View::checkGoodCol(unsigned int row, unsigned int col) {
     return true;
 }
 
-bool View::checkMovePos(Board const& hexagones, Player const& currentPlayer,  std::pair<unsigned int, unsigned int> const&  currentPos,
-                        std::pair<unsigned int, unsigned int> const&  movePos) const {
-    int x = currentPos.first - movePos.first;
-    int y = currentPos.second - movePos.second;
-
-    std::cout<<"Current Pos "<<currentPos.first<<" "<<currentPos.second<<" Move pos : "<<movePos.first<<" "<<movePos.second<<std::endl;
-    std::cout<<"x : "<<x<<" y : "<<y<<std::endl;
-    if((x == 0 && y == 0) || (x != 1 && x != -1 && y == 0)
-            || (x > 3 || x < -3 || y > 3 || y < -3) || (x != 0 && abs(y) > abs(x) )
-            ||(abs(x) == 3 && abs(y) != 1)||(abs(x)==abs(y))) {
-        return false;
-    }
-
-    if(x == 0){
-        if(y > 1){
-            return hexagones.containMarble(currentPos.first,currentPos.second -1);
-        }
-        else if(y < -1){
-            return hexagones.containMarble(currentPos.first,currentPos.second +1) ;
-        }
-    }
-
-    int nextX = x > 1 ? -1 : +1;
-    int nextY = y > 0 ?  -1 : +1;
-
-    if(x > 1 || x < -1){
-        return hexagones.containMarble(currentPos.first + nextX,currentPos.second + nextY);
-    }
-
-    return true;
 }
-
-}
-
-

@@ -20,6 +20,9 @@ public:
     Controller() = default;
 
     void start();
+
+private :
+    bool checkIfContainSamePos(std::vector<int> const& position) const;
 };
 
 }
