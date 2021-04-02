@@ -3,16 +3,7 @@
 namespace abalone {
 
 void Controller::start() {
-    model_.setGameStatus(IN_PROGRESS);
-    view_.displayMessage("                      Abalone");
-    view_.displayMessage("===================================================");
-    view_.displayMessage("Player 1");
-    model_.setCurrentPlayerName(view_.askName());
-    std::cout<<std::endl;
-    view_.displayMessage("Player 2");
-    model_.setCurrentPlayerName(view_.askName());
-    std::cout<<std::endl;
-
+    printGame();
     while(model_.getGameStatus() == IN_PROGRESS) {
         view_.displayCurrentPlayer(model_.getCurrentPlayer(), model_.getIndexCurrentPlayer());
         view_.displayBoard(model_.getBoard());
@@ -22,7 +13,6 @@ void Controller::start() {
             posMove = view_.askPosition("Enter the position of your marble(s) : ");
         }
         model_.move(posMove);
-
         model_.switchCurrentPlayer();
         std::cout<<std::endl;
     }
@@ -37,5 +27,16 @@ bool Controller::checkIfContainSamePos(std::vector<int> const& position) const {
              || (position.at(2) == position.at(4) && position.at(3) == position.at(5));
 }
 
+void Controller::printGame(){
+    model_.setGameStatus(IN_PROGRESS);
+    view_.displayMessage("                      Abalone");
+    view_.displayMessage("===================================================");
+    view_.displayMessage("Player 1");
+    model_.setCurrentPlayerName(view_.askName());
+    std::cout<<std::endl;
+    view_.displayMessage("Player 2");
+    model_.setCurrentPlayerName(view_.askName());
+    std::cout<<std::endl;
+}
 
 }

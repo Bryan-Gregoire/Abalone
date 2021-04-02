@@ -20,7 +20,6 @@ void Board::move(std::vector<int> & positions) {
     if(positions.size() == 4) {
         hexagones_[positions.at(2)][positions.at(3)].emplace(hexagones_[positions.at(0)][positions.at(1)].value());
         hexagones_[positions.at(0)][positions.at(1)].emplace(Hexagone());
-
     }
 }
 

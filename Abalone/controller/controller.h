@@ -23,6 +23,7 @@ public:
 
 private :
     bool checkIfContainSamePos(std::vector<int> const& position) const;
+    void printGame() ;
 };
 
 }
