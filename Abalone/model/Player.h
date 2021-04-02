@@ -104,6 +104,9 @@ public :
     inline bool isLost() const {
         return this->nbMarble_ <= 8;
     }
+    inline void fallMarble(){
+        this->nbMarble_--;
+    }
 };
 
 }

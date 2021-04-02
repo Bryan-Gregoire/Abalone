@@ -84,7 +84,7 @@ std::vector<int> View::askPosition(std::string message)  {
         std::cout<<pos<<std::endl;
         if(pos.length() == 4) {
             if(goodRow(pos[0]) && checkGoodCol(pos[0],pos[1]) && goodRow(pos[2])
-                    && checkGoodCol(pos[2], pos[3]) && pos[0] != pos[2] && pos[1] != pos[3]) {
+                    && checkGoodCol(pos[2], pos[3])) {
                 goodPos = true;
             }
         } else if(pos.length() == 6) {

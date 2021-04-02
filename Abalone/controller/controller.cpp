@@ -14,7 +14,7 @@ void Controller::start() {
         }
         model_.move(posMove);
         model_.switchCurrentPlayer();
-        std::cout<<std::endl;
+        model_.updateLevelStatus();
     }
 }
 

@@ -89,7 +89,7 @@ public :
      * You can push the marbles of a different color when you find in a position
      * of superiority digital.
      */
-    void move(std::vector<int> & positions);
+    bool move(std::vector<int> & positions);
 
 private:
 
@@ -97,13 +97,13 @@ private:
      * The marbles progress together one space at a time.
      *
      */
-    void moveHorizontally(std::pair<unsigned int, unsigned int> posToMove);
+    bool moveHorizontally(std::pair<unsigned int, unsigned int> posToMove);
 
     /*!
      * the beads are progressing laterally, without modifying alignment.
      *
      */
-    void moveOblique(std::pair<unsigned int, unsigned int> posToMove);
+    bool moveOblique(std::pair<unsigned int, unsigned int> posToMove);
 
 };
 

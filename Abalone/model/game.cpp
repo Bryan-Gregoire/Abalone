@@ -1,5 +1,4 @@
 #include "Game.h"
-
 namespace abalone
 {
 
@@ -17,7 +16,7 @@ inline bool Game::checkContentPositions(std::vector<int> const& pos) const  {
         return  sameColorCurrPlayer(pos.at(0), pos.at(1));
     }
     return sameColorCurrPlayer(pos.at(0),pos.at(1)) && sameColorCurrPlayer(pos.at(2),pos.at(3)
-              && !board_.containMarble(pos.at(4), pos.at(5)));
+                                                                           && !board_.containMarble(pos.at(4), pos.at(5)));
 }
 
 inline bool Game::sameColorCurrPlayer(int row, int col) const {
@@ -28,8 +27,25 @@ inline bool Game::sameColorCurrPlayer(int row, int col) const {
 }
 
 void Game::move(std::vector<int> & positions) {
-    board_.move(positions);
+    bool move = board_.move(positions);
+    if(move){
+        switchCurrentPlayer();
+        players_[idx_CurrentPlayer].fallMarble();
+        switchCurrentPlayer();
+    }
+
 }
+
+void Game::updateLevelStatus(){
+    for (unsigned int i = 0; i < players_.size();i++) {
+        if(players_.at(i).isLost()){
+            players_.at(i).setPlayerStatus(FAIL);
+            setGameStatus(END);
+            break;
+        }
+    }
+}
+
 
 void Game::notify() const {
 
