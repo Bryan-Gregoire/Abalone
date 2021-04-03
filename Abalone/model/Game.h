@@ -107,6 +107,8 @@ public :
 
     inline bool checkContentPositions(std::vector<int> const& pos) const;
 
+    inline bool checkGoodMovePos(std::vector<int> const& position) const;
+
     /*!
      * Updates the status of the game.
      *
@@ -149,7 +151,8 @@ public :
     inline void deleteObserver(utils::Observer *);
 
 private:
-    inline bool sameColorCurrPlayer(int row, int col) const;
+    inline bool isColorCurrPlayer(int row, int col) const;
+    inline void updatePlayerStatus();
 
 };
 }

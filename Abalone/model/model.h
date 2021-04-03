@@ -50,6 +50,8 @@ public:
 
     virtual inline bool checkContentPositions(std::vector<int> const& pos) const = 0;
 
+    virtual inline bool checkGoodMovePos(std::vector<int> const& position) const = 0;
+
     /*!
      * Moves a single marble or column of marbles of the same color in a given direction.
      *

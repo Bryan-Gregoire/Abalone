@@ -22,8 +22,8 @@ public:
     void start();
 
 private :
-    bool checkIfContainSamePos(std::vector<int> const& position) const;
-    void printGame() ;
+    void printGame();
+    bool checkIfIsSamePos(std::vector<int> const& position) const;
 };
 
 }

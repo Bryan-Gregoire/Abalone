@@ -7,24 +7,15 @@ void Controller::start() {
     while(model_.getGameStatus() == IN_PROGRESS) {
         view_.displayCurrentPlayer(model_.getCurrentPlayer(), model_.getIndexCurrentPlayer());
         view_.displayBoard(model_.getBoard());
-        std::vector posMove =  view_.askPosition("Enter the Position of one of your marble you want to move : ");
-        while(!model_.checkContentPositions(posMove) || checkIfContainSamePos(posMove)) {
-            view_.displayMessage("The selected marble(s) does not match with your color ");
-            posMove = view_.askPosition("Enter the position of your marble(s) : ");
+        std::vector posMove =  view_.askPosition("Enter the Position of your(s) marble(s) and where you want to move it : ");
+        while(!model_.checkContentPositions(posMove) || checkIfIsSamePos(posMove)) {
+            view_.displayMessage("Wrong Position(s), try again : ");
+            posMove = view_.askPosition("Enter the Position of your(s) marble(s) and where you want to move it : ");
         }
         model_.move(posMove);
         model_.switchCurrentPlayer();
         model_.updateLevelStatus();
     }
-}
-
-bool Controller::checkIfContainSamePos(std::vector<int> const& position) const {
-    if(position.size() == 4) {
-        return position.at(0) == position.at(2) && position.at(1) == position.at(3);
-    }
-    return (position.at(0) == position.at(2) && position.at(1) == position.at(3))
-            || (position.at(0) == position.at(4) && position.at(1) == position.at(5))
-             || (position.at(2) == position.at(4) && position.at(3) == position.at(5));
 }
 
 void Controller::printGame(){
@@ -38,5 +29,15 @@ void Controller::printGame(){
     model_.setCurrentPlayerName(view_.askName());
     std::cout<<std::endl;
 }
+
+bool Controller::checkIfIsSamePos(std::vector<int> const& position) const {
+    if(position.size() == 4) {
+        return position.at(0) == position.at(2) && position.at(1) == position.at(3);
+    }
+    return (position.at(0) == position.at(2) && position.at(1) == position.at(3))
+            || (position.at(0) == position.at(4) && position.at(1) == position.at(5))
+             || (position.at(2) == position.at(4) && position.at(3) == position.at(5));
+}
+
 
 }
