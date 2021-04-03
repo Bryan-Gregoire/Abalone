@@ -41,12 +41,17 @@ public:
      */
     virtual inline Player const& getCurrentPlayer() = 0;
 
+    virtual inline std::array<Player,2> getPlayers() = 0;
 
     virtual void setCurrentPlayerName(const std::string name) = 0;
 
     virtual inline void setGameStatus(GameStatus const& gameStatus_) = 0;
 
     virtual inline void switchCurrentPlayer() = 0;
+
+    virtual inline PlayerStatus getIdxPlayerStatus(unsigned int index) const = 0;
+
+    virtual inline std::string getIdxPlayerName(unsigned int index) const = 0;
 
     virtual inline bool checkContentPositions(std::vector<int> const& pos) const = 0;
 

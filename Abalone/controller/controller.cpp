@@ -16,9 +16,10 @@ void Controller::start() {
         model_.switchCurrentPlayer();
         model_.updateLevelStatus();
     }
+    printWinnerLoser();
 }
 
-void Controller::printGame(){
+void Controller::printGame() {
     model_.setGameStatus(IN_PROGRESS);
     view_.displayMessage("                      Abalone");
     view_.displayMessage("===================================================");
@@ -36,7 +37,17 @@ bool Controller::checkIfIsSamePos(std::vector<int> const& position) const {
     }
     return (position.at(0) == position.at(2) && position.at(1) == position.at(3))
             || (position.at(0) == position.at(4) && position.at(1) == position.at(5))
-             || (position.at(2) == position.at(4) && position.at(3) == position.at(5));
+            || (position.at(2) == position.at(4) && position.at(3) == position.at(5));
+}
+
+void Controller::printWinnerLoser() {
+    for (unsigned int i = 0; i < model_.getPlayers().size() ;i++ ) {
+        if(model_.getIdxPlayerStatus(i) == FAIL) {
+            view_.displayMessage("Player : " + model_.getIdxPlayerName(i) + " you lost :(");
+        } else {
+            view_.displayMessage("Player : " + model_.getIdxPlayerName(i) + " you won :) ");
+        }
+    }
 }
 
 

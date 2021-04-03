@@ -24,6 +24,7 @@ public:
 private :
     void printGame();
     bool checkIfIsSamePos(std::vector<int> const& position) const;
+    void printWinnerLoser();
 };
 
 }

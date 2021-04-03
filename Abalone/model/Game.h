@@ -87,7 +87,7 @@ public :
      *
      * \return Array of players.
      */
-    inline std::array<Player,2>  getPlayers(){
+    inline std::array<Player,2>  getPlayers() {
         return this->players_;
     }
 
@@ -103,6 +103,20 @@ public :
 
     inline void switchCurrentPlayer() {
         idx_CurrentPlayer == 0 ? idx_CurrentPlayer++ : idx_CurrentPlayer--;
+    }
+
+    inline PlayerStatus getIdxPlayerStatus(unsigned int index) const {
+        if(index >= players_.size()) {
+            throw std::invalid_argument("index of this player does not exist");
+        }
+        return players_.at(index).getPlayerStatus();
+    }
+
+    inline std::string getIdxPlayerName(unsigned int index) const {
+        if(index >= players_.size()) {
+            throw std::invalid_argument("index of this player does not exist");
+        }
+        return players_.at(index).getName();
     }
 
     inline bool checkContentPositions(std::vector<int> const& pos) const;
