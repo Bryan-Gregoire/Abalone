@@ -8,7 +8,7 @@ void Controller::start() {
         view_.displayCurrentPlayer(model_.getCurrentPlayer(), model_.getIndexCurrentPlayer());
         view_.displayBoard(model_.getBoard());
         std::vector posMove =  view_.askPosition("Enter the Position of your(s) marble(s) and where you want to move it : ");
-        while(!model_.checkContentPositions(posMove) || checkIfIsSamePos(posMove)) {
+        while(!model_.checkContentPositions(posMove) || checkIfIsSamePos(posMove) || !model_.checkGoodMovePos(posMove)) {
             view_.displayMessage("Wrong Position(s), try again : ");
             posMove = view_.askPosition("Enter the Position of your(s) marble(s) and where you want to move it : ");
         }

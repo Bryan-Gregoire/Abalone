@@ -97,13 +97,13 @@ private:
      * The marbles progress together one space at a time.
      *
      */
-    bool moveHorizontally(std::pair<unsigned int, unsigned int> posToMove);
+    bool moveLine(std::vector<int> & positions);
 
     /*!
      * the beads are progressing laterally, without modifying alignment.
      *
      */
-    bool moveOblique(std::pair<unsigned int, unsigned int> posToMove);
+    bool moveLateral(std::vector<int> & positions);
 
 };
 

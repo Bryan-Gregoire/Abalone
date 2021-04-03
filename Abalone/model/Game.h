@@ -119,9 +119,11 @@ public :
         return players_.at(index).getName();
     }
 
-    inline bool checkContentPositions(std::vector<int> const& pos) const;
+    bool checkContentPositions(std::vector<int> const& pos) const;
 
-    inline bool checkGoodMovePos(std::vector<int> const& position) const;
+    bool checkGoodMovePos(std::vector<int> const& position) const;
+
+    bool checkYMovePos(int row, int col, int x, int y) const;
 
     /*!
      * Updates the status of the game.
