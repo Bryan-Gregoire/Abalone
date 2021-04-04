@@ -35,11 +35,49 @@ inline bool Game::isColorCurrPlayer(int row, int col) const {
     return false;
 }
 
-inline bool Game::checkGoodMovePos(std::vector<int> const& position) const {
-    if(position.size() != 4 || position.size() != 6 ) {
-        std::invalid_argument("Number of components of the vector are not correct.");
-    }
+//inline bool Game::checkGoodMovePos(std::vector<int> const& position) const {
+//    if(position.size() != 4 || position.size() != 6 ) {
+//        std::invalid_argument("Number of components of the vector are not correct.");
+//    }
 
+//    if(position.size() == 4) {
+//        int x = position.at(0) - position.at(2);
+//        int y = position.at(1) - position.at(3);
+//        if(x == 0) {
+//            return y == 1 || y == -1;
+//        }
+//        if(x == 1 || x == -1) {
+//            return y == 1 || y == -1;
+//        }
+//    } else {
+//        int marbleX = position.at(0) - position.at(2);
+//        int marbleY = position.at(1) - position.at(3);
+
+//        int moveX =  position.at(4) - position.at(0);
+//        int moveY = position.at(5) - position.at(1);
+
+//        if(marbleX == 0) {
+//            if(std::abs(marbleY) == 1 && moveX == 1 && moveY == 0) {
+//                return !board_.containMarble(position.at(0) + moveX, position.at(1))
+//                        && !board_.containMarble(position.at(2) + moveX, position.at(3));
+//            } else if(std::abs(marbleY) == 2) {
+//                int midY = marbleY == 2 ? -1 : 1;
+//                return isColorCurrPlayer(position.at(0), position.at(1) + midY)
+//                        && !board_.containMarble(position.at(0) + moveX, position.at(1))
+//                        && !board_.containMarble(position.at(2) + moveX, position.at(3))
+//                        && !board_.containMarble(position.at(0) + moveX, position.at(1) + midY);
+//            }
+//        } else if(marbleX == 1 || marbleX == -1) {
+
+//            return marbleY == 1 || marbleY == -1 ? true : false;
+
+//        } else if(marbleX == 2 || marbleX - 2) {
+
+//        }
+//    }
+//    return false;
+//}
+inline bool Game::checkGoodMovePos(std::vector<int> const& position) const { // A FINIR
     if(position.size() == 4) {
         int x = position.at(0) - position.at(2);
         int y = position.at(1) - position.at(3);
@@ -56,25 +94,10 @@ inline bool Game::checkGoodMovePos(std::vector<int> const& position) const {
         int moveX =  position.at(4) - position.at(0);
         int moveY = position.at(5) - position.at(1);
 
-        if(marbleX == 0) {
-            if(std::abs(marbleY) == 1 && moveX == 1 && moveY == 0) {
-                return !board_.containMarble(position.at(0) + moveX, position.at(1))
-                        && !board_.containMarble(position.at(2) + moveX, position.at(3));
-            } else if(std::abs(marbleY) == 2) {
-                int midY = marbleY == 2 ? -1 : 1;
-                return isColorCurrPlayer(position.at(0), position.at(1) + midY)
-                        && !board_.containMarble(position.at(0) + moveX, position.at(1))
-                        && !board_.containMarble(position.at(2) + moveX, position.at(3))
-                        && !board_.containMarble(position.at(0) + moveX, position.at(1) + midY);
-            }
-        } else if(marbleX == 1 || marbleX == -1) {
-
-            return marbleY == 1 || marbleY == -1 ? true : false;
-
-        } else if(marbleX == 2 || marbleX - 2) {
-
-        }
+        return true; // si tout marche bien
     }
+
+    //REVERIFIER TOUT
     return false;
 }
 
