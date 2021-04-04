@@ -120,11 +120,13 @@ public :
     bool move(std::vector<int> & positions);
 
     /*!
-     * @brief convert to value to move.
+     * @brief convert a value to a move value direction.
+     *
      * @param i the value to convert.
+     *
      * @return the converted value.
      */
-    inline int convertPositionBound(int i ) const;
+    int convertPositionBound(int i ) const;
 
 private:
 
