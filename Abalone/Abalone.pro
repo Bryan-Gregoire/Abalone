@@ -27,5 +27,4 @@ HEADERS += \
     model/model.h \
     model/utils/observable.h \
     model/utils/observer.h \
-    view/ColorBoard.h \
     view/view.h
