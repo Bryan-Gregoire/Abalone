@@ -71,10 +71,10 @@ You can find this class diagram and the documentation of this diagram in /Analys
 
 ![enter image description here](https://zupimages.net/up/21/13/9v73.png)
 
-- You can see a laterally move :
+- You can see a line move :
 
 ![enter image description here](https://zupimages.net/up/21/13/e88x.png)
 
-- You can see a line move :
+- You can see a laterally move :
 
 ![enter image description here](https://zupimages.net/up/21/13/4kvi.png)
