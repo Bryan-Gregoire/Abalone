@@ -1,4 +1,5 @@
 
+
 # ABALONE
 
 This is a remake of the popular game abalone, it is a multiple-player game, the aime of the game To be the first player to push six of the opponent's marbles out of play, into the board's outer rim. 
@@ -7,13 +8,13 @@ This is a remake of the popular game abalone, it is a multiple-player game, the 
 
 -   [Instructions for gameplay](#instructions-for-gameplay)
 -   [Illustration](#Illustration)
--   [Built with](#built-with)
--   [Technologies](#technologies)
--   [Doxyfile](#doxyfile)
--   [Decision](#decision)
--   [Status](#status)
--   [Author](#author)
--   [Console version](#console_version)
+-   [Built with](#Built-with)
+-   [Technologies](#Technologies)
+-   [Doxyfile](#Doxyfile)
+-   [Decision](#Decision)
+-   [Status](#Status)
+-   [Author](#Author)
+-   [Console version](#Console-version)
 
 ## Instructions for gameplay
 
@@ -32,8 +33,7 @@ You can find this class diagram and the documentation of this diagram in /Analys
 
 - Structure of our depot : 
 
-![enter image description here](https://zupimages.net/up/21/07/g9nz.png)
-
+![Structure](https://zupimages.net/up/21/13/2ptd.png)
 ## Built with
 
 -  C++17
@@ -49,8 +49,9 @@ You can find this class diagram and the documentation of this diagram in /Analys
 
 ## Decision 
 
--  In the console version , we use the MVC design pattern for de programmation in a terminal.
-- We preferred to remove the position and direction class.
+-  In the console version we use the MVC design pattern.
+- We have decided not to keep class Position and Direction.
+- We use the ABA-PRO move notation to write the moves.
 
 ## Status
 
@@ -62,10 +63,10 @@ You can find this class diagram and the documentation of this diagram in /Analys
 
 
 ## Authors 
-- Zidi Billal 54637 gmail :  [54637@etu.he2b.be](54637@etu.he2b.be)
-- Bryan Grégoire  53735 gmail :  [53735@etu.he2b.be](53735@etu.he2b.be)
+- Zidi Billal 54637 mail :  [54637@etu.he2b.be](54637@etu.he2b.be)
+- Bryan Grégoire  53735 mail :  [53735@etu.he2b.be](53735@etu.he2b.be)
 
-## console version 
+## Console version 
 
 - You can see the game in the  terminal:
 
