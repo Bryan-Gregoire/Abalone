@@ -37,7 +37,6 @@ int convertPositionBound(int i) {
 
 bool Board::moveLine(std::vector<int> & positions) {
     std::pair<int, int> directionLine {convertPositionBound((positions.at(2) - positions.at(0))), convertPositionBound((positions.at(3) - positions.at(1)))};
-    std::cout << directionLine.first << " " << directionLine.second << std::endl;
     unsigned countSame = 0;
     unsigned countOther = 0;
     std::pair<int, int> selectedMarble {positions.at(0), positions.at(1)};
@@ -46,7 +45,6 @@ bool Board::moveLine(std::vector<int> & positions) {
         if(!containMarble(selectedMarble.first, selectedMarble.second)) {
             break;
         }
-
         if(hexagones_.at(selectedMarble.first).at(selectedMarble.second)->getMarble()->getColor()
                 == hexagones_.at(positions.at(0)).at(positions.at(1))->getMarble()->getColor()) {
             if(countOther != 0) {
@@ -101,7 +99,6 @@ bool Board::moveLateral(std::vector<int> & positions) {
     std::pair<int, int> directionLateral {convertPositionBound((positions.at(4) - positions.at(0))), (convertPositionBound(positions.at(5) - positions.at(1)))};
     std::pair<int, int> directionLine {convertPositionBound((positions.at(2) - positions.at(0))), convertPositionBound((positions.at(3) - positions.at(1)))};
     std::pair<int, int> selectedMarble {positions.at(0), positions.at(1)};
-    std::cout << directionLine.first << " " << directionLine.second << std::endl;
     while(selectedMarble.first != positions.at(2) || selectedMarble.second != positions.at(3)) {
         if(!containMarble(selectedMarble.first, selectedMarble.second)
                 || hexagones_.at(selectedMarble.first).at(selectedMarble.second)->getMarble()->getColor()
