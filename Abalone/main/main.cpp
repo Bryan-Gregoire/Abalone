@@ -6,6 +6,5 @@ int main()
 {
     Controller ctrl;
     ctrl.start();
-
     return 0;
 }
