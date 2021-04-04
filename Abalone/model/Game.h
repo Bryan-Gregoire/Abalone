@@ -180,8 +180,6 @@ public :
      */
     bool checkGoodMovePos(std::vector<int> const& position) const;
 
-    bool checkYMovePos(int row, int col, int x, int y) const;
-
     /*!
      * Updates the status of the game.
      *

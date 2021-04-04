@@ -119,11 +119,21 @@ public :
      */
     bool move(std::vector<int> & positions);
 
+    /*!
+     * @brief convert to value to move.
+     * @param i the value to convert.
+     * @return the converted value.
+     */
+    inline int convertPositionBound(int i ) const;
+
 private:
 
     /*!
-     * The marbles progress together one space at a time.
+     * \brief The marbles progress together one space at a time.
      *
+     * \param positions the given positions.
+     *
+     * \return true if a marble has fallen.
      */
     bool moveLine(std::vector<int> & positions);
 
@@ -131,7 +141,9 @@ private:
      * the beads are progressing laterally, without modifying alignment.
      *
      */
-    bool moveLateral(std::vector<int> & positions);
+    void moveLateral(std::vector<int> & positions);
+
+
 
 };
 
