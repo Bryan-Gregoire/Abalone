@@ -14,6 +14,17 @@ namespace abalone {
  */
 enum Color{ BLACK,WHITE };
 
+
+/*!
+ * \brief Operator to inject a color into an output stream.
+ *
+ * The name of the color is injected in the flow.
+ *
+ * \param out flow in which the color is injected.
+ * \param color color to be injected.
+ *
+ * \return flow after injection.
+ */
 inline std::ostream & operator<<(std::ostream & out, const Color color) {
     return out<<(color == BLACK ? "Black" : "White");
 }

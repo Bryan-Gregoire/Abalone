@@ -4,6 +4,7 @@ namespace abalone {
 
 void Controller::start() {
     printGame();
+    askNames();
     while(model_.getGameStatus() == IN_PROGRESS) {
         view_.displayCurrentPlayer(model_.getCurrentPlayer(), model_.getIndexCurrentPlayer());
         view_.displayBoard(model_.getBoard());
@@ -23,6 +24,10 @@ void Controller::printGame() {
     model_.setGameStatus(IN_PROGRESS);
     view_.displayMessage("                      Abalone");
     view_.displayMessage("===================================================");
+
+}
+
+void Controller::askNames() {
     view_.displayMessage("Player 1");
     model_.setCurrentPlayerName(view_.askName());
     std::cout<<std::endl;

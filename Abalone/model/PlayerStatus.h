@@ -10,7 +10,7 @@ namespace abalone {
  * Enum which represent the state of the player.
  *
  */
-enum PlayerStatus{ WIN,FAIL,IN_GAME };
+enum PlayerStatus{WIN,FAIL,IN_GAME };
 
 }
 #endif // PLAYERSTATUS_H

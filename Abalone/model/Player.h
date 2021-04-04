@@ -56,21 +56,37 @@ public :
         color_ { color }
     {}
 
+    /*!
+     * \brief Read accesor of number of marble of the player.
+     *
+     * \return the number of marble.
+     */
     inline int getNbMarbles() const{
         return this->nbMarble_;
     }
 
+    /*!
+     * \brief Read accesor of the player status.
+     *
+     * \return the player status.
+     */
     inline PlayerStatus getPlayerStatus() const {
         return this->playerStatus_;
     }
     /*!
      * \brief Read Accessor of the color.
      *
+     * \return the color.
      */
     inline Color getColor() const{
         return this->color_;
     }
 
+    /*!
+     * \brief Read accesor of the name of the player.
+     *
+     * \return The name of the player.
+     */
     inline std::string getName() const{
         return this->name_;
     }
@@ -84,10 +100,6 @@ public :
         this->playerStatus_ = status;
     }
 
-    inline void setNbMarble(int nbMarbles){
-        this->nbMarble_=nbMarbles;
-    }
-
     /*!
      * @brief Write accessor of the name of the player.
      *
@@ -98,12 +110,18 @@ public :
     }
 
     /*!
-     * Check if the player has lost.
+     * @brief Check if the player has lost.
+     *
+     * The player loses if he has lost 6 balls or more.
      *
      */
     inline bool isLost() const {
         return this->nbMarble_ <= 8;
     }
+
+    /*!
+     * \brief lose a marble.
+     */
     inline void fallMarble(){
         this->nbMarble_--;
     }

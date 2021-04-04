@@ -6,6 +6,7 @@
 #include <iostream>
 #include <sstream>
 #include <algorithm>
+#include <windows.h>
 
 
 namespace abalone {
@@ -90,7 +91,7 @@ std::vector<int> View::askPosition(std::string message)  {
         } else if(pos.length() == 6) {
             if(goodRow(pos[0]) && checkGoodCol(pos[0],pos[1]) && goodRow(pos[2]) && checkGoodCol(pos[2], pos[3])
                     && goodRow(pos[4]) && checkGoodCol(pos[4], pos[5]))
-            goodPos = true;
+                goodPos = true;
         }
         if(!goodPos) {
             std::cout << "Wrong Position(s), try again : ";

@@ -25,6 +25,9 @@ private :
 
 public :
 
+    /*!
+     * \brief Constructor.
+     */
     inline Marble();
 
     /*!

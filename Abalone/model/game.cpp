@@ -12,6 +12,10 @@ Game::Game():
 {}
 
 inline bool Game::checkContentPositions(std::vector<int> const& pos) const  {
+    if(pos.size() != 4 || pos.size() != 6 ) {
+        std::invalid_argument("Number of components of the vector are not correct.");
+    }
+
     if(pos.size() == 4) {
         return  isColorCurrPlayer(pos.at(0), pos.at(1))
                 && (board_.containMarble(pos.at(2), pos.at(3))
@@ -31,7 +35,11 @@ inline bool Game::isColorCurrPlayer(int row, int col) const {
     return false;
 }
 
-inline bool Game::checkGoodMovePos(std::vector<int> const& position) const { // A FINIR
+inline bool Game::checkGoodMovePos(std::vector<int> const& position) const {
+    if(position.size() != 4 || position.size() != 6 ) {
+        std::invalid_argument("Number of components of the vector are not correct.");
+    }
+
     if(position.size() == 4) {
         int x = position.at(0) - position.at(2);
         int y = position.at(1) - position.at(3);
@@ -62,12 +70,11 @@ inline bool Game::checkGoodMovePos(std::vector<int> const& position) const { // 
         } else if(marbleX == 1 || marbleX == -1) {
 
             return marbleY == 1 || marbleY == -1 ? true : false;
+
         } else if(marbleX == 2 || marbleX - 2) {
 
         }
     }
-
-    //REVERIFIER TOUT
     return false;
 }
 
@@ -84,7 +91,11 @@ bool Game::checkYMovePos(int row,int col, int x, int y) const {
     return y == 0 || y == -1;
 }
 
-void Game::move(std::vector<int> & positions) { //REVERIFIER methode
+void Game::move(std::vector<int> & positions) {
+    if(positions.size() != 4 || positions.size() != 6 ) {
+        std::invalid_argument("Number of components of the vector are not correct.");
+    }
+
     bool move = board_.move(positions);
     if(move){
         switchCurrentPlayer();
@@ -111,12 +122,12 @@ inline void Game::updatePlayerStatus() {
         players_.at(1).setPlayerStatus(FAIL);
         players_.at(0).setPlayerStatus(WIN);
     }
-    
+
 }
 
 
 void Game::notify() const {
-    
+
 }
 
 } // end abalone

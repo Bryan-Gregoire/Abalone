@@ -16,6 +16,10 @@ class Board{
 
 public:
 
+    /*!
+     * @brief SIZE size of the board.
+     *
+     */
     const static unsigned int SIZE = 9;
 
 private :
@@ -35,15 +39,6 @@ public :
     Board();
 
     /*!
-     * \brief Constructor.
-     *
-     * \param hexagons the given array made of hexagons.
-     *
-     * \throw std::invalid_argument if hexagons is null.
-     */
-    //Board(Hexagone std::array<std::array<std::optional<Hexagone>,9>,9>  hexagons);
-
-    /*!
      * Read accessor of the board.
      *
      * \return the board of hexagones.
@@ -52,15 +47,48 @@ public :
         return hexagones_;
     }
 
+    /*!
+     * \brief isInsideBoard Check if the given position is in the game board.
+     *
+     * \param i The row.
+     * \param j The column.
+     * \return
+     */
     inline bool isInsideBoard(unsigned int i, unsigned int j) const {
         return hexagones_[i][j].has_value();
     }
 
+    /*!
+     * \brief Check if at the given position there is a marble.
+     *
+     * \param i the given row.
+     * \param j the given column.
+     *
+     * \return true if there is a marble otherwise false.
+     */
     inline bool containMarble(unsigned int i,unsigned int j) const {
         return hexagones_[i][j]->getMarble().has_value();
     }
 
+    /*!
+     * \brief get the color of the marble at the given position.
+     *
+     * \param i the row.
+     * \param j the column.
+     *
+     *
+     * \return  the color of the marble
+     *
+     * \throw std::invalid_argument if the given position is not inside
+     *  the board or there is not a marble a the given position.
+     *
+     * \see abalone::isInsideBoard(unsigned int i, unsigned int j).
+     * \see abalone::containMarble(unsigned int i, unsigned int j).
+     */
     inline Color getColorMarble(unsigned int i, unsigned int j) const {
+        if(!isInsideBoard(i,j) || !containMarble(i,j)) {
+            throw std::invalid_argument("There are no marbles in this position");
+        }
         return hexagones_[i][j]->getMarble()->getColor();
     }
 
