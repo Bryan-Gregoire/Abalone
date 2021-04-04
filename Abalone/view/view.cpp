@@ -6,7 +6,6 @@
 #include <iostream>
 #include <sstream>
 #include <algorithm>
-#include <windows.h>
 
 
 namespace abalone {
@@ -30,32 +29,25 @@ void View::displayBoard(Board const& hexagones) {
                 if(j == 0) {
                     std::cout<<std::setw(1);
                     std::cout<<"\b";
-                    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),14);
                     std::cout<<letter[i];
                     std::cout<<std::setw(2);
-                    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),15);
                 }
                 if(hexagones.containMarble(i,j)) {
                     if(hexagones.getColorMarble(i,j) == Color::BLACK) {
-                        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),8); // 8 for DARKGREY
                         std::cout<<"B";
                     } else{
-                        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),15); // 15 for WHITE
                         std::cout<<"W";
                     }
                 } else {
-                    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),12);  // 12 for RED, for hexagones
                     std::cout<<"*";
                 }
             } else {
                 if(hexagones.isInsideBoard(i,j+1) && j < hexagones.SIZE / 2) {
-                    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),14); //Type of Yellow
                     std::cout<<letter[i];
                 } else {
                     std::cout<<" ";
                 }
                 if( i > (hexagones.SIZE / 2 ) && j > hexagones.SIZE / 2 && hexagones.isInsideBoard(i, j-1)) {
-                    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),10); //Type of GREEN
                     std::cout<<"\b"<<number[idxNumber];
                     idxNumber++;
                 }
@@ -72,7 +64,6 @@ void View::displayBoard(Board const& hexagones) {
         }
         space++;
     }
-    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),7); //7 for Light grey (default color of terminal text)
 }
 
 std::vector<int> View::askPosition(std::string message)  {
