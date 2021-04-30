@@ -7,15 +7,17 @@
 /*!
  * Namespace of the Abalone project.
  */
-namespace  abalone{
+namespace  abalone
+{
 
 /*!
  * Marble of a color belonging to a player, placed on the game board.
  *
  */
-class Marble{
+class Marble
+{
 
-private :
+  private :
 
     /*!
      * Color of the marble.
@@ -23,7 +25,7 @@ private :
      */
     const Color color_ ;
 
-public :
+  public :
 
     /*!
      * \brief Constructor.
@@ -43,11 +45,18 @@ public :
      * \brief Read accessor of the color.
      *
      */
-    inline Color getColor() const {
+    inline Color getColor() const
+    {
         return this->color_;
     }
 
 };
+
+/*
+ * @pbt be more consistent when writing code.
+ * either you write inline method after bloc or you write in
+ * class bloc. don't mix.
+ * */
 
 Marble::Marble(Color color) :
     color_ {color}

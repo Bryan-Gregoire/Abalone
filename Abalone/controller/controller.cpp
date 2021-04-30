@@ -38,19 +38,30 @@ void Controller::askNames() {
 
 bool Controller::checkIfIsSamePos(std::vector<int> const& position) const {
     if(position.size() == 4) {
-        return position.at(0) == position.at(2) && position.at(1) == position.at(3);
+        return position.at(0) == position.at(2)
+                && position.at(1) == position.at(3);
     }
-    return (position.at(0) == position.at(2) && position.at(1) == position.at(3))
-            || (position.at(0) == position.at(4) && position.at(1) == position.at(5))
-            || (position.at(2) == position.at(4) && position.at(3) == position.at(5));
+    return (position.at(0) == position.at(2)
+                && position.at(1) == position.at(3))
+            || (position.at(0) == position.at(4)
+                && position.at(1) == position.at(5))
+            || (position.at(2) == position.at(4)
+                && position.at(3) == position.at(5));
 }
 
 void Controller::printWinnerLoser() {
+    /*
+     * @ptb you know you have 2 players… for is it really usefull ?
+     * */
     for (unsigned int i = 0; i < model_.getPlayers().size() ;i++ ) {
         if(model_.getIdxPlayerStatus(i) == FAIL) {
-            view_.displayMessage("Player : " + model_.getIdxPlayerName(i) + " you lost :(");
+            view_.displayMessage("Player : "
+                                 + model_.getIdxPlayerName(i)
+                                 + " you lost :(");
         } else {
-            view_.displayMessage("Player : " + model_.getIdxPlayerName(i) + " you won :) ");
+            view_.displayMessage("Player : "
+                                 + model_.getIdxPlayerName(i)
+                                 + " you won :) ");
         }
     }
 }

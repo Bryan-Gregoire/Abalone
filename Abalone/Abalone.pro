@@ -1,5 +1,5 @@
 TEMPLATE = app
-CONFIG += console c++17
+CONFIG += #console c++17
 CONFIG -= app_bundle
 CONFIG -= qt
 SOURCES += \
@@ -10,20 +10,21 @@ SOURCES += \
     model/observable.cpp \
     view/view.cpp
 
-
--std=c++17 -pedantic-errors -Wall -Wuninitialized
+QMAKE_CXXFLAGS += -std=c++17 \
+    -pedantic-errors \
+    -Wall -Wuninitialized
 
 
 HEADERS += \
     controller/controller.h \
-    model/board.h \
-    model/color.h \
-    model/game.h \
-    model/gameStatus.h \
-    model/hexagone.h \
-    model/marble.h \
-    model/player.h \
-    model/playerStatus.h \
+    model/Board.h \
+    model/Color.h \
+    model/Game.h \
+    model/GameStatus.h \
+    model/Hexagone.h \
+    model/Marble.h \
+    model/Player.h \
+    model/PlayerStatus.h \
     model/model.h \
     model/utils/observable.h \
     model/utils/observer.h \

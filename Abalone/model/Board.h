@@ -7,14 +7,16 @@
 /*!
  * Namespace of the Abalone project.
  */
-namespace  abalone{
+namespace  abalone
+{
 
 /*!
  * The game board, made of hexagons.
  */
-class Board{
+class Board
+{
 
-public:
+  public:
 
     /*!
      * @brief SIZE size of the board.
@@ -22,15 +24,15 @@ public:
      */
     const static unsigned int SIZE = 9;
 
-private :
+  private :
 
 
     /*!
     * Two-Dimensional array made of hexagons.
     *
     */
-    std::array<std::array<std::optional<Hexagone>,SIZE>,SIZE> hexagones_;
-public :
+    std::array<std::array<std::optional<Hexagone>, SIZE>, SIZE> hexagones_;
+  public :
 
     /*!
      * \brief Constructor.
@@ -43,7 +45,9 @@ public :
      *
      * \return the board of hexagones.
      */
-    inline std::array<std::array<std::optional<Hexagone>,SIZE>,SIZE>  getHexagones() const {
+    inline std::array<std::array<std::optional<Hexagone>, SIZE>, SIZE>
+    getHexagones() const
+    {
         return hexagones_;
     }
 
@@ -54,7 +58,9 @@ public :
      * \param j The column.
      * \return
      */
-    inline bool isInsideBoard(unsigned int i, unsigned int j) const {
+    inline bool isInsideBoard(unsigned int i, unsigned int j) const
+    {
+        //@pbt please verify i, j
         return hexagones_[i][j].has_value();
     }
 
@@ -66,7 +72,8 @@ public :
      *
      * \return true if there is a marble otherwise false.
      */
-    inline bool containMarble(unsigned int i,unsigned int j) const {
+    inline bool containMarble(unsigned int i, unsigned int j) const
+    {
         return hexagones_[i][j]->getMarble().has_value();
     }
 
@@ -85,9 +92,11 @@ public :
      * \see abalone::isInsideBoard(unsigned int i, unsigned int j).
      * \see abalone::containMarble(unsigned int i, unsigned int j).
      */
-    inline Color getColorMarble(unsigned int i, unsigned int j) const {
-        if(!isInsideBoard(i,j) || !containMarble(i,j)) {
-            throw std::invalid_argument("There are no marbles in this position");
+    inline Color getColorMarble(unsigned int i, unsigned int j) const
+    {
+        if (!isInsideBoard(i, j) || !containMarble(i, j)) {
+            throw std::invalid_argument(
+                "There are no marbles in this position");
         }
         return hexagones_[i][j]->getMarble()->getColor();
     }
@@ -128,7 +137,7 @@ public :
      */
     int convertPositionBound(int i ) const;
 
-private:
+  private:
 
     /*!
      * \brief The marbles progress together one space at a time.

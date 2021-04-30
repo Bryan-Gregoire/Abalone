@@ -9,16 +9,18 @@
 /*!
  * Namespace of the Abalone project.
  */
-namespace  abalone{
+namespace  abalone
+{
 
 /*!
  * Bring together the elements necessary for the game to present a facade to the
  * view.
  *
  */
-class Game : public Model {
+class Game : public Model
+{
 
-private :
+  private :
 
     /*!
      * The game board.
@@ -38,9 +40,9 @@ private :
      * Players who are in the game.
      *
      */
-    std::array<Player,2> players_;
+    std::array<Player, 2> players_;
 
-public :
+  public :
 
     virtual ~Game();
 
@@ -57,7 +59,8 @@ public :
      *
      * \return The game board.
      */
-    inline Board const& getBoard() {
+    inline Board const & getBoard()
+    {
         return this->board_;
     }
     /*!
@@ -65,7 +68,8 @@ public :
      *
      * \return the game status.
      */
-    inline GameStatus const& getGameStatus()  {
+    inline GameStatus const & getGameStatus()
+    {
         return this->gameStatus_;
     }
 
@@ -74,7 +78,8 @@ public :
      *
      * \return the index.
      */
-    inline unsigned int getIndexCurrentPlayer() {
+    inline unsigned int getIndexCurrentPlayer()
+    {
         return idx_CurrentPlayer;
     }
 
@@ -83,7 +88,8 @@ public :
      *
      * \return the current player.
      */
-    inline Player & getCurrentPlayer()  {
+    inline Player & getCurrentPlayer()
+    {
         return this->players_[idx_CurrentPlayer];
     }
 
@@ -92,7 +98,8 @@ public :
      *
      * \return Array of players.
      */
-    inline std::array<Player,2>  getPlayers() {
+    inline std::array<Player, 2>  getPlayers()
+    {
         return this->players_;
     }
 
@@ -104,8 +111,12 @@ public :
      *
      * \param name the name to set.
      */
-    inline void setCurrentPlayerName(std::string name){
+    inline void setCurrentPlayerName(std::string name)
+    {
         players_[idx_CurrentPlayer].setName(name);
+        /*
+         * @pbt bad analyse. setter set. and this is all.
+         * */
         switchCurrentPlayer();
     }
 
@@ -114,7 +125,8 @@ public :
      *
      * \param gameStatus the given status to write.
      */
-    inline void setGameStatus(GameStatus const& gameStatus) {
+    inline void setGameStatus(GameStatus const & gameStatus)
+    {
         this->gameStatus_ = gameStatus;
     }
 
@@ -122,8 +134,10 @@ public :
      * \brief pass the turn of the current player.
      *
      */
-    inline void switchCurrentPlayer() {
+    inline void switchCurrentPlayer()
+    {
         idx_CurrentPlayer == 0 ? idx_CurrentPlayer++ : idx_CurrentPlayer--;
+        //@pbt more concise : idx_CurrentPlayer == 0 ? 1 : 0;
     }
 
     /*!
@@ -133,9 +147,11 @@ public :
      *
      * @return the PlayerStatus of the player.
      */
-    inline PlayerStatus getIdxPlayerStatus(unsigned int index) const {
-        if(index >= players_.size()) {
-            throw std::invalid_argument("index of this player does not exist");
+    inline PlayerStatus getIdxPlayerStatus(unsigned int index) const
+    {
+        if (index >= players_.size()) {
+            throw std::invalid_argument(
+                "index of this player does not exist");
         }
         return players_.at(index).getPlayerStatus();
     }
@@ -147,9 +163,11 @@ public :
      *
      * @return the name of the player.
      */
-    inline std::string getIdxPlayerName(unsigned int index) const {
-        if(index >= players_.size()) {
-            throw std::invalid_argument("index of this player does not exist");
+    inline std::string getIdxPlayerName(unsigned int index) const
+    {
+        if (index >= players_.size()) {
+            throw std::invalid_argument(
+                "index of this player does not exist");
         }
         return players_.at(index).getName();
     }
@@ -168,7 +186,7 @@ public :
      * @throw std::invalid_argument if the number of components of the vector is not 4 or 6.
      *
      */
-    bool checkContentPositions(std::vector<int> const& pos) const;
+    bool checkContentPositions(std::vector<int> const & pos) const;
 
     /*!
      * \brief Check if the position to move is correct.
@@ -178,7 +196,7 @@ public :
      *
      * @throw std::invalid_argument if the number of components of the vector is not 4 or 6.
      */
-    bool checkGoodMovePos(std::vector<int> const& position) const;
+    bool checkGoodMovePos(std::vector<int> const & position) const;
 
     /*!
      * Updates the status of the game.
@@ -228,7 +246,7 @@ public :
      */
     inline void deleteObserver(utils::Observer *);
 
-private:
+  private:
     /*!
      * \brief Check if at the given position the color of the ball is the same as the current player.
      *
