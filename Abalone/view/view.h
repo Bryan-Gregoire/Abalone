@@ -94,7 +94,7 @@ private:
      *
      * \return The converted column.
      */
-    int convertColumn(unsigned int row, unsigned int col) const;
+    int convertColumn(unsigned int col) const;
 
     /*!
      * \brief Check if the given column is inside the game board.
@@ -103,7 +103,7 @@ private:
      * \param col the given column.
      * \return 'true' if the column is inside otherwise 'false'.
      */
-    bool checkGoodCol(unsigned row, unsigned int col);
+    bool checkGoodCol(unsigned int row, unsigned int col);
 };
 }
 

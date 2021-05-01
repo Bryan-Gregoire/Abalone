@@ -11,18 +11,15 @@
 namespace abalone {
 
 void View::displayBoard(Board const& hexagones) {
-    unsigned int space =1;
     char letter[9] = {'I','H','G','F','E','D','C','B','A'};
     int number[9] = {9,8,7,6,5,4,3,2,1};
     unsigned idxNumber = 0;
+    unsigned spaceLine = 1;
 
     for (unsigned int i = 0;i < hexagones.SIZE ;i++ ) {
-        if(space % 2 == 0) {
-            std::cout<<"     ";
-        }
-        else {
-            std::cout<<"    ";
-        }
+        std::cout<<std::setw(spaceLine);
+        std::cout<<(" ");
+        spaceLine++;
         for (unsigned int j = 0;j < hexagones.SIZE ;j++ ) {
             std::cout<<std::setw(2);
             if(hexagones.isInsideBoard(i,j)) {
@@ -55,14 +52,13 @@ void View::displayBoard(Board const& hexagones) {
         }
         std::cout<<std::endl;
         if(i == hexagones.SIZE -1) {
-            std::cout<<"         ";
+            std::cout<<"          ";
             for (unsigned int k = hexagones.SIZE-1;k > idxNumber -1;k-- ) {
                 std::cout<<std::setw(2);
                 std::cout<<number[k];
             }
             std::cout<<std::endl;
         }
-        space++;
     }
 }
 
@@ -75,14 +71,12 @@ std::vector<int> View::askPosition(std::string message)  {
     while(!goodPos) {
         std::cout<<pos<<std::endl;
         if(pos.length() == 4) {
-            if(goodRow(pos[0]) && checkGoodCol(pos[0],pos[1]) && goodRow(pos[2])
-                    && checkGoodCol(pos[2], pos[3])) {
-                goodPos = true;
-            }
+            goodPos = goodRow(pos[0]) && checkGoodCol(pos[0],pos[1]) && goodRow(pos[2])
+                    && checkGoodCol(pos[2], pos[3]);
         } else if(pos.length() == 6) {
-            if(goodRow(pos[0]) && checkGoodCol(pos[0],pos[1]) && goodRow(pos[2]) && checkGoodCol(pos[2], pos[3])
-                    && goodRow(pos[4]) && checkGoodCol(pos[4], pos[5]))
-                goodPos = true;
+            goodPos =goodRow(pos[0]) && checkGoodCol(pos[0],pos[1])
+                    && goodRow(pos[2]) && checkGoodCol(pos[2], pos[3])
+                    && goodRow(pos[4]) && checkGoodCol(pos[4], pos[5]);
         }
         if(!goodPos) {
             std::cout << "Wrong Position(s), try again : ";
@@ -93,18 +87,18 @@ std::vector<int> View::askPosition(std::string message)  {
     }
     if(pos.length() == 4) {
         int initialRow = convertRow(pos[0]);
-        int initialCol = convertColumn(initialRow,pos[1]);
+        int initialCol = convertColumn(pos[1]);
         int moveRow = convertRow(pos[2]);
-        int moveCol = convertColumn(moveRow,pos[3]);
+        int moveCol = convertColumn(pos[3]);
         std::vector<int> positions {initialRow,initialCol,moveRow,moveCol};
         return positions;
     }
     int firstMarbleRow = convertRow(pos[0]);
-    int firstMarbleCol = convertColumn(firstMarbleRow,pos[1]);
+    int firstMarbleCol = convertColumn(pos[1]);
     int twiceMarbleRow = convertRow(pos[2]);
-    int twiceMarbleCol = convertColumn(twiceMarbleRow,pos[3]);
+    int twiceMarbleCol = convertColumn(pos[3]);
     int moveRow = convertRow(pos[4]);
-    int moveCol = convertColumn(moveRow,pos[5]);
+    int moveCol = convertColumn(pos[5]);
     std::vector<int> positions {firstMarbleRow,firstMarbleCol,twiceMarbleRow,twiceMarbleCol,moveRow,moveCol};
     return positions;
 }
@@ -150,49 +144,34 @@ int View::convertRow(char row) const {
     return -1;
 }
 
-int View::convertColumn(unsigned int row, unsigned int col) const {
-    col = col - 48; // -48 for ASCII.
-    switch(row) {
-    case 0:
-    case 1:
-        return col - 3;
-    case 2:
-    case 3:
-        return col - 2;
-    case 4:
-    case 5:
-        return col - 1;
-    case 6:
-    case 7:
-        return col;
-    case 8:
-        return col +1;
-    }
-    return col;
+int View::convertColumn(/*unsigned int row,*/ unsigned int col) const {
+    return col = col - 49; // -48 for ASCII +(-1) because array begin at 0.
 }
 
 bool View::checkGoodCol(unsigned int row, unsigned int col) {
     row = convertRow(row);
-    col = col - 48;
+    col = col - 48; // ASCII
     switch(row) {
     case 0:
-        return col >= 5;
+        return col >= 5 && col < 10;
     case 1:
-        return col >= 4;
+        return col >= 4 && col < 10;
     case 2:
-        return col >= 3;
+        return col >= 3 && col < 10;
     case 3:
-        return col >= 2;
+        return col >= 2 && col < 10;
+    case 4:
+        return col >= 1 && col < 10;
     case 5:
-        return col < 9;
+        return col >= 1 && col < 9;
     case 6:
-        return col < 8;
+        return col >= 1 && col < 8;
     case 7:
-        return col < 7;
+        return col >= 1 && col < 7;
     case 8:
-        return col < 6;
+        return col >= 1 && col < 6;
     }
-    return true;
+    return false;
 }
 
 }

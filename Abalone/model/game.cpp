@@ -22,7 +22,8 @@ inline bool Game::checkContentPositions(std::vector<int> const& pos) const  {
                     || isColorCurrPlayer(pos.at(2), pos.at(3)));
 
     }
-    return isColorCurrPlayer(pos.at(0),pos.at(1)) && isColorCurrPlayer(pos.at(2),pos.at(3));
+    return isColorCurrPlayer(pos.at(0),pos.at(1))
+            && isColorCurrPlayer(pos.at(2),pos.at(3));
 
 }
 
@@ -36,27 +37,23 @@ inline bool Game::checkGoodMovePos(std::vector<int> const& pos) const {
         std::invalid_argument("Number of components of the vector are not correct.");
     }
 
-    if(pos.size() == 4) {
-        int x = pos.at(0) - pos.at(2);
-        int y = pos.at(1) - pos.at(3);
-        if(x == 0) {
-            return y == 1 || y == -1;
-        }
-        if(x == 1 || x == -1) {
-            return y == 1 || y == -1;
-        }
-    } else {
-        int marbleX = pos.at(0) - pos.at(2);
-        int marbleY = pos.at(1) - pos.at(3);
+    int x = 0;
+    int y = 0;
 
-        int moveX =  pos.at(4) - pos.at(0);
-        int moveY = pos.at(5) - pos.at(1);
-        int addX = board_.convertPositionBound(moveX);
-        int addY = board_.convertPositionBound(moveY);
-        return std::abs(moveX) < 2 && std::abs(moveY) < 2
-                && std::abs(marbleX) < 3 && std::abs(marbleY) < 3
-                && !board_.containMarble(pos.at(0) + addX,pos.at(1) + addY)
-                && !board_.containMarble(pos.at(2) + addX,pos.at(3) + addY);
+    if(pos.size() == 4) {
+        x = pos.at(2) - pos.at(0);
+        y = pos.at(3) - pos.at(1);
+    } else {
+        x = pos.at(4) - pos.at(0);
+        y = pos.at(5)- pos.at(1);
+    }
+
+    if(x ==0) {
+        return y == 1 || y == -1;
+    }
+
+    if(x == 1 || x == -1) {
+        return x == -y || y == 0;
     }
     return false;
 }
