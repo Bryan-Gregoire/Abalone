@@ -20,8 +20,11 @@ Board::Board():
 bool Board::move(std::vector<int> & positions) {
     if(positions.size() == 4) {
         return moveLine(positions);
+    } else if(positions.size() == 6) {
+        moveLateral(positions);
+    } else {
+        throw std::invalid_argument("size of vector not correct");
     }
-    moveLateral(positions);
     return false;
 }
 
@@ -36,7 +39,7 @@ int Board::convertPositionBound(int i ) const {
 }
 
 bool Board::moveLine(std::vector<int> & positions) {
-    std::pair<int, int> directionLine {convertPositionBound((positions.at(2) - positions.at(0))), convertPositionBound((positions.at(3) - positions.at(1)))};
+    std::pair<int, int> directionLine {(positions.at(2) - positions.at(0)),(positions.at(3) - positions.at(1))};
     unsigned countSame = 0;
     unsigned countOther = 0;
     std::pair<int, int> selectedMarble {positions.at(0), positions.at(1)};

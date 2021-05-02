@@ -52,9 +52,12 @@ public :
      *
      * \param i The row.
      * \param j The column.
-     * \return
+     * \return true if the given position is inside the board otherwise false.
      */
-    inline bool isInsideBoard(unsigned int i, unsigned int j) const {
+    inline bool isInsideBoard(int i, int j) const {
+        if(i < 0 || i > 8 || j < 0 || j > 8) {
+            throw std::invalid_argument("Invalid parameter");
+        }
         return hexagones_[i][j].has_value();
     }
 
@@ -65,8 +68,13 @@ public :
      * \param j the given column.
      *
      * \return true if there is a marble otherwise false.
+     * \throw std::invalid_argument if the given position is not inside
+     *  the board .
      */
-    inline bool containMarble(unsigned int i,unsigned int j) const {
+    inline bool containMarble(int i,int j) const {
+        if(i < 0 || i > 8 || j < 0 || j > 8) {
+            throw std::invalid_argument("Invalid parameter");
+        }
         return hexagones_[i][j]->getMarble().has_value();
     }
 

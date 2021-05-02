@@ -39,7 +39,7 @@ void View::displayBoard(Board const& hexagones) {
                     std::cout<<"*";
                 }
             } else {
-                if(hexagones.isInsideBoard(i,j+1) && j < hexagones.SIZE / 2) {
+                if(j < hexagones.SIZE / 2 && hexagones.isInsideBoard(i,j+1)) {
                     std::cout<<letter[i];
                 } else {
                     std::cout<<" ";
@@ -69,7 +69,6 @@ std::vector<int> View::askPosition(std::string message)  {
     std::transform(pos.begin(), pos.end(), pos.begin(), ::toupper);
     bool goodPos = false;
     while(!goodPos) {
-        std::cout<<pos<<std::endl;
         if(pos.length() == 4) {
             goodPos = goodRow(pos[0]) && checkGoodCol(pos[0],pos[1]) && goodRow(pos[2])
                     && checkGoodCol(pos[2], pos[3]);

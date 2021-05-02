@@ -11,7 +11,7 @@ Game::Game():
     players_{{Player(Color::BLACK), Player(Color::WHITE)}}
 {}
 
-inline bool Game::checkContentPositions(std::vector<int> const& pos) const  {
+bool Game::checkContentPositions(std::vector<int> const& pos) const  {
     if(pos.size() != 4 || pos.size() != 6 ) {
         std::invalid_argument("Number of components of the vector are not correct.");
     }
@@ -27,12 +27,7 @@ inline bool Game::checkContentPositions(std::vector<int> const& pos) const  {
 
 }
 
-inline bool Game::isColorCurrPlayer(int row, int col) const {
-    return board_.getHexagones().at(row).at(col)->getMarble()->getColor()
-            == players_.at(idx_CurrentPlayer).getColor();
-}
-
-inline bool Game::checkGoodMovePos(std::vector<int> const& pos) const {
+bool Game::checkGoodMovePos(std::vector<int> const& pos) const {
     if(pos.size() != 4 || pos.size() != 6 ) {
         std::invalid_argument("Number of components of the vector are not correct.");
     }
@@ -81,7 +76,7 @@ void Game::updateLevelStatus(){
     }
 }
 
-inline void Game::updatePlayerStatus() {
+void Game::updatePlayerStatus() {
     if(players_.at(0).isLost()) {
         players_.at(0).setPlayerStatus(FAIL);
         players_.at(1).setPlayerStatus(WIN);

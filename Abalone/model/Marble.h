@@ -37,7 +37,9 @@ public :
      *
      * \throw std::invalid_argument if color is null.
      */
-    inline Marble(Color color);
+    inline Marble(Color color) :
+        color_ { color }
+    {}
 
     /*!
      * \brief Read accessor of the color.
@@ -48,10 +50,6 @@ public :
     }
 
 };
-
-Marble::Marble(Color color) :
-    color_ {color}
-{}
 
 }
 

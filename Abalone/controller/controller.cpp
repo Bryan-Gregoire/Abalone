@@ -13,9 +13,13 @@ void Controller::start() {
             view_.displayMessage("Wrong Position(s), try again : ");
             posMove = view_.askPosition("Enter the Position of your(s) marble(s) and where you want to move it : ");
         }
-        model_.move(posMove);
-        model_.switchCurrentPlayer();
-        model_.updateLevelStatus();
+        try {
+            model_.move(posMove);
+            model_.switchCurrentPlayer();
+            model_.updateLevelStatus();
+        }  catch (...) {
+            view_.displayMessage("Move not possible, try again");
+        }
     }
     printWinnerLoser();
 }
@@ -30,9 +34,11 @@ void Controller::printGame() {
 void Controller::askNames() {
     view_.displayMessage("Player 1");
     model_.setCurrentPlayerName(view_.askName());
+    model_.switchCurrentPlayer();
     std::cout<<std::endl;
     view_.displayMessage("Player 2");
     model_.setCurrentPlayerName(view_.askName());
+    model_.switchCurrentPlayer();
     std::cout<<std::endl;
 }
 
@@ -46,14 +52,13 @@ bool Controller::checkIfIsSamePos(std::vector<int> const& position) const {
 }
 
 void Controller::printWinnerLoser() {
-    for (unsigned int i = 0; i < model_.getPlayers().size() ;i++ ) {
-        if(model_.getIdxPlayerStatus(i) == FAIL) {
-            view_.displayMessage("Player : " + model_.getIdxPlayerName(i) + " you lost :(");
+        if(model_.getIdxPlayerStatus(0) == FAIL) {
+            view_.displayMessage("Player : " + model_.getIdxPlayerName(0) + " you lost :(");
+            view_.displayMessage("Player : " + model_.getIdxPlayerName(1) + " you won :) ");
         } else {
-            view_.displayMessage("Player : " + model_.getIdxPlayerName(i) + " you won :) ");
+            view_.displayMessage("Player : " + model_.getIdxPlayerName(1) + " you lost :(");
+            view_.displayMessage("Player : " + model_.getIdxPlayerName(0) + " you won :) ");
         }
-    }
 }
-
 
 }

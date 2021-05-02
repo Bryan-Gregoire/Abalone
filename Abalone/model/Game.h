@@ -106,7 +106,6 @@ public :
      */
     inline void setCurrentPlayerName(std::string name){
         players_[idx_CurrentPlayer].setName(name);
-        switchCurrentPlayer();
     }
 
     /*!
@@ -229,6 +228,7 @@ public :
     inline void deleteObserver(utils::Observer *);
 
 private:
+
     /*!
      * \brief Check if at the given position the color of the ball is the same as the current player.
      *
@@ -237,7 +237,10 @@ private:
      *
      * \return true if the color of the marble is the same as the current player otherwise false.
      */
-    inline bool isColorCurrPlayer(int row, int col) const;
+    inline bool isColorCurrPlayer(int row, int col) const {
+        return board_.getHexagones().at(row).at(col)->getMarble()->getColor()
+                == players_.at(idx_CurrentPlayer).getColor();
+    }
 
     /*!
      * \brief Check if one of the players has lost.
