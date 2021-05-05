@@ -13,6 +13,10 @@ MainWindow::MainWindow(abalone::Game *game, QWidget *parent)
       _gHexaCells {}
 {
     ui->setupUi(this);
+    _game->setCurrentPlayerName("Bryan");
+    _game->switchCurrentPlayer();
+    _game->setCurrentPlayerName("Billal");
+    _game->switchCurrentPlayer();
 
     const double r = 46;
     std::array<char, 9> letters= {'A','B','C','D','E','F','G','H','I'};
@@ -30,7 +34,6 @@ MainWindow::MainWindow(abalone::Game *game, QWidget *parent)
             }
         }
     }
-    /* + i * r */
     auto scene = new QGraphicsScene();
 
     std::for_each(begin(_gHexaCells), end(_gHexaCells),
@@ -38,9 +41,9 @@ MainWindow::MainWindow(abalone::Game *game, QWidget *parent)
         e->setPos(e->y(), e->x());
         scene->addItem(e);
         QObject::connect(e,
-                         SIGNAL(sendValue(std::string)),
+                         SIGNAL(sendValue(std::string, bool)),
                          this,
-                         SLOT(on_ghexacell_clicked(std::string)));
+                         SLOT(on_ghexacell_clicked(std::string, bool)));
     });
     auto view = new QGraphicsView(scene);
     view->setRenderHint(QPainter::Antialiasing);
@@ -49,7 +52,12 @@ MainWindow::MainWindow(abalone::Game *game, QWidget *parent)
     view->setViewportUpdateMode(QGraphicsView::BoundingRectViewportUpdate);
     view->setDragMode(QGraphicsView::ScrollHandDrag);
     view->update();
+
     ui->verticalLayout_4->addWidget(view);
+
+    ui->player1->setText(_game->getIdxPlayerName(0).c_str());
+    ui->player2->setText(_game->getIdxPlayerName(1).c_str());
+    ui->turnPName->setText(ui->player1->text());
 
     /* connect in for_each
         QObject::connect(_gHexaCells[0], SIGNAL(sendValue(std::string)),
@@ -66,11 +74,12 @@ void MainWindow::on_actionExit_triggered() {
     QApplication::quit();
 }
 
-void MainWindow::on_ghexacell_clicked(std::string value)
+void MainWindow::on_ghexacell_clicked(std::string value, bool selected)
 {
     QString pos = ui->positions->text();
-    pos.append(value.c_str());
+    selected ? pos.append(value.c_str()) : pos.remove(value.c_str());
     ui->positions->setText(pos);
+
     std::string s = "receveive value from ghexacell ";
     s.append(value);
     qDebug() << s.c_str();

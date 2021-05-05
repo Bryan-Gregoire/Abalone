@@ -27,7 +27,7 @@ private:
 
 private slots:
     void on_actionExit_triggered();
-    void on_ghexacell_clicked(std::string value);
+    void on_ghexacell_clicked(std::string value, bool selected);
 };
 
 #endif // MAINWINDOW_H

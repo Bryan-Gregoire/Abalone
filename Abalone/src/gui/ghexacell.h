@@ -32,7 +32,7 @@ class GHexaCell : public QObject, public QGraphicsPolygonItem
     const double _r; // radius
     std::string _value; // some value to emit (e.g. abapro position)
     abalone::Color _color;
-    bool selected, mouseover, moved;
+    bool _selected, mouseover, moved;
 
 
   public:
@@ -73,7 +73,7 @@ class GHexaCell : public QObject, public QGraphicsPolygonItem
      * To do this, class must inherit from QObject.
      */
   signals:
-    void sendValue(std::string value);
+    void sendValue(std::string value, bool selected);
 };
 
 //

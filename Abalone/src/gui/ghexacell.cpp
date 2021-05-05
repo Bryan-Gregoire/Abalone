@@ -19,7 +19,7 @@ GHexaCell::GHexaCell(double x, double y,
       _r {r},
       _value { value },
       _color {color},
-      selected(false), mouseover(false), moved(false)
+      _selected(false), mouseover(false), moved(false)
 {
     this->setAcceptHoverEvents(true);
     static const double pi_over_6 = atan(1) * 4 / 6;
@@ -46,7 +46,7 @@ void GHexaCell::paint(QPainter * painter,
     brush.setStyle(Qt::SolidPattern);
     painter->setBrush(brush);
 
-    if(selected) {
+    if(_selected) {
         QPen pen(Qt::black, 5);
         painter->setPen(pen);
 
@@ -91,7 +91,7 @@ void GHexaCell::mousePressEvent(QGraphicsSceneMouseEvent * event)
 {
     event->accept();
     moved = false;
-    selected = !selected; //I'd like to put this in "released"
+    _selected = !_selected; //I'd like to put this in "released"
     update();
 
     qDebug() << "receive mouse event, emit signal";
@@ -99,7 +99,7 @@ void GHexaCell::mousePressEvent(QGraphicsSceneMouseEvent * event)
      * #2 when componant is clicked, emit signal for who listen
      * (a slot elsewhere)
      */
-    emit sendValue(_value);
+    emit sendValue(_value, _selected);
 
 }
 
