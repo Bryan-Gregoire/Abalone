@@ -12,7 +12,7 @@ namespace abalone {
  * Enum which represent the color of a marble.
  *
  */
-enum Color{ BLACK,WHITE};
+enum Color{ BLACK,WHITE, NONE};
 
 
 /*!

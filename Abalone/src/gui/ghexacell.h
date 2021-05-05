@@ -3,6 +3,7 @@
 
 #include <QGraphicsPolygonItem>
 #include <QObject>
+#include "model/Color.h"
 
 /*
  * forward declaration.
@@ -30,11 +31,13 @@ class GHexaCell : public QObject, public QGraphicsPolygonItem
     double _x, _y; // coordinates of center
     const double _r; // radius
     std::string _value; // some value to emit (e.g. abapro position)
+    abalone::Color _color;
 
 
   public:
     explicit GHexaCell(double x, double y,
                        const double r,
+                       abalone::Color color,
                        std::string value,
                        QGraphicsPolygonItem * parent = nullptr);
     inline double x() const;

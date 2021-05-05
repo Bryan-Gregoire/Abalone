@@ -11,12 +11,14 @@
 
 GHexaCell::GHexaCell(double x, double y,
                      const double r,
+                     abalone::Color color,
                      std::string value,
                      QGraphicsPolygonItem * parent)
     : QGraphicsPolygonItem (parent),
       _x { x }, _y { y },
       _r {r},
-      _value { value }
+      _value { value },
+      _color {color}
 {
     static const double pi_over_6 = atan(1) * 4 / 6;
 
@@ -33,18 +35,62 @@ GHexaCell::GHexaCell(double x, double y,
 
 void GHexaCell::paint(QPainter * painter,
                       [[maybe_unused]] const QStyleOptionGraphicsItem * option,
-                      [[maybe_unused]] QWidget * widget)
+[[maybe_unused]] QWidget * widget)
 {
     QPen pen(Qt::black, 1);
     painter->setPen(pen);
     QBrush brush;
-    brush.setColor(Qt::cyan);
+    brush.setColor(Qt::gray);
     brush.setStyle(Qt::SolidPattern);
     painter->setBrush(brush);
     painter->drawPolygon(polygon());
-//    if(attribut = Color::Black) {
-//        painter->drawEllipse(-r / 2 , -r / 2, r , r);
-//       }
+//    if(selected) {
+//        QPen pen(Qt::blue, 5);
+//        painter->setPen(pen);
+
+//        QBrush brush;
+//        brush.setColor(Qt::yellow);
+//        brush.setStyle(Qt::SolidPattern);
+
+//        painter->setBrush(brush);
+//    }
+//    else if(mouseover) {
+//        QPen pen(Qt::blue, 1);
+//        painter->setPen(pen);
+
+//        QBrush brush;
+//        brush.setColor(Qt::green);
+//        brush.setStyle(Qt::SolidPattern);
+
+//        painter->setBrush(brush);
+//    }
+//    else {
+//        QPen pen(Qt::blue, 1);
+//        painter->setPen(pen);
+
+//        QBrush brush;
+//        brush.setColor(Qt::cyan);
+//        brush.setStyle(Qt::SolidPattern);
+
+//        painter->setBrush(brush);
+//    }
+
+    if(_color == abalone::Color::BLACK) {
+
+        brush.setColor(Qt::black);
+        brush.setStyle(Qt::SolidPattern);
+
+        painter->setBrush(brush);
+        painter->drawEllipse(-_r / 2 , -_r / 2, _r , _r);
+
+    } else if(_color == abalone::Color::WHITE) {
+
+        brush.setColor(Qt::white);
+        brush.setStyle(Qt::SolidPattern);
+
+        painter->setBrush(brush);
+        painter->drawEllipse(-_r / 2 , -_r / 2, _r , _r);
+    }
 }
 
 

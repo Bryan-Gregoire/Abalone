@@ -2,8 +2,6 @@
 #include "ui_mainwindow.h"
 #include <cmath>
 
-#include "model/Game.h"
-
 #include <QDebug>
 #include <QGraphicsScene>
 #include <QGraphicsView>
@@ -17,21 +15,20 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
     const double r = 46;
+    abalone::Color color = abalone::Color::NONE;
     for (unsigned int i = 0;i < abalone::Board::SIZE;i++ ) {
         for (unsigned int j = 0; j < abalone::Board::SIZE ;j++ ) {
             if(_game.getBoard().isInsideBoard(i,j)) {
-                if(i % 2 == 0) {
-                    _gHexaCells.push_back(new GHexaCell(i * 2 * r * 3 / 4, (sqrt(3) * r) * j + i * r, r,
-                                                        std::to_string(i) + std::to_string(j),nullptr));
+                if(_game.getBoard().containMarble(i,j)) {
+                    color = _game.getBoard().getColorMarble(i,j);
                 } else {
-                    _gHexaCells.push_back(new GHexaCell(i * 2 * r * 3 / 4, (sqrt(3) * r) * j + i * r, r,
-                                                        std::to_string(i)
-                                                        + std::to_string(j),nullptr));
+                    color = abalone::Color::NONE;
                 }
+                _gHexaCells.push_back(new GHexaCell(i * 2 * r * 3 / 4, (round(sqrt(3)) * r) * j + i * r, r,color,
+                                                    std::to_string(i) + std::to_string(j),nullptr));
             }
         }
     }
-    /* + i * r */
     /* + i * r */
     auto scene = new QGraphicsScene();
 
