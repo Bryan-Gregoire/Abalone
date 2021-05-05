@@ -6,26 +6,27 @@
 #include <QGraphicsScene>
 #include <QGraphicsView>
 
-MainWindow::MainWindow(QWidget *parent)
+MainWindow::MainWindow(abalone::Game *game, QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow),
-      _game {},
+      _game {game},
       _gHexaCells {}
 {
     ui->setupUi(this);
 
     const double r = 46;
+    std::array<char, 9> letters= {'A','B','C','D','E','F','G','H','I'};
     abalone::Color color = abalone::Color::NONE;
     for (unsigned int i = 0;i < abalone::Board::SIZE;i++ ) {
         for (unsigned int j = 0; j < abalone::Board::SIZE ;j++ ) {
-            if(_game.getBoard().isInsideBoard(i,j)) {
-                if(_game.getBoard().containMarble(i,j)) {
-                    color = _game.getBoard().getColorMarble(i,j);
+            if(_game->getBoard().isInsideBoard(i,j)) {
+                if(_game->getBoard().containMarble(i,j)) {
+                    color = _game->getBoard().getColorMarble(i,j);
                 } else {
                     color = abalone::Color::NONE;
                 }
                 _gHexaCells.push_back(new GHexaCell(i * 2 * r * 3 / 4, (round(sqrt(3)) * r) * j + i * r, r,color,
-                                                    std::to_string(i) + std::to_string(j),nullptr));
+                                                    letters.at(8 - i) + std::to_string(j+1),nullptr));
             }
         }
     }
@@ -42,6 +43,11 @@ MainWindow::MainWindow(QWidget *parent)
                          SLOT(on_ghexacell_clicked(std::string)));
     });
     auto view = new QGraphicsView(scene);
+    view->setRenderHint(QPainter::Antialiasing);
+    view->setRenderHint(QPainter::TextAntialiasing);
+    view->setCacheMode(QGraphicsView::CacheBackground);
+    view->setViewportUpdateMode(QGraphicsView::BoundingRectViewportUpdate);
+    view->setDragMode(QGraphicsView::ScrollHandDrag);
     view->update();
     ui->verticalLayout_4->addWidget(view);
 
@@ -62,9 +68,12 @@ void MainWindow::on_actionExit_triggered() {
 
 void MainWindow::on_ghexacell_clicked(std::string value)
 {
-    ui->label->setText(value.c_str());
+    QString pos = ui->positions->text();
+    pos.append(value.c_str());
+    ui->positions->setText(pos);
     std::string s = "receveive value from ghexacell ";
     s.append(value);
     qDebug() << s.c_str();
 }
+
 

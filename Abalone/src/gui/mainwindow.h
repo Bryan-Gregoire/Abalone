@@ -6,6 +6,7 @@
 #include <QMainWindow>
 
 #include "model/Game.h"
+#include "model/utils/observer.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -16,12 +17,12 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = nullptr);
+    MainWindow(abalone::Game *game, QWidget *parent = nullptr);
     ~MainWindow();
 
 private:
     Ui::MainWindow *ui;
-    abalone::Game _game;
+    abalone::Game *_game;
     std::vector<GHexaCell *> _gHexaCells;
 
 private slots:

@@ -18,8 +18,10 @@ GHexaCell::GHexaCell(double x, double y,
       _x { x }, _y { y },
       _r {r},
       _value { value },
-      _color {color}
+      _color {color},
+      selected(false), mouseover(false), moved(false)
 {
+    this->setAcceptHoverEvents(true);
     static const double pi_over_6 = atan(1) * 4 / 6;
 
     QPolygonF polygon;
@@ -40,41 +42,32 @@ void GHexaCell::paint(QPainter * painter,
     QPen pen(Qt::black, 1);
     painter->setPen(pen);
     QBrush brush;
-    brush.setColor(Qt::gray);
+    brush.setColor(Qt::darkGray);
     brush.setStyle(Qt::SolidPattern);
     painter->setBrush(brush);
+
+    if(selected) {
+        QPen pen(Qt::black, 5);
+        painter->setPen(pen);
+
+        QBrush brush;
+        brush.setColor(Qt::gray);
+        brush.setStyle(Qt::SolidPattern);
+
+        painter->setBrush(brush);
+    }
+    else if(mouseover) {
+        QPen pen(Qt::black, 1);
+        painter->setPen(pen);
+
+        QBrush brush;
+        brush.setColor(Qt::gray);
+        brush.setStyle(Qt::SolidPattern);
+
+        painter->setBrush(brush);
+    }
+
     painter->drawPolygon(polygon());
-//    if(selected) {
-//        QPen pen(Qt::blue, 5);
-//        painter->setPen(pen);
-
-//        QBrush brush;
-//        brush.setColor(Qt::yellow);
-//        brush.setStyle(Qt::SolidPattern);
-
-//        painter->setBrush(brush);
-//    }
-//    else if(mouseover) {
-//        QPen pen(Qt::blue, 1);
-//        painter->setPen(pen);
-
-//        QBrush brush;
-//        brush.setColor(Qt::green);
-//        brush.setStyle(Qt::SolidPattern);
-
-//        painter->setBrush(brush);
-//    }
-//    else {
-//        QPen pen(Qt::blue, 1);
-//        painter->setPen(pen);
-
-//        QBrush brush;
-//        brush.setColor(Qt::cyan);
-//        brush.setStyle(Qt::SolidPattern);
-
-//        painter->setBrush(brush);
-//    }
-
     if(_color == abalone::Color::BLACK) {
 
         brush.setColor(Qt::black);
@@ -97,6 +90,10 @@ void GHexaCell::paint(QPainter * painter,
 void GHexaCell::mousePressEvent(QGraphicsSceneMouseEvent * event)
 {
     event->accept();
+    moved = false;
+    selected = !selected; //I'd like to put this in "released"
+    update();
+
     qDebug() << "receive mouse event, emit signal";
     /*
      * #2 when componant is clicked, emit signal for who listen
@@ -106,3 +103,33 @@ void GHexaCell::mousePressEvent(QGraphicsSceneMouseEvent * event)
 
 }
 
+void GHexaCell::hoverEnterEvent(QGraphicsSceneHoverEvent *event)
+{
+    mouseover = true;
+    update();
+}
+
+void GHexaCell::hoverLeaveEvent(QGraphicsSceneHoverEvent *event)
+{
+    mouseover = false;
+    update();
+}
+
+
+void GHexaCell::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
+{
+    //why isn't this ever fired ?
+}
+
+void GHexaCell::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
+{
+    moved = true;
+}
+
+void GHexaCell::wheelEvent(QGraphicsSceneWheelEvent *event)
+{
+    //write stuff here
+    //rad +/-= 10 ?
+
+    QGraphicsItem::wheelEvent(event);
+}

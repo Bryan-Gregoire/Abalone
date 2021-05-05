@@ -32,6 +32,7 @@ class GHexaCell : public QObject, public QGraphicsPolygonItem
     const double _r; // radius
     std::string _value; // some value to emit (e.g. abapro position)
     abalone::Color _color;
+    bool selected, mouseover, moved;
 
 
   public:
@@ -40,6 +41,7 @@ class GHexaCell : public QObject, public QGraphicsPolygonItem
                        abalone::Color color,
                        std::string value,
                        QGraphicsPolygonItem * parent = nullptr);
+
     inline double x() const;
     inline double y() const;
     inline double r() const;
@@ -59,6 +61,11 @@ class GHexaCell : public QObject, public QGraphicsPolygonItem
      * see https://www.learnqt.guide/events/working-with-events/
      */
     void mousePressEvent(QGraphicsSceneMouseEvent * event);
+    void hoverEnterEvent(QGraphicsSceneHoverEvent * event);
+    void hoverLeaveEvent(QGraphicsSceneHoverEvent * event);
+    void mouseReleaseEvent(QGraphicsSceneMouseEvent * event);
+    void mouseMoveEvent(QGraphicsSceneMouseEvent * event);
+    void wheelEvent(QGraphicsSceneWheelEvent * event);
 
     /*
      * #1 add signal to emit when hexagon is clicked.
