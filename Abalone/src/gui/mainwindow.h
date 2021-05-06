@@ -26,12 +26,24 @@ private:
     std::vector<GHexaCell *> _gHexaCells;
     QString _positions;
 
-//    int convertRow(QChar row) const;
+    void initUI();
+    void buildBoard();
+    void clearLayout(QLayout *layout);
+    void fillLayoutWithBoard(QLayout *layout);
+    int convertRow(char row) const;
+    bool checkIfIsSamePos(std::vector<int> const& position) const;
+    void updatePlayersMarble() const;
+    void deselectCells();
+
+
+signals:
+    void sendPositions(std::vector<int> positions);
 
 private slots:
     void on_actionExit_triggered();
     void on_ghexacell_clicked(std::string value, bool selected);
     void on_moveButton_clicked();
+    void moveCells(std::vector<int> positions);
 };
 
 #endif // MAINWINDOW_H

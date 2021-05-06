@@ -154,6 +154,20 @@ public :
     }
 
     /*!
+     * @brief get the number of the marble of the player at the given index.
+     *
+     * @param index of the player.
+     *
+     * @return the number of marble of the player.
+     */
+    inline int getIdxPlayerNbMarble(unsigned int index) const {
+        if(index >= players_.size()) {
+            throw std::invalid_argument("index of this player does not exist");
+        }
+        return players_.at(index).getNbMarbles();
+    }
+
+    /*!
      * @brief Checks the content of the game board at the given position.
      *
      * Check if the selected ball(s) belong to the current player.
