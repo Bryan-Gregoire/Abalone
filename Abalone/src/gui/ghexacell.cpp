@@ -94,7 +94,8 @@ void GHexaCell::mousePressEvent(QGraphicsSceneMouseEvent * event)
     _selected = !_selected; //I'd like to put this in "released"
     update();
 
-    qDebug() << "receive mouse event, emit signal";
+//    qDebug() << "receive mouse event, emit signal";
+
     /*
      * #2 when componant is clicked, emit signal for who listen
      * (a slot elsewhere)

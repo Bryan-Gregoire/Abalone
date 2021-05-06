@@ -31,7 +31,7 @@ class GHexaCell : public QObject, public QGraphicsPolygonItem
     double _x, _y; // coordinates of center
     const double _r; // radius
     std::string _value; // some value to emit (e.g. abapro position)
-    abalone::Color _color;
+    abalone::Color _color; // Color of hexa
     bool _selected, mouseover, moved;
 
 

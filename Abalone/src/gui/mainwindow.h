@@ -24,10 +24,14 @@ private:
     Ui::MainWindow *ui;
     abalone::Game *_game;
     std::vector<GHexaCell *> _gHexaCells;
+    QString _positions;
+
+//    int convertRow(QChar row) const;
 
 private slots:
     void on_actionExit_triggered();
     void on_ghexacell_clicked(std::string value, bool selected);
+    void on_moveButton_clicked();
 };
 
 #endif // MAINWINDOW_H

@@ -10,7 +10,8 @@ MainWindow::MainWindow(abalone::Game *game, QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow),
       _game {game},
-      _gHexaCells {}
+      _gHexaCells {},
+      _positions {}
 {
     ui->setupUi(this);
     _game->setCurrentPlayerName("Bryan");
@@ -29,7 +30,8 @@ MainWindow::MainWindow(abalone::Game *game, QWidget *parent)
                 } else {
                     color = abalone::Color::NONE;
                 }
-                _gHexaCells.push_back(new GHexaCell(i * 2 * r * 3 / 4, (round(sqrt(3)) * r) * j + i * r, r,color,
+                _gHexaCells.push_back(new GHexaCell(i * 2 * r * 3 / 4, (round(sqrt(3)) * r) * j + i * r,
+                                                    r, color,
                                                     letters.at(8 - i) + std::to_string(j+1),nullptr));
             }
         }
@@ -76,13 +78,57 @@ void MainWindow::on_actionExit_triggered() {
 
 void MainWindow::on_ghexacell_clicked(std::string value, bool selected)
 {
-    QString pos = ui->positions->text();
+    QString pos = ui->abaPro->text();
     selected ? pos.append(value.c_str()) : pos.remove(value.c_str());
-    ui->positions->setText(pos);
+    ui->abaPro->setText(pos);
 
-    std::string s = "receveive value from ghexacell ";
-    s.append(value);
-    qDebug() << s.c_str();
+    selected ? _positions.append(value.c_str()) : _positions.remove(value.c_str());
+
+//    std::string s = "receveive value from ghexacell ";
+//    s.append(value);
+//    qDebug()<< s.c_str();
 }
 
 
+
+void MainWindow::on_moveButton_clicked()
+{
+//    std::vector<int> pos;
+//    for (int i = 0; i < _positions.size() ;i++ ) {
+//        qDebug()<<"digit value :" << _positions.at(i).digitValue();
+//        int row_col = (i % 2 == 0 ? convertRow(_positions.at(i))
+//                             : _positions.at(i).digitValue());
+//        pos.push_back(point);
+//    }
+//    qDebug()<<"My positions : "<<pos;
+    try {
+       // _game->move()
+    }  catch (...) {
+
+    }
+    qDebug() << "Button click";
+}
+
+//int MainWindow::convertRow(QChar row) const {
+//    switch(row.toUpper().) {
+//    case 'A':
+//        return 8;
+//    case 'B':
+//        return 7;
+//    case 'C':
+//        return 6;
+//    case 'D':
+//        return 5;
+//    case 'E':
+//        return 4;
+//    case 'F':
+//        return 3;
+//    case 'G':
+//        return 2;
+//    case 'H':
+//        return 1;
+//    case 'I':
+//        return 0;
+//    }
+//    return -1;
+//}
