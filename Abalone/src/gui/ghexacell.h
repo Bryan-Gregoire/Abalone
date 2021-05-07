@@ -36,15 +36,44 @@ class GHexaCell : public QObject, public QGraphicsPolygonItem
 
 
   public:
+    /**
+     * @brief GHexaCell constructor.
+     * @param x x-abcis position.
+     * @param y y-abcis position
+     * @param r the radius.
+     * @param color color of the cell.
+     * @param value position of the cell.
+     * @param parent parent of the cell.
+     */
     explicit GHexaCell(double x, double y,
                        const double r,
                        abalone::Color color,
                        std::string value,
                        QGraphicsPolygonItem * parent = nullptr);
 
+    /**
+     * @brief x read accesor of the x position.
+     * @return the x-abcis position of the cell.
+     */
     inline double x() const;
+
+    /**
+     * @brief y read accesor of the y position.
+     * @return the y-abcis position of the cell.
+     */
     inline double y() const;
+
+    /**
+     * @brief r read accesor of the radius of the cell.
+     * @return the radius of the cell.
+     */
     inline double r() const;
+
+    /**
+     * @brief setSelect write accesor of the select which
+     * represents if the box is selected.
+     * @param selected represents whether to select the cell or not.
+     */
     inline void setSelect(bool selected);
 
     /*
