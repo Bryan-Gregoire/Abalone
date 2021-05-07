@@ -21,11 +21,11 @@ int Board::move(std::vector<int> & positions) {
     if(positions.size() == 4) {
         return moveLine(positions);
     } else if(positions.size() == 6) {
-        moveLateral(positions);
+        return moveLateral(positions);
     } else {
         throw std::invalid_argument("size of vector not correct");
     }
-    return 10; // lateral movement
+    return -404;
 }
 
 
@@ -39,7 +39,8 @@ int Board::convertPositionBound(int i ) const {
 }
 
 int Board::moveLine(std::vector<int> & positions) {
-    std::pair<int, int> directionLine {(positions.at(2) - positions.at(0)),(positions.at(3) - positions.at(1))};
+    std::pair<int, int> directionLine {(positions.at(2) - positions.at(0)),
+                (positions.at(3) - positions.at(1))};
     unsigned countSame = 0;
     unsigned countOther = 0;
     std::pair<int, int> selectedMarble {positions.at(0), positions.at(1)};
@@ -102,18 +103,21 @@ int Board::moveLine(std::vector<int> & positions) {
 }
 
 
-void Board::moveLateral(std::vector<int> & positions) {
-    std::pair<int, int> directionLateral {convertPositionBound((positions.at(4) - positions.at(0))),
-                (convertPositionBound(positions.at(5) - positions.at(1)))};
+int Board::moveLateral(std::vector<int> & positions) {
+    std::pair<int, int> directionLateral {(positions.at(4) - positions.at(0)),
+                (positions.at(5) - positions.at(1))};
     std::pair<int, int> directionLine {convertPositionBound((positions.at(2) - positions.at(0))),
                 convertPositionBound((positions.at(3) - positions.at(1)))};
     std::pair<int, int> selectedMarble {positions.at(0), positions.at(1)};
-    while(selectedMarble.first != positions.at(2) || selectedMarble.second != positions.at(3)) {
+
+    while(selectedMarble.first != (positions.at(2) + directionLine.first)
+          || selectedMarble.second != (positions.at(3) + directionLine.second)) {
         if(!containMarble(selectedMarble.first, selectedMarble.second)
                 || hexagones_.at(selectedMarble.first).at(selectedMarble.second)->getMarble()->getColor()
                 != hexagones_.at(positions.at(0)).at(positions.at(1))->getMarble()->getColor()
-                || containMarble(selectedMarble.first + directionLateral.first, selectedMarble.second + directionLateral.second)){
-            return;
+                || containMarble(selectedMarble.first + directionLateral.first,
+                                 selectedMarble.second + directionLateral.second)){
+            return 0 ; //blocked, cant move
         }
         selectedMarble.first = selectedMarble.first + directionLine.first;
         selectedMarble.second = selectedMarble.second + directionLine.second;
@@ -122,17 +126,15 @@ void Board::moveLateral(std::vector<int> & positions) {
     selectedMarble.first = positions.at(0);
     selectedMarble.second = positions.at(1);
 
-    while(selectedMarble.first != (positions.at(2) +directionLine.first) || selectedMarble.second != (positions.at(3) + directionLine.second)) {
-        if(!isInsideBoard(positions.at(2) +directionLine.first, positions.at(3) + directionLine.second)) {
-            return;
-        }
+    while(selectedMarble.first != (positions.at(2) + directionLine.first)
+          || selectedMarble.second != (positions.at(3) + directionLine.second)) {
         hexagones_[selectedMarble.first + directionLateral.first][selectedMarble.second + directionLateral.second]
                 .emplace(hexagones_[selectedMarble.first][selectedMarble.second].value());
         hexagones_[selectedMarble.first][selectedMarble.second].emplace(Hexagone());
         selectedMarble.first = selectedMarble.first + directionLine.first;
         selectedMarble.second = selectedMarble.second + directionLine.second;
     }
-    return;
+    return -1;
 }
 
 }

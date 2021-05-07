@@ -149,7 +149,7 @@ private:
      * the beads are progressing laterally, without modifying alignment.
      *
      */
-    void moveLateral(std::vector<int> & positions);
+    int moveLateral(std::vector<int> & positions);
 
 
 

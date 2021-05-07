@@ -21,6 +21,8 @@ class QGraphicsSceneMouseEvent;
  * value is emited on click.
  *
  * inherit from QObject to have capability of sending signal.
+ *
+ * source : poc PBT and ABS.
  */
 class GHexaCell : public QObject, public QGraphicsPolygonItem
 {
