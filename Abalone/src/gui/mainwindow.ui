@@ -190,27 +190,27 @@
     <property name="geometry">
      <rect>
       <x>780</x>
-      <y>710</y>
+      <y>680</y>
       <width>75</width>
       <height>23</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>10</pointsize>
+      <pointsize>11</pointsize>
      </font>
     </property>
     <property name="text">
-     <string>Move</string>
+     <string>move</string>
     </property>
    </widget>
    <widget class="QLabel" name="abaPro">
     <property name="geometry">
      <rect>
-      <x>780</x>
+      <x>890</x>
       <y>680</y>
       <width>301</width>
-      <height>16</height>
+      <height>21</height>
      </rect>
     </property>
     <property name="font">
@@ -220,6 +220,37 @@
     </property>
     <property name="text">
      <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="winner">
+    <property name="geometry">
+     <rect>
+      <x>950</x>
+      <y>730</y>
+      <width>131</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="clearSelect">
+    <property name="geometry">
+     <rect>
+      <x>780</x>
+      <y>720</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>11</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>clear</string>
     </property>
    </widget>
   </widget>

@@ -19,11 +19,6 @@ MainWindow::MainWindow(abalone::Game *game, QWidget *parent)
     _game->switchCurrentPlayer();
     buildBoard();
     initUI();
-
-    /* connect in for_each
-        QObject::connect(_gHexaCells[0], SIGNAL(sendValue(std::string)),
-                         this, SLOT(on_ghexacell_clicked(std::string)));
-        */
 }
 
 MainWindow::~MainWindow()
@@ -33,11 +28,6 @@ MainWindow::~MainWindow()
 
 void MainWindow::initUI() {
     ui->setupUi(this);
-
-    QObject::connect(this,
-                     SIGNAL(sendPositions(std::vector<int>)),
-                     this,
-                     SLOT(moveCells(std::vector<int>)));
 
     auto scene = new QGraphicsScene();
 
@@ -159,11 +149,11 @@ void MainWindow::on_moveButton_clicked()
 
     _positions.clear();
     ui->abaPro->clear();
-    //deselectCells();
+    deselectCells();
 
     qDebug() << "Button click";
 
-    emit sendPositions(pos);
+    moveCells(pos);
 
 }
 
@@ -179,18 +169,24 @@ void MainWindow::moveCells(std::vector<int> pos) {
 
             buildBoard();
             fillLayoutWithBoard(ui->verticalLayout_4);
-
+            ui->turnPName->setText(_game->getCurrentPlayer().getName().c_str());
             updatePlayersMarble();
         }
-        qDebug()<<"I moved";
     }  catch (...) {
-        qDebug()<< "Error from move";
+        qDebug()<< "Error from move (model)";
     }
+}
+
+void MainWindow::on_clearSelect_clicked()
+{
+    deselectCells();
+    _positions.clear();
+    ui->abaPro->clear();
 }
 
 void MainWindow::deselectCells() {
     for(auto & cell : _gHexaCells) {
-        cell->setSelected(false);
+        cell->setSelect(false);
         cell->update();
     }
 }
@@ -240,3 +236,5 @@ int MainWindow::convertRow(char row) const {
     }
     return -1;
 }
+
+

@@ -22,7 +22,9 @@ bool Game::checkContentPositions(std::vector<int> const& pos) const  {
                     || isColorCurrPlayer(pos.at(2), pos.at(3)));
 
     }
-    return isColorCurrPlayer(pos.at(0),pos.at(1))
+    int moveX = pos.at(2) - pos.at(0);
+    int moveY = pos.at(3) - pos.at(1);
+    return isColorCurrPlayer(pos.at(0),pos.at(1)) && isColorCurrPlayer(moveX, moveY)
             && isColorCurrPlayer(pos.at(2),pos.at(3));
 
 }
@@ -58,11 +60,14 @@ void Game::move(std::vector<int> & positions) {
         std::invalid_argument("Number of components of the vector are not correct.");
     }
 
-    bool move = board_.move(positions);
-    if(move){
+    int move = board_.move(positions);
+    if(move == 1){
         switchCurrentPlayer();
         players_[idx_CurrentPlayer].fallMarble();
         switchCurrentPlayer();
+    }
+    if(move == 0) {
+        players_[idx_CurrentPlayer].fallMarble();
     }
     updatePlayerStatus();
 }

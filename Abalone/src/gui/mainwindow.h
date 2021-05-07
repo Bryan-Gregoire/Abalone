@@ -34,16 +34,13 @@ private:
     bool checkIfIsSamePos(std::vector<int> const& position) const;
     void updatePlayersMarble() const;
     void deselectCells();
-
-
-signals:
-    void sendPositions(std::vector<int> positions);
+    void moveCells(std::vector<int> positions);
 
 private slots:
     void on_actionExit_triggered();
     void on_ghexacell_clicked(std::string value, bool selected);
     void on_moveButton_clicked();
-    void moveCells(std::vector<int> positions);
+    void on_clearSelect_clicked();
 };
 
 #endif // MAINWINDOW_H

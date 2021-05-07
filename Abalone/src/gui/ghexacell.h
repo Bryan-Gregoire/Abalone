@@ -45,6 +45,7 @@ class GHexaCell : public QObject, public QGraphicsPolygonItem
     inline double x() const;
     inline double y() const;
     inline double r() const;
+    inline void setSelect(bool selected);
 
     /*
      * how can I what method rewrite ?
@@ -92,6 +93,10 @@ double GHexaCell::y() const
 double GHexaCell::r() const
 {
     return _r;
+}
+
+void GHexaCell::setSelect(bool selected) {
+    _selected = selected;
 }
 
 
