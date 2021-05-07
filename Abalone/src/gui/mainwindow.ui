@@ -17,7 +17,7 @@
    <widget class="QWidget" name="verticalLayoutWidget_3">
     <property name="geometry">
      <rect>
-      <x>310</x>
+      <x>400</x>
       <y>670</y>
       <width>160</width>
       <height>76</height>
@@ -147,7 +147,7 @@
    <widget class="QWidget" name="verticalLayoutWidget_2">
     <property name="geometry">
      <rect>
-      <x>580</x>
+      <x>600</x>
       <y>670</y>
       <width>160</width>
       <height>80</height>
@@ -162,7 +162,7 @@
         </font>
        </property>
        <property name="text">
-        <string>Player turn : </string>
+        <string>Player turn</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -189,7 +189,7 @@
    <widget class="QPushButton" name="moveButton">
     <property name="geometry">
      <rect>
-      <x>780</x>
+      <x>810</x>
       <y>680</y>
       <width>75</width>
       <height>23</height>
@@ -207,7 +207,7 @@
    <widget class="QLabel" name="abaPro">
     <property name="geometry">
      <rect>
-      <x>890</x>
+      <x>930</x>
       <y>680</y>
       <width>301</width>
       <height>21</height>
@@ -225,20 +225,34 @@
    <widget class="QLabel" name="winner">
     <property name="geometry">
      <rect>
-      <x>950</x>
-      <y>730</y>
-      <width>131</width>
-      <height>16</height>
+      <x>80</x>
+      <y>680</y>
+      <width>281</width>
+      <height>41</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>15</pointsize>
+      <weight>75</weight>
+      <italic>false</italic>
+      <bold>true</bold>
+      <underline>true</underline>
+      <stylestrategy>PreferDefault</stylestrategy>
+      <kerning>true</kerning>
+     </font>
     </property>
     <property name="text">
      <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
    <widget class="QPushButton" name="clearSelect">
     <property name="geometry">
      <rect>
-      <x>780</x>
+      <x>810</x>
       <y>720</y>
       <width>75</width>
       <height>23</height>

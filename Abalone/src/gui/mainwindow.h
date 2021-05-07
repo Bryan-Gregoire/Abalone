@@ -35,6 +35,7 @@ private:
     void updatePlayersMarble() const;
     void deselectCells();
     void moveCells(std::vector<int> positions);
+    void showWinner();
 
 private slots:
     void on_actionExit_triggered();

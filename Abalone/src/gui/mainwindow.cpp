@@ -6,13 +6,16 @@
 #include <QGraphicsScene>
 #include <QGraphicsView>
 
-MainWindow::MainWindow(abalone::Game *game, QWidget *parent)
+using namespace abalone;
+
+MainWindow::MainWindow(Game *game, QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow),
       _game {game},
       _gHexaCells {},
       _positions {}
 {
+    _game->setGameStatus(IN_PROGRESS);
     _game->setCurrentPlayerName("Bryan");
     _game->switchCurrentPlayer();
     _game->setCurrentPlayerName("Billal");
@@ -54,22 +57,21 @@ void MainWindow::initUI() {
     ui->player1->setText(_game->getIdxPlayerName(0).c_str());
     ui->player2->setText(_game->getIdxPlayerName(1).c_str());
     ui->turnPName->setText(ui->player1->text());
-
-
+    ui->winner->setStyleSheet("QLabel { color : green; font-weight: bold}");
 }
 
 void MainWindow::buildBoard() {
     _gHexaCells.clear();
     const double r = 46;
     std::array<char, 9> letters= {'A','B','C','D','E','F','G','H','I'};
-    abalone::Color color = abalone::Color::NONE;
-    for (unsigned int i = 0;i < abalone::Board::SIZE;i++ ) {
-        for (unsigned int j = 0; j < abalone::Board::SIZE ;j++ ) {
+    Color color = Color::NONE;
+    for (unsigned int i = 0;i < Board::SIZE;i++ ) {
+        for (unsigned int j = 0; j < Board::SIZE ;j++ ) {
             if(_game->getBoard().isInsideBoard(i,j)) {
                 if(_game->getBoard().containMarble(i,j)) {
                     color = _game->getBoard().getColorMarble(i,j);
                 } else {
-                    color = abalone::Color::NONE;
+                    color = Color::NONE;
                 }
                 _gHexaCells.push_back(new GHexaCell(i * 2 * r * 3 / 4, (round(sqrt(3)) * r) * j + i * r,
                                                     r, color,
@@ -169,6 +171,10 @@ void MainWindow::moveCells(std::vector<int> pos) {
             fillLayoutWithBoard(ui->verticalLayout_4);
             ui->turnPName->setText(_game->getCurrentPlayer().getName().c_str());
             updatePlayersMarble();
+            if(_game->getGameStatus() != IN_PROGRESS) {
+                showWinner();
+                ui->moveButton->setEnabled(false);
+            }
         }
     }  catch (...) {
         qDebug()<< "Error from move (model)";
@@ -186,6 +192,16 @@ void MainWindow::deselectCells() {
     for(auto & cell : _gHexaCells) {
         cell->setSelect(false);
         cell->update();
+    }
+}
+
+void MainWindow::showWinner() {
+    if(_game->getIdxPlayerStatus(0) == FAIL) {
+        QString winnerName = ui->player2->text();
+        ui->winner->setText(winnerName.toUpper() + " HAS WON !");
+    } else {
+        QString winnerName = ui->player1->text();
+        ui->winner->setText(winnerName);
     }
 }
 
