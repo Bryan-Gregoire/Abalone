@@ -52,7 +52,7 @@ int Board::moveLine(std::vector<int> & positions) {
         if(hexagones_.at(selectedMarble.first).at(selectedMarble.second)->getMarble()->getColor()
                 == hexagones_.at(positions.at(0)).at(positions.at(1))->getMarble()->getColor()) {
             if(countOther != 0) {
-                return 0; //nothing fall, blocked
+                break; //nothing fall, blocked
             }
             countSame++;
         } else {

@@ -119,7 +119,7 @@ public :
      * of superiority digital.
      *
      * \return -1 if no marble fell, 0 if a marble got stuck, 1 if a marble of
-     * the current player fell, 2 if enemy marble fell, 10 if it's a lateral movement.
+     * the current player fell, 2 if enemy marble fell, -404 if it's not a movement.
      *
      *
      */
@@ -148,6 +148,7 @@ private:
     /*!
      * the beads are progressing laterally, without modifying alignment.
      *
+     * \return -1 if no marble fell, 0 if a marble got stuck.
      */
     int moveLateral(std::vector<int> & positions);
 
