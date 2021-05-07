@@ -164,8 +164,6 @@ void MainWindow::moveCells(std::vector<int> pos) {
                 && _game->checkGoodMovePos(pos) ) {
 
             _game->move(pos);
-            _game->switchCurrentPlayer();
-            _game->updateLevelStatus();
 
             buildBoard();
             fillLayoutWithBoard(ui->verticalLayout_4);

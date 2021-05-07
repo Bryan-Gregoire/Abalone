@@ -22,9 +22,7 @@ bool Game::checkContentPositions(std::vector<int> const& pos) const  {
                     || isColorCurrPlayer(pos.at(2), pos.at(3)));
 
     }
-    int moveX = pos.at(2) - pos.at(0);
-    int moveY = pos.at(3) - pos.at(1);
-    return isColorCurrPlayer(pos.at(0),pos.at(1)) && isColorCurrPlayer(moveX, moveY)
+    return isColorCurrPlayer(pos.at(0),pos.at(1))
             && isColorCurrPlayer(pos.at(2),pos.at(3));
 
 }
@@ -61,15 +59,18 @@ void Game::move(std::vector<int> & positions) {
     }
 
     int move = board_.move(positions);
-    if(move == 1){
+    if(move == 2){ //in-line movement (fall enemy marble)
         switchCurrentPlayer();
         players_[idx_CurrentPlayer].fallMarble();
         switchCurrentPlayer();
-    }
-    if(move == 0) {
+    } else if (move == 1) { //in-line movement (fall self marble)
         players_[idx_CurrentPlayer].fallMarble();
+        switchCurrentPlayer();
+    } else if(move != 0) { //lateral movement (0 = blocked)
+        switchCurrentPlayer();
     }
     updatePlayerStatus();
+    updateLevelStatus();
 }
 
 void Game::updateLevelStatus(){

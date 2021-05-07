@@ -15,8 +15,6 @@ void Controller::start() {
         }
         try {
             model_.move(posMove);
-            model_.switchCurrentPlayer();
-            model_.updateLevelStatus();
         }  catch (...) {
             view_.displayMessage("Move not possible, try again");
         }

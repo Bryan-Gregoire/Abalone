@@ -51,7 +51,7 @@ int Board::moveLine(std::vector<int> & positions) {
         if(hexagones_.at(selectedMarble.first).at(selectedMarble.second)->getMarble()->getColor()
                 == hexagones_.at(positions.at(0)).at(positions.at(1))->getMarble()->getColor()) {
             if(countOther != 0) {
-                return -1; //nothing fall
+                return 0; //nothing fall, blocked
             }
             countSame++;
         } else {
@@ -67,7 +67,7 @@ int Board::moveLine(std::vector<int> & positions) {
                     [selectedMarble.second - directionLine.second]
                     .emplace(hexagones_[positions.at(0)][positions.at(1)].value());
             hexagones_[positions.at(0)][positions.at(1)].emplace(Hexagone());
-            return 0; // self marble fall
+            return 1; // self marble fall
         }
         hexagones_[selectedMarble.first][selectedMarble.second]
                 .emplace(hexagones_[positions.at(0)][positions.at(1)].value());
@@ -86,7 +86,7 @@ int Board::moveLine(std::vector<int> & positions) {
             hexagones_[firstMarbleOther.first][firstMarbleOther.second]
                     .emplace(hexagones_[positions.at(0)][positions.at(1)].value());
             hexagones_[positions.at(0)][positions.at(1)].emplace(Hexagone());
-            return 1; // enemy marble fallen
+            return 2; // enemy marble fallen
         }
         hexagones_[selectedMarble.first][selectedMarble.second]
                 .emplace(hexagones_[firstMarbleOther.first][firstMarbleOther.second].value());
@@ -94,9 +94,9 @@ int Board::moveLine(std::vector<int> & positions) {
                 .emplace(hexagones_[positions.at(0)][positions.at(1)].value());
         hexagones_[positions.at(0)][positions.at(1)].emplace(Hexagone());
     } else {
-        return -1;
+        return 0; //nothing fall, blocked
     }
-    return -1;
+    return -1; // nothing fall
 }
 
 
