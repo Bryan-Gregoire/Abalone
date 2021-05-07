@@ -83,18 +83,22 @@ private:
      */
     void deselectCells();
 
-    /**
-     * @brief moveCells move the marbles usign the given positions.
-     * @param positions the given positions.
-     */
-    void moveCells(std::vector<int> positions);
+//    /**
+//     * @brief moveCells move the marbles usign the given positions.
+//     * @param positions the given positions.
+//     */
+//    void moveCells(std::vector<int> positions);
 
     /**
      * @brief showWinner set the label with the name of the player who win.
      */
     void showWinner();
 
+signals:
+    void sendPositions(std::vector<int> positions);
+
 private slots:
+
     /**
      * @brief on_actionExit_triggered exit the game.
      *
@@ -119,6 +123,12 @@ private slots:
      * @brief on_clearSelect_clicked remove select of all the selected cells.
      */
     void on_clearSelect_clicked();
+
+    /**
+     * @brief moveCells move the marbles usign the given positions.
+     * @param positions the given positions.
+     */
+    void moveCells(std::vector<int> pos);
 };
 
 #endif // MAINWINDOW_H

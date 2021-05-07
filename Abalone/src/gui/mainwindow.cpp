@@ -34,6 +34,9 @@ void MainWindow::initUI() {
 
     auto scene = new QGraphicsScene();
 
+    QObject::connect(this, SIGNAL(sendPositions(std::vector<int>)),
+                     this, SLOT(moveCells(std::vector<int>)));
+
     std::for_each(begin(_gHexaCells), end(_gHexaCells),
                   [this, scene](GHexaCell * e) {
         e->setPos(e->y(), e->x());
@@ -129,11 +132,6 @@ void MainWindow::on_ghexacell_clicked(std::string value, bool selected)
     ui->abaPro->setText(pos);
 
     selected ? _positions.append(value.c_str()) : _positions.remove(value.c_str());
-
-    std::string s = "receveive value from ghexacell ";
-    s.append(value);
-    qDebug()<< s.c_str();
-
 }
 
 void MainWindow::on_moveButton_clicked()
@@ -153,14 +151,10 @@ void MainWindow::on_moveButton_clicked()
     ui->abaPro->clear();
     deselectCells();
 
-    qDebug() << "Button click";
-
-    moveCells(pos);
-
+    emit sendPositions(pos);
 }
 
 void MainWindow::moveCells(std::vector<int> pos) {
-    qDebug()<<"move cells";
     try {
         if(_game->checkContentPositions(pos) && !checkIfIsSamePos(pos)
                 && _game->checkGoodMovePos(pos) ) {

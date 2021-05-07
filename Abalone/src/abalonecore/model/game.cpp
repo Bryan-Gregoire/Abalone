@@ -62,7 +62,6 @@ void Game::move(std::vector<int> & positions) {
     if(move == 2){ //in-line movement (fall enemy marble)
         switchCurrentPlayer();
         players_[idx_CurrentPlayer].fallMarble();
-        switchCurrentPlayer();
     } else if (move == 1) { //in-line movement (fall self marble)
         players_[idx_CurrentPlayer].fallMarble();
         switchCurrentPlayer();
