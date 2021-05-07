@@ -1,5 +1,4 @@
 
-
 # ABALONE
 
 This is a remake of the popular game abalone, it is a multiple-player game, the aime of the game To be the first player to push six of the opponent's marbles out of play, into the board's outer rim. 
@@ -15,6 +14,7 @@ This is a remake of the popular game abalone, it is a multiple-player game, the 
 -   [Status](#Status)
 -   [Author](#Author)
 -   [Console version](#Console-version)
+-   [Graphical version ](#Graphical-version)
 
 ## Instructions for gameplay
 
@@ -33,7 +33,7 @@ You can find this class diagram and the documentation of this diagram in /Analys
 
 - Structure of our depot : 
 
-![Structure](https://zupimages.net/up/21/13/2ptd.png)
+![enter image description here](https://zupimages.net/up/21/18/v0h6.png)
 ## Built with
 
 -  C++17
@@ -45,6 +45,7 @@ You can find this class diagram and the documentation of this diagram in /Analys
 ## Doxyfile 
 
 #### Command to generate the documentation : 
+
 - cd Abalone && doxygen .doxyfile
 
 ## Decision 
@@ -59,7 +60,7 @@ You can find this class diagram and the documentation of this diagram in /Analys
 
 - Analyse UML : Done
 - Console version : Done
-- Graphic version : In progress
+- Graphic version : 
 
 
 ## Authors 
@@ -72,10 +73,26 @@ You can find this class diagram and the documentation of this diagram in /Analys
 
 ![enter image description here](https://zupimages.net/up/21/13/9v73.png)
 
-- You can see a line move :
+- You can see a in-line move :
 
 ![enter image description here](https://zupimages.net/up/21/13/e88x.png)
 
 - You can see a laterally move :
 
 ![enter image description here](https://zupimages.net/up/21/13/4kvi.png)
+
+
+
+##  Graphical version 
+
+![enter image description here](https://zupimages.net/up/21/18/1vmv.png)
+
+
+
+- You can see a in-line move  :
+- ![enter image description here](https://zupimages.net/up/21/18/3cgq.png)
+
+
+- You can see a laterally move :
+
+![enter image description here](https://zupimages.net/up/21/18/9lja.png)
