@@ -37,7 +37,22 @@ private:
     void showWinner();
 
 private slots:
+    /*!
+     * \brief on_actionExit_triggered
+     *
+     * exit the game.
+     *
+     */
     void on_actionExit_triggered();
+
+    /*!
+     * \brief on_ghexacell_clicked
+     *
+     * if the cell is already selected, unselected it, otherwise select it.
+     *
+     * \param value the value of the
+     * \param selected
+     */
     void on_ghexacell_clicked(std::string value, bool selected);
     void on_moveButton_clicked();
     void on_clearSelect_clicked();

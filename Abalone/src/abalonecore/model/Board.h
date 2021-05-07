@@ -55,9 +55,6 @@ public :
      * \return true if the given position is inside the board otherwise false.
      */
     inline bool isInsideBoard(int i, int j) const {
-//        if(i < 0 || i > 8 || j < 0 || j > 8) {
-//            throw std::invalid_argument("Invalid parameter");
-//        }
         return hexagones_[i][j].has_value();
     }
 
@@ -68,13 +65,9 @@ public :
      * \param j the given column.
      *
      * \return true if there is a marble otherwise false.
-     * \throw std::invalid_argument if the given position is not inside
-     *  the board .
      */
     inline bool containMarble(int i,int j) const {
-//        if(i < 0 || i > 8 || j < 0 || j > 8) {
-//            throw std::invalid_argument("Invalid parameter");
-//        }
+
         return hexagones_[i][j]->getMarble().has_value();
     }
 
@@ -124,6 +117,11 @@ public :
      *
      * You can push the marbles of a different color when you find in a position
      * of superiority digital.
+     *
+     * \return -1 if no marble fell, 0 if a marble got stuck, 1 if a marble of
+     * the current player fell, 2 if enemy marble fell, 10 if it's a lateral movement.
+     *
+     *
      */
     int move(std::vector<int> & positions);
 
@@ -143,7 +141,7 @@ private:
      *
      * \param positions the given positions.
      *
-     * \return true if a marble has fallen.
+     * \return -1 if no marble fell, 0 if a marble got stuck, 1 if a marble of the current player fell, 2 if enemy marble fell.
      */
     int moveLine(std::vector<int> & positions);
 
