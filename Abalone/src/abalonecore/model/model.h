@@ -3,7 +3,6 @@
 #include "Board.h"
 #include "GameStatus.h"
 #include "Player.h"
-#include "utils/observable.h"
 #include <vector>
 
 /*!
@@ -15,7 +14,7 @@ namespace abalone {
  * Define methods that the game should implements.
  *
  */
-class Model : public utils::Observable {
+class Model {
 
 public:
     virtual ~Model() = default;
@@ -126,31 +125,6 @@ public:
      * @throw std::invalid_argument if the number of components of the vector is not 4 or 6.
      */
     virtual void move(std::vector<int> & positions) = 0;
-
-    /*!
-     * notify the observer.
-     *
-     */
-    virtual void notify() const = 0;
-
-    /*!
-     * Notify the observer of the given property.
-     *
-     * \param propertyName the given name of the property.
-     */
-    void notify(const std::string & propertyName = "No property") const;
-
-    /*!
-      * Add the given observer.
-      *
-      */
-    inline void addObserver(utils::Observer *);
-
-    /*!
-      * Delete the given observer.
-      *
-      */
-    inline void deleteObserver(utils::Observer *);
 
 };
 

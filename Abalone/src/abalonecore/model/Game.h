@@ -216,31 +216,6 @@ public :
      */
     void move(std::vector<int> & positions) ;
 
-    /*!
-     * notify the observer.
-     *
-     */
-    void notify() const;
-
-    /*!
-     * Notify the observer of the given property.
-     *
-     * \param propertyName the given name of the property.
-     */
-    void notify(const std::string & propertyName = "No property") const;
-
-    /*!
-     * Add the given observer.
-     *
-     */
-    inline void addObserver(utils::Observer *);
-
-    /*!
-     * Delete the given observer.
-     *
-     */
-    inline void deleteObserver(utils::Observer *);
-
 private:
 
     /*!

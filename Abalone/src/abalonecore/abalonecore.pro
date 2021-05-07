@@ -15,14 +15,11 @@ HEADERS += \
     model/Marble.h \
     model/Player.h \
     model/PlayerStatus.h \
-    model/model.h \
-    model/utils/observable.h \
-    model/utils/observer.h
+    model/model.h
 
 SOURCES += \
         model/board.cpp \
-        model/game.cpp \
-        model/observable.cpp
+        model/game.cpp
 
 DISTFILES += \
     abalonecore.pri

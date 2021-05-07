@@ -25,7 +25,7 @@ int Board::move(std::vector<int> & positions) {
     } else {
         throw std::invalid_argument("size of vector not correct");
     }
-    return -404;
+    return 10; // lateral movement
 }
 
 
@@ -60,7 +60,9 @@ int Board::moveLine(std::vector<int> & positions) {
         selectedMarble.first += directionLine.first;
         selectedMarble.second += directionLine.second;
     }
-
+    if(countSame >= 4 ) {
+        return 0;
+    }
     if (countOther == 0) {
         if(!isInsideBoard(selectedMarble.first, selectedMarble.second)) {
             hexagones_[selectedMarble.first - directionLine.first]
@@ -101,8 +103,10 @@ int Board::moveLine(std::vector<int> & positions) {
 
 
 void Board::moveLateral(std::vector<int> & positions) {
-    std::pair<int, int> directionLateral {convertPositionBound((positions.at(4) - positions.at(0))), (convertPositionBound(positions.at(5) - positions.at(1)))};
-    std::pair<int, int> directionLine {convertPositionBound((positions.at(2) - positions.at(0))), convertPositionBound((positions.at(3) - positions.at(1)))};
+    std::pair<int, int> directionLateral {convertPositionBound((positions.at(4) - positions.at(0))),
+                (convertPositionBound(positions.at(5) - positions.at(1)))};
+    std::pair<int, int> directionLine {convertPositionBound((positions.at(2) - positions.at(0))),
+                convertPositionBound((positions.at(3) - positions.at(1)))};
     std::pair<int, int> selectedMarble {positions.at(0), positions.at(1)};
     while(selectedMarble.first != positions.at(2) || selectedMarble.second != positions.at(3)) {
         if(!containMarble(selectedMarble.first, selectedMarble.second)

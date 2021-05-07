@@ -93,9 +93,4 @@ void Game::updatePlayerStatus() {
 
 }
 
-
-void Game::notify() const {
-
-}
-
 } // end abalone
